@@ -1,0 +1,8 @@
+.tab {
+   width: 300px;
+   
+}
+#stats {
+   float: right;
+   width: calc(100% - 320px);
+}
