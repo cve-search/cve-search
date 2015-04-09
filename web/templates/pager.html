@@ -1,0 +1,42 @@
+<!-- 
+You can change the length to however long you want.
+For the best result, use an odd number
+ -->
+{% set length = 5%}
+
+<!-- Don't edit the variables below -->
+{% set page = (r/pageLength)|int %}
+{% set middle = (length/2)|int+1 %}
+{% if page < middle %}
+  {% set pre = page %}
+  {% set post = length-page%}
+{% else %}
+  {% set pre = middle-1 %}
+  {% set post = middle%}
+{% endif %}
+
+<div class="pagerdiv">
+  <nav>
+    <ul class="pagination">
+      <li {% if r == 0 %}class="disabled"{% endif %}>
+        <a href="javascript:previous(1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% for n in range(pre,0,-1) %}
+        <li><a href="javascript:previous({{n}})">{{page - n+1}}</a></li>
+      {% endfor %}
+      <li class="active">
+        <span>{{page+1}} <span class="sr-only">(current)</span></span>
+      </li>
+      {% for n in range(1,post) %}
+        <li><a href="javascript:next({{n}})">{{page + n+1}}</a></li>
+      {% endfor %}
+      <li>
+        <a href="javascript:next(1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
