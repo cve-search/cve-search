@@ -1,0 +1,45 @@
+#!/usr/bin/env python3.3
+# -*- coding: utf-8 -*-
+#
+# Database layer
+#  translates database calls to functions
+#
+# Software is free software released under the "Modified BSD license"
+#
+
+# Copyright (c) 2014-2015       Pieter-Jan Moreels - pieterjan.moreels@gmail.com
+
+# imports
+from lib.Config import Configuration as conf
+
+# Variables
+db=conf.getMongoConnection()
+
+# Functions
+
+# API Functions
+def cvesForCPE(cpe):
+  col=db['cves']
+  if not cpe: return []
+  cves=list(col.find({"vulnerable_configuration": {"$regex": cpe}}).sort("Modified", -1))
+  for cve in cves:
+    cve.pop("_id")
+  return cves
+
+# User Functions
+def seenCVEs(user):
+  col=db['mgmt_seen']
+  data = col.find_one({"user": user})
+  if not data:
+    col.insert({"user": user, "seen_cves": []})
+    return []
+  else:
+    return data['seen_cves']
+
+def addSeenCVEs(user, CVEs):
+  col=db['mgmt_seen']
+  if type(CVEs) == str: CVEs=[CVEs]
+  if type(CVEs) == list:
+    seen=list(set(CVEs)-set(seenCVEs(user)))
+    if seen:
+      col.update({"user": user},{"$addToSet": {"seen_cves": { "$each": seen}}})
