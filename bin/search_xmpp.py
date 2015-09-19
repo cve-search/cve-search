@@ -31,7 +31,6 @@ from optparse import OptionParser
 import sleekxmpp
 import json
 
-from lib.Config import Configuration
 from lib.Query import lastentries, apigetcve, apibrowse, apisearch
 # BSON MongoDB include ugly stuff that needs to be processed for standard JSON
 from bson import json_util
@@ -45,9 +44,6 @@ else:
 runPath = os.path.dirname(os.path.realpath(__file__))
 
 rankinglookup = True
-
-db = Configuration.getMongoConnection()
-collection = db.cves
 
 helpmessage = "\nlast <n> cve entries (output: JSON) \n"
 helpmessage = helpmessage + "cvetweet <n> cve entries (output: Text) \n"
