@@ -21,26 +21,24 @@ from redis import exceptions as redisExceptions
 
 from lib.Config import Configuration
 from lib.Toolkit import pad
+import lib.DatabaseLayer as db
 
 argParser = argparse.ArgumentParser(description='CPE entries importer in Redis cache')
 argParser.add_argument('-v', action='store_true', default=False, help='Verbose logging')
 argParser.add_argument('-o', action='store_true', default=False, help='Import cpeother database in Redis cache')
 args = argParser.parse_args()
 
-# connect to db
-db = Configuration.getMongoConnection()
-
 if args.o:
-    cpe = db.cpeother
+    cpe = db.getAlternativeCPEs()
 else:
-    cpe = db.cpe
+    cpe = db.getCPEs()
 
 try:
     r = Configuration.getRedisVendorConnection()
 except:
     sys.exit(1)
 
-for e in cpe.find({}):
+for e in cpe:
     try:
         if args.o is not True:
             prefix = 'cpe_2_2'
