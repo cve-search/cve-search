@@ -19,7 +19,7 @@
 #
 # Software is free software released under the "Modified BSD license"
 #
-# Copyright (c) 2012-2013 	Alexandre Dulaunoy - a@foo.be
+# Copyright (c) 2012-2015 	Alexandre Dulaunoy - a@foo.be
 # Copyright (c) 2015 		Pieter-Jan Moreels - pieterjan.moreels@gmail.com
 
 # Imports
@@ -31,46 +31,29 @@ sys.path.append(os.path.join(runPath, ".."))
 import argparse
 
 from lib.Config import Configuration
-
-# connect to db
-db = Configuration.getMongoConnection()
-r = db.ranking
+import lib.DatabaseLayer as db
 
 
 def add(cpe=None, key=None, rank=1):
     if cpe is None or key is None:
         return False
-
-    item = r.find_one({'cpe': cpe})
-
-    if item is None:
-        r.update({'cpe': cpe}, {"$push": {'rank': {key: rank}}}, upsert=True)
-        return True
-    else:
-        l = []
-        for i in item['rank']:
-            i[key] = rank
-            l.append(i)
-        r.update({'cpe': cpe}, {"$set": {'rank': l}})
-        return True
-
+    return db.addRanking(cpe, key, rank)
 
 def findranking(cpe=None, loosy=True):
     if cpe is None:
         return False
 
     result = False
-
     if loosy:
         for x in cpe.split(':'):
             if x is not '':
-                i = r.find_one({'cpe': {'$regex': x}})
+                i = db.findRanking(x, regex=True)
             if i is None:
                 continue
             if 'rank' in i:
                 result = i['rank']
     else:
-        i = r.find_one({'cpe': {'$regex': cpe}})
+        i = db.findRanking(cpe, regex=True)
         print (cpe)
         if i is None:
             return result
@@ -85,14 +68,12 @@ def removeranking(cpe=None):
     if cpe is None or cpe is '':
         return False
 
-    i = r.remove({'cpe': {'$regex': cpe}})
-
-    return i
+    return db.removeRanking(cpe)
 
 
 def listranking(format='json'):
     ranks = []
-    for x in r.find({}):
+    for x in db.findRanking():
         if format == "json":
             ranks.append(x)
         else:

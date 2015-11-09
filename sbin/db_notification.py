@@ -17,7 +17,7 @@ runPath = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(runPath, ".."))
 
 import argparse
-
+import lib.DatabaseLayer as dbLayer
 from lib.Config import Configuration
 
 argParser = argparse.ArgumentParser(description='Notification database management for cve-search', epilog='')
@@ -44,17 +44,10 @@ def checkreq():
         argParser.print_help()
         exit(1)
 
-# connect to db
-db = Configuration.getMongoConnection()
-cves = db.cves
-
-
 def searchcve(cpe=None):
-
     if cpe is None:
         return False
-
-    cve = cves.find({"vulnerable_configuration": {'$regex': cpe}})
+    cve = dbLayer.cvesForCPE(cpe)
     return cve
 
 

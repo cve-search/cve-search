@@ -18,16 +18,13 @@ runPath = os.path.dirname(os.path.realpath(__file__))
 from flask.ext.login import UserMixin
 
 from lib.Config import Configuration
+import lib.DatabaseLayer as db
 
-# connect to db
-db = Configuration.getMongoConnection()
-collection = db.mgmt_users
-
-
+# Exception
 class UserNotFoundError(Exception):
     pass
 
-
+# Class
 class User(UserMixin):
 
     '''Simple User class'''
@@ -36,7 +33,7 @@ class User(UserMixin):
         USERS = {"_dummy_": "_dummy_"}
     else:
         USERS = {}
-    for user in collection.find({}):
+    for user in db.getUsers():
         USERS[user['username']] = user['password']
 
     def __init__(self, id):

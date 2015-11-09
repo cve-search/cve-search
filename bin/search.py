@@ -22,11 +22,7 @@ import json
 from bson import json_util
 
 from lib import CVEs
-from lib.Config import Configuration
-
-# connect to DB
-db = Configuration.getMongoConnection()
-collection = db.cves
+import lib.DatabaseLayer as db
 
 # init control variables
 csvOutput = 0
@@ -53,7 +49,7 @@ argParser.add_argument('-a', default=False, action='store_true', help='Lookup CA
 argParser.add_argument('-v', type=str, help='vendor name to lookup in reference URLs')
 args = argParser.parse_args()
 vSearch = args.p
-cveSearch = args.c
+cveSearch = [x.upper() for x in args.c] if args.c else None
 vOutput = args.o
 vFreeSearch = args.f
 sLatest = args.l
@@ -122,20 +118,22 @@ def printCVE(item):
             print(json.dumps(item, sort_keys=True, default=json_util.default))
 
 if cveSearch:
-    for cveid in cveSearch:
-        for item in collection.find({'id': cveid}).sort("Modified", sorttype):
-            printCVE(item)
+    for cveid in db.getCVEs(cves=cveSearch):
+        printCVE(cveid)
     sys.exit(0)
 # Basic freetext search (in vulnerability summary).
 # Full-text indexing is more efficient to search across all CVEs.
 if vFreeSearch:
-    for item in collection.find({'summary': {'$regex': re.compile(vFreeSearch, re.IGNORECASE)}}).sort("Modified", sorttype):
-        print(item)
+    try:
+        for item in db.getFreeText(vFreeSearch):
+            print(item)
+    except:
+        sys.exit("Free text search not enabled on the database!")
     sys.exit(0)
 
 # Search Product (best to use CPE notation, e.g. cisco:ios:12.2
 if vSearch:
-    for item in collection.find({"vulnerable_configuration": {'$regex': vSearch}}).sort("Modified", sorttype):
+    for item in db.cvesForCPE(vSearch):
         if csvOutput:
             # We assume that the vendor name is usually in the hostame of the
             # URL to avoid any match on the resource part
@@ -156,7 +154,7 @@ if vSearch:
             else:
                 csvoutput.writerow([item['id'], item['Published'], item['cvss'], item['summary'], refs, nl])
         elif htmlOutput:
-            print("<h2>" + item['id'] + "<br></h2>CVSS score: " + item['cvss'] + "<br>" + "<b>" + item['Published'] + "<b><br>" + item['summary'] + "<br>")
+            print("<h2>" + item['id'] + "<br></h2>CVSS score: " + str(item['cvss']) + "<br>" + "<b>" + item['Published'] + "<b><br>" + item['summary'] + "<br>")
             print("References:<br>")
             for entry in item['references']:
                 print(entry + "<br>")
