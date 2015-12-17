@@ -52,13 +52,10 @@ else:
     print ("</head><body>")
 for x in cvelist.get(limit=last):
     if not(args.f == "html"):
-        if args.r:
-            if "ranking" not in x:
-                continue
         item = {}
         item['title'] = str(x['id']) + " " + x['summary'][:90] + "..."
         item['description'] = x['summary']
-        if args.r:
+        if args.r and x.get('ranking'):
             item['description'] = item['description'] + " Ranking:" + str(x['ranking'])
         item['pubDate'] = time.localtime()
         item['guid'] = x['id']
@@ -68,9 +65,6 @@ for x in cvelist.get(limit=last):
             item["link"] = "http://web.nvd.nist.gov/view/vuln/detail?vulnId=" + x['id']
         feed.items.append(item)
     else:
-        if args.r:
-            if not x['ranking']:
-                continue
         print ("<div class=\"cve\"><table><tbody>")
         print ("<tr class=\"alt\">")
         print ("<td>" + str(x['id']) + " - " + x['summary'][:90] + "...</td>")
@@ -84,7 +78,7 @@ for x in cvelist.get(limit=last):
         for v in x['vulnerable_configuration']:
             sys.stdout.write("<li>" + cvelist.getcpe(v) + "</li>")
         print ("</ul></td></tr>")
-        if args.r:
+        if x.get('ranking'):
             print ("<tr><td>Ranking:" + str(x['ranking']) + "</td></tr>")
         print ("<tr><td>References:<td></tr>")
         print ("<tr><td><ul>")
