@@ -1,0 +1,150 @@
+#Installation Guide - Linux
+##Installation procedure for CVE-Search on Linux
+This page describes the installation procedure for CVE-Search on Linux. 
+This installation procedure is written for Ubuntu, but will work on most
+ other distributions. In this guide, we assume you are using *apt* as
+ your package manager. If you are using a different one, install the
+ requirements using your package manager of choice
+
+##Requirements
+In order to install CVE-Search, you will need approximately 3 to 4GB of
+ free disk space, as well as root or administrator access to the machine
+ you want to install it on. There is no minimum requirements regarding
+ CPU or memory, but slower systems will have a longer load time.<br />
+<br />
+**CVE-Search requires the packages you find below in order to function.**
+
+| Package      | Installation                      |
+| :---         | :--                               |
+| Python3      | sudo apt-get install python3      |
+| MongoDB      | sudo apt-get install mongodb      |
+| Redis Server | sudo apt-get install redis-server |
+| PIP3         | sudo apt-get install python3-pip  |
+
+After installing these packages, you need to install some python modules
+ using PIP3. These modules are all in the requirements.txt file, and can
+ be easily installed using *sudo pip3 install -r requirements.txt*
+
+ * PyMongo
+ * Whoosh
+ * Redis
+ * Python-dateutil
+ * Flask
+ * Flask-login
+ * Flask-pymongo
+ * Tornado
+ * Passlib
+ * [Feedformatter](https://github.com/marianoguerra/feedformatter/archive/master.zip)
+
+##Setting up CVE-Search
+Before setting up CVE-Search, you have to make sure the scripts are
+ present on your system. Your best choice is to use *git* to clone
+ CVE-Search from github. <br />
+You can clone either of the git projects found below
+
+ * git clone https://github.com/PidgeyL/cve-search.git
+ * git clone https://github.com/adulau/cve-search.git
+ * git clone https://github.com/cve-search/cve-search.git
+
+Other sources are available, but most of them are either outdated or
+ experimental. <br /> <br />
+Alternatively, you can download the project by downloading the zip file
+ and extracting it. You can get the zip file from the following places:
+ 
+  * [PidgeyLs fork](https://github.com/PidgeyL/cve-search/archive/master.zip)
+  * [Alexandre Dulaunoys fork](https://github.com/adulau/cve-search/archive/master.zip)
+  * [The offical CVE-Search Project, based of Wim Remes work](https://github.com/cve-search/cve-search/archive/master.zip)
+
+The initial setup of CVE-Search happens only once, at the installation.
+This consists of three steps and one optional step.
+
+ * Populating the database
+ * Creating the CVE dictionary
+ * *Optional:* You can also run the "Other CVE Dictionary" script to help
+    fill in the blanks
+ * Updating the database
+
+###Populating the database
+Populating the database might take a while when you first run the script.
+Before you run this script, there are two important parameters you need
+ to set in your configuration.ini file.
+These settings can be found under the [CVE] section. These settings are:
+
+| Setting   | Default setting | Explanation |
+| :---      | :---            | :---        |
+| StartYear | 2002            | The start year of CVE you want in your database. The lowest setting is 2002, the highest is the current year. |
+
+Once you checked these settings, verify that the settings in the [Mongo]
+ section are the connection settings for your database.
+If you installed the database with the default settings, these settings
+ should be fine. The table below explains these settings a bit more:
+
+| Setting | Default setting | Explanation |
+| :---    | :---            | :---        |
+| Host    | localhost       | The host the Mongo database server is running on |
+| Port    | 27017           | The port that Mongo uses on the host specified above |
+| DB      | cvedb           | The database CVE-Search will save its information to. Changing this is a good way to do some testing, without having to restore the entire database afterwards |
+
+Once you checked these settings, you can run the script by either typing
+ *./db_mgmt.py -p* or *python3 db_mgmt.py -p*. You will see the message
+ "Database population started".
+If you want more output of what the script does, while it's running, you
+ can add the parameter *-v* to any of these commands.
+
+###Creating the CVE dictionary
+This script fills the database with the product information. This
+ information one of the key features of cve-search, as this allows you
+ to search for vulnerabilities for specific systems, and allows you to
+ see to what systems a CVE applies.
+It also allows for a user-friendly, readable format for the CPE. This
+ script will translate CVE formats like
+ *cpe:/a:adobe:flash_player:14.0.0.125* to readable formats like
+ *Adobe Flash Player 14.0.0.125 APSB14-16* where possible.<br /><br />
+To run this script, either type *./db_mgmt_cpe_dictionary.py* or
+ *python3 db_mgmt_cpe_dictionary.py*.<br /><br />
+This script uses the CVE dictionary from NIST's NVD. As there are a lot
+ of products, they can not make a title for each CVE manually. That's
+ why CVE-Search has another script, called *db_mgmt_cpe_other_dictionary.py*
+This script takes the CVEs that have no title, and splits them into a
+ human readable format. <br /> <br />
+To add this dictionary, type *python3 db_mgmt_cpe_other_dictionary.py*
+ and hit enter.
+
+###Updating the database
+Before updating the database, you have to decide if you will use the web
+ interface of CVE-Search. This interface uses Redis Cache to speed up
+ CVE browsing. If you will be using this feature, make sure your
+ configuration.ini file has the correct settings, and points to your
+ Redis server. The table below explains the several settings.
+
+| Setting         | Default setting | Explanation |
+| :---            | :---            | :---        |
+| Host            | localhost       | The host the Redis database server is running on |
+| Port            | 6379            | The port that Redis uses on the host specified above |
+| VendorsDB       | 10              | The Redis database to store vendor information |
+| NotificationsDB | 11              | The Redis database to store notifications |
+
+Finally, update the database by typing *python3 db_updater.py* or
+ *python3 db_updater.py* and hit enter.
+If you are planning on using the web interface, it is recommended to add
+ parameter *-c*<br />
+If you are planning on using the fulltext indexer, it is recommended to
+ add parameter *-i*<br />
+To add verbose output, add parameter *-v*<br />
+To let the script run automatically at a regular interval, add parameter
+ *-l*
+
+###Fulltext Search
+If you want to enable fulltext search, you have to enable this in the
+ database. <br />
+To do this, log into the Mongo database (*$ mongo*) and run the following
+ command: *db.adminCommand({"setParameter": 1, "textSearchEnabled":true})*. <br />
+**Note:** when the Mongo database is shut down, fulltext search will be
+ disabled again. Simply run the same command again to activate it.
+
+##Final notes
+After this procedure the database is initialized and up to date. From
+ this point on, to update the database, you only have to repeat the
+ procedure to update the database.<br /> <br />
+If you decided not to the optional step, you can still initialize this
+ later on.

@@ -1,0 +1,42 @@
+language: python
+
+python:
+    #- "3.2"
+    - "3.3"
+    - "3.4"
+    - "3.5"
+    - "nightly"
+
+cache: pip
+
+services:
+    - redis-server
+    - mongodb
+
+install:
+    - pip install -q -U pip
+    - pip install -q -r requirements.txt
+    - pushd sbin
+    - ./db_mgmt.py -p
+    # Avoid creating a log > 4mb and making travis unhappy.
+    - ./db_mgmt_cpe_dictionary.py | cat &
+    - PID=$!
+    - while sleep 60; do kill -0 $PID && echo 'Still running' || break; done
+    - popd
+    #- pushd web
+    #- python minimal-web.py &
+    #- popd
+
+script:
+    - pushd bin
+    - ./search.py -p cisco:ios:12.4 > /dev/null
+    - ./search.py -p cisco:ios:12.4 -o json > /dev/null
+    - ./search.py -p microsoft:windows_7 -o html > /dev/null
+    - ./search.py -c CVE-2010-3333 > /dev/null
+    - ./dump_last.py -f atom -l 2 > /dev/null
+    - popd
+
+notifications:
+    email:
+        on_success: change
+        on_failure: change
