@@ -1,0 +1,2 @@
+# Module	required/sufficient	args
+#LDAP		required		domain=example server=server.example.internal sync=True
