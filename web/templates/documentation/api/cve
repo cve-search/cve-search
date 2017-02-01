@@ -1,0 +1,30 @@
+{% extends 'layouts/api-accordion-child' %}
+{% set id     = "cve"                    %}
+{% set title  = "/api/cve/&lt;cveid&gt;" %}
+{% set method = "GET"                    %}
+{% set args   = [('cveid', "CVE number", "CVE-2016-3333")] %}
+
+{% block desc %}
+Outputs all available information for the specified CVE (Common Vulnerability and Exposure), in JSON format. <br />
+This information includes basic CVE information like CVSS (Common Vulnerability Scoring System),
+ related CPE (Common Product Enumeration), CWE (Common Weakness Enumeration), ... as well as additional information (RedHat Advisories etc).
+{% endblock %}
+
+{% block output %}
+{
+ "cvss": "9.3",
+  "cvss-time": {
+    "$date": 1478779997053
+  },
+  "cwe": "CWE-119",
+  "id": "CVE-2016-3333",
+  "impact": {
+    "availability": "COMPLETE",
+    "confidentiality": "COMPLETE",
+    "integrity": "COMPLETE"
+  },
+  "last-modified": {
+    "$date": 1480345703170
+  },
+  ...
+{% endblock %}

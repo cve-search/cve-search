@@ -1,0 +1,21 @@
+{% extends 'layouts/api-accordion-child' %}
+{% set id     = "cwe"                    %}
+{% set title  = "/api/cwe"               %}
+{% set method = "GET"                    %}
+
+
+{% block desc %}
+Outputs a list of all CWEs (Common Weakness Enumeration).
+{% endblock %}
+
+{% block output %}
+[
+  {
+    "description_summary": "Information sent over a network can be compromised while in transit. An attacker may be able to read/modify the contents if the data are sent in plaintext or are weakly encrypted.Information sent over a network can be compromised while in transit. An attacker may be able to read/modify the contents if the data are sent in plaintext or are weakly encrypted.",
+    "id": "5",
+    "name": "J2EE Misconfiguration: Data Transmission Without Encryption",
+    "status": "Draft",
+    "weaknessabs": "Variant"
+  },
+  ...
+{% endblock %}

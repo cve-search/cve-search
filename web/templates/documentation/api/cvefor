@@ -1,0 +1,25 @@
+{% extends 'layouts/api-accordion-child'  %}
+{% set id     = "cvefor"                  %}
+{% set title  = "/api/cvefor/&lt;cpe&gt;" %}
+{% set method = "GET"                     %}
+{% set args   = [('cpe', "CPE code in cpe2.2 or cpe2.3 format", "cpe:/o:microsoft:windows_vista:6.0:sp1:~-~home_premium~-~x64~-")] %}
+
+{% block desc %}
+Outputs a list of CVEs related to the product
+{% endblock %}
+
+{% block output %}
+[
+  {
+    "cvss": 7.5,
+    "cvss-time": {
+      "$date": 1117762800000
+    },
+    "id": "CVE-2005-0100",
+    "impact": {
+      "availability": "PARTIAL",
+      "confidentiality": "PARTIAL",
+      "integrity": "PARTIAL"
+    },
+  ...
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'layouts/api-accordion-child'      %}
+{% set admin  = True                          %}
+{% set id     = "blacklist_import"            %}
+{% set title  = "/api/admin/blacklist/import" %}
+{% set method = "PUT"                         %}
+
+
+{% block desc %}
+Imports the blacklist. The blacklist data should be of the same format as the output of
+ <a data-toggle="collapse" data-parent="#api_links" href="#blacklist">/api/admin/blacklist</a>
+ and should be put in the request body.
+{% endblock %}
+
+{% block output %}
+null
+{% endblock %}
