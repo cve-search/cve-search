@@ -1,0 +1,36 @@
+{% extends 'layouts/api-accordion-child' %}
+{% set admin  = True                     %}
+{% set id     = "blacklist"              %}
+{% set title  = "/api/admin/blacklist"   %}
+{% set method = "GET"                    %}
+
+
+{% block desc %}
+Returns the content of the blacklist. <br />
+The blacklist is a list of CPEs that will hide a CVE when all the CPEs a product applies to are blacklisted.
+It is intended to be used as a way to hide unwanted information. <br />
+There are three types of CPEs:
+<ul>
+  <li>cpe - A fully qualified CPE code in CPE2.2 or CPE2.3 format</li>
+  <li>targetsoftware - A software the CPE applies to. Equivalent to cpe:2.3:-:-:-:-:-:-:-:-:&lt;cpe&gt;</li>
+  <li>targethardware - A hardware the CPE applies to. Equivalent to cpe:2.3:-:-:-:-:-:-:-:-:-:&lt;cpe&gt;</li>
+</ul>
+Other types are possible, but are not used by the software.
+{% endblock %}
+
+{% block output %}
+[
+  {
+    "id": "iphone_os",
+    "type": "targetsoftware"
+  },
+  {
+    "id": "cpe:2.3:o:apple",
+    "type": "cpe"
+  },
+  {
+    "id": "cpe:2.3:o:microsoft:windows_xp",
+    "type": "cpe"
+  }
+]
+{% endblock %}

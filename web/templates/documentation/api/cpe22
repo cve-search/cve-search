@@ -1,0 +1,14 @@
+{% extends 'layouts/api-accordion-child'  %}
+{% set id     = "cpe22"                   %}
+{% set title  = "/api/cpe2.2/&lt;cpe&gt;" %}
+{% set method = "GET"                     %}
+{% set args   = [('cpe', "CPE code in cpe2.2 or cpe2.3 format", "cpe:2.3:o:microsoft:windows_vista:6.0:sp1:-:-:home_premium:-:-:x64:-")] %}
+
+{% block desc %}
+Converts a CPE code to the CPE2.2 standard, stripped of appendices. <br />
+CPE2.2 is the old standard, and is a lot less uniform than the CPE2.3 standard.
+{% endblock %}
+
+{% block output %}
+cpe:/o:microsoft:windows_vista:6.0:sp1:~~home_premium~~x64~
+{% endblock %}

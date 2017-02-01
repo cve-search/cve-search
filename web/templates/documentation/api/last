@@ -1,0 +1,36 @@
+{% extends 'layouts/api-accordion-child'  %}
+{% set id     = "last"                    %}
+{% set title  = "/api/last/&lt;limit&gt;" %}
+{% set method = "GET"                     %}
+{% set args   = [('limit', "The amount of CVEs to display", "10")] %}
+
+{% block desc %}
+Outputs the last n amount of vulnerabilities. If the limit is not specified, the default of 30 is used.
+{% endblock %}
+
+{% block output %}
+[
+  {
+    "Modified": {
+      "$date": 1485277140307
+    },
+    "Published": {
+      "$date": 1485277140307
+    },
+    "cvss": null,
+    "cwe": "Unknown",
+    "id": "CVE-2016-10162",
+    "last-modified": {
+      "$date": 1485277140307
+    },
+    "references": [
+      "http://php.net/ChangeLog-7.php",
+      "https://bugs.php.net/bug.php?id=73831",
+      "https://github.com/php/php-src/commit/8d2539fa0faf3f63e1d1e7635347c5b9e777d47b"
+    ],
+    "summary": "The php_wddx_pop_element function in ext/wddx/wddx.c in PHP 7.0.x before 7.0.15 and 7.1.x before 7.1.1 allows remote attackers to cause a denial of service (NULL pointer dereference and application crash) via an inapplicable class name in a wddxPacket XML document, leading to mishandling in a wddx_deserialize call.",
+    "vulnerable_configuration": [],
+    "vulnerable_configuration_cpe_2_2": []
+  },
+  ...
+{% endblock %}
