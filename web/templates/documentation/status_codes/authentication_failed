@@ -1,0 +1,7 @@
+{% extends 'layouts/status_code_accordion-child' %}
+{% set id     = "authentication_failed"          %}
+{% set title  = "Authentication Failed"          %}
+{% set code   = 401                              %}
+{% block desc %}
+  Authentication failed because the credentials provided were incorrect.
+{% endblock %}

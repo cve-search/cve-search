@@ -1,0 +1,8 @@
+{% extends 'layouts/status_code_accordion-child'  %}
+{% set id     = "malformed_authentication_string" %}
+{% set title  = "Malformed Authentication String" %}
+{% set code   = 400                               %}
+{% block desc %}
+  The authentication string provided in the Authorization header could not be parsed correctly. <br />
+  Check the "Authentication" section of the documentation.
+{% endblock %}
