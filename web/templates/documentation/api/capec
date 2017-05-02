@@ -1,0 +1,32 @@
+{% extends 'layouts/api-accordion-child'   %}
+{% set id     = "capec"                    %}
+{% set title  = "/api/capec/&lt;cweid&gt;" %}
+{% set method = "GET"                      %}
+{% set args   = [('cweid', "CWE ID", "200")] %}
+
+{% block desc %}
+Outputs a list of CAPEC related to a CWE. <br />
+CAPEC (Common Attack Pattern Enumeration and Classification) are a list of attack types commonly used by attackers.
+{% endblock %}
+
+{% block output %}
+[
+  {
+    "id": "13",
+    "name": "Subverting Environment Variable Values",
+    "prerequisites": "An environment variable is accessible to the user.\nAn environment variable used by the application can be tainted with user supplied data.\nInput data used in an environment variable is not validated properly.\nThe variables encapsulation is not done properly. For instance setting a variable as public in a class makes it visible and an attacker may attempt to manipulate that variable.",
+    "related_weakness": [
+      "353",
+      "285",
+      "302",
+      "74",
+      "15",
+      "73",
+      "20",
+      "200"
+    ],
+    "solutions": "Protect environment variables against unauthorized read and write access.\nProtect the configuration files which contain environment variables against illegitimate read and write access.\nAssume all input is malicious. Create a white list that defines all valid input to the software system based on the requirements specifications. Input that does not match against the white list should not be permitted to enter into the system.\nApply the least privilege principles. If a process has no legitimate reason to read an environment variable do not give that privilege.",
+    "summary": "The attacker directly or indirectly modifies environment variables used by or controlling the target software. The attacker's goal is to cause the target software to deviate from its expected operation in a manner that benefits the attacker."
+  },
+  ...
+{% endblock %}

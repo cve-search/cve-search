@@ -1,0 +1,7 @@
+{% extends 'layouts/status_code_accordion-child' %}
+{% set id     = "skip_must_be_int"               %}
+{% set title  = "'Skip' Must be an Integer"      %}
+{% set code   = 400                              %}
+{% block desc %}
+  The skip parameter in your query could not be parsed as an integer.
+{% endblock %}

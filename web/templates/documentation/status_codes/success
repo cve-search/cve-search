@@ -1,0 +1,7 @@
+{% extends 'layouts/status_code_accordion-child' %}
+{% set id     = "success"                        %}
+{% set title  = "Success"                        %}
+{% set code   = 200                              %}
+{% block desc %}
+  The request was handled correctly.
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layouts/api-accordion-child'        %}
+{% set admin    = True                          %}
+{% set id       = "blacklist_remove"            %}
+{% set title    = "/api/admin/blacklist/remove" %}
+{% set method   = "PUT"                         %}
+{% set headers  = [('Content-Type', "This field is required to be set to:",  "application/x-www-form-urlencoded")]%}
+{% set formdata = [('cpe', "CPE code in cpe2.2 or cpe2.3 format", "cpe:2.3:o:gnu:gcc#Comment")] %}
+
+{% block desc %}
+Remove a CPE from the blacklist. If the CPE was removed from the blacklist, the output will be true. If not, it will be false.
+{% endblock %}
+
+{% block output %}
+true
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layouts/api-accordion-child'    %}
+{% set admin  = True                        %}
+{% set id     = "whiteklist_drop"            %}
+{% set title  = "/api/admin/whitelist/drop" %}
+{% set method = "POST"                      %}
+
+
+{% block desc %}
+Drops the content of the whitelist.
+{% endblock %}
+
+{% block output %}
+null
+{% endblock %}
