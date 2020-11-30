@@ -1,0 +1,411 @@
+import json
+from collections import defaultdict
+
+from flask import request
+from flask_jwt_extended import jwt_required
+from flask_restx import Namespace, Resource, fields
+
+from lib.DatabaseLayer import getWhitelist, getBlacklist
+from sbin.db_blacklist import (
+    dropBlacklist,
+    insertBlacklist,
+    removeBlacklist,
+    importBlacklist,
+)
+from sbin.db_whitelist import (
+    dropWhitelist,
+    insertWhitelist,
+    removeWhitelist,
+    importWhitelist,
+)
+from web.restapi.cpe_convert import message
+
+wl = Namespace("whitelist", description="Endpoints for whitelist", path="/admin/")
+bl = Namespace("blacklist", description="Endpoints for blacklist", path="/admin/")
+
+white_black_list = wl.model(
+    "WBList",
+    {
+        "id": fields.String(
+            description="The id of a listed CPE",
+            example="cpe:2.3:h:-:wireless_ip_camera_360:-:*:*:*:*:*:*:*",
+            required=True,
+        ),
+        "type": fields.String(
+            description="The type of the listed entry (cpe or type)",
+            example="cpe, targetsoftware or targethardware",
+            required=True,
+        ),
+        "comments": fields.List(
+            fields.String,
+            description="A list of given comments related to the entry",
+            example=["Comment 1", "Comment 2", "Comment 3",],
+        ),
+    },
+)
+
+
+white_black_entry = wl.model(
+    "WBEntry",
+    {
+        "cpe": fields.String(
+            description="CPE code in cpe2.2 or cpe2.3 format",
+            example="cpe:2.3:o:gnu:gcc",
+            required=True,
+        ),
+        "type": fields.String(
+            description="CPE type",
+            example="cpe, targetsoftware or targethardware",
+            required=True,
+        ),
+        "comments": fields.List(
+            fields.String,
+            description="A list of comments",
+            example=["Comment 1", "Comment 2", "Comment 3",],
+        ),
+    },
+)
+
+white_black_del = wl.model(
+    "WBEntryDel",
+    {
+        "cpe": fields.String(
+            description="CPE code in cpe2.2 or cpe2.3 format",
+            example="cpe:2.3:o:gnu:gcc",
+            required=True,
+        ),
+    },
+)
+
+
+@wl.route("/whitelist")
+@wl.response(400, "Error processing request", model=message)
+@wl.response(401, "Unauthorized or missing token in request", model=message)
+@wl.response(500, "Server error", model=message)
+@wl.param(
+    name="Authorization",
+    description="JWT Token",
+    _in="header",
+    required=True,
+    example="Bearer 'extreme long jwt token'",
+)
+class WhitelistClass(Resource):
+    @wl.marshal_list_with(white_black_list, skip_none=True)
+    @jwt_required
+    def get(self):
+        """
+        List
+
+        Returns the content of the whitelist.
+        The whitelist is a list of CPEs that will mark a CVE when the CVE applies to the product.
+        It is intended to be used as a notification/warning mechanism.
+        There are three types of CPEs:
+        <ul>
+          <li>cpe - A fully qualified CPE code in CPE2.2 or CPE2.3 format</li>
+          <li>targetsoftware - A software the CPE applies to. Equivalent to cpe:2.3:-:-:-:-:-:-:-:-:&lt;cpe&gt;</li>
+          <li>targethardware - A hardware the CPE applies to. Equivalent to cpe:2.3:-:-:-:-:-:-:-:-:-:&lt;cpe&gt;</li>
+        </ul>
+        Other types are possible, but are not used by the software.
+        """
+        return getWhitelist()
+
+    @wl.marshal_with(message)
+    @jwt_required
+    def delete(self):
+        """
+        Drop
+
+        Endpoint that drops the content of the whitelist.
+        """
+        return {"message": dropWhitelist()}
+
+    @wl.marshal_with(message)
+    @wl.doc(body=[white_black_list])
+    @jwt_required
+    def put(self):
+        """
+        Import
+
+        Endpoint that imports the whitelist from a file. The file should be structured the same as the /whitelist
+        endpoint, for example:
+        <br>
+        <pre>
+        [
+          {
+            "id": "cpe:2.3:h:-:wireless_ip_camera_360:-:*:*:*:*:*:*:*",
+            "type": "cpe"
+          },
+          {
+            "id": "cpe:2.3:a:.bbsoftware:bb_flashback:*:*:*:*:*:*:*:*",
+            "type": "cpe"
+          },
+          {
+            "comments": [
+              " test"
+            ],
+            "id": "cpe:2.3:a:.joomclan:com_joomclip:*:*:*:*:*:*:*:*",
+            "type": "cpe"
+          }
+        ]
+        </pre>
+        """
+
+        data = request.data
+
+        if len(data) == 0:
+            wl.abort(400, "No file selected")
+
+        return {"message": importWhitelist(data)}
+
+
+@wl.route("/whitelist/entry")
+@wl.response(400, "Error processing request", model=message)
+@wl.response(401, "Unauthorized or missing token in request", model=message)
+@wl.response(500, "Server error", model=message)
+@wl.param(
+    name="Authorization",
+    description="JWT Token",
+    _in="header",
+    required=True,
+    example="Bearer 'extreme long jwt token'",
+)
+class WhitelistEntryClass(Resource):
+    @wl.doc(body=white_black_entry)
+    @wl.marshal_with(message)
+    @jwt_required
+    def post(self):
+        """
+        Add
+
+        Puts a single or multiple CPE(s) into the whitelist.
+        Passing a single request body schema adds a single entry into the whitelist. Combining multiple request body
+        schemas into a list adds multiple entries into the whitelist
+        """
+        if not request.is_json:
+            wl.abort(400, "Missing JSON in request")
+
+        if isinstance(request.json, list):
+            ret_val = defaultdict(str)
+            for each in request.json:
+                cpe = each.get("cpe", None)
+                t_type = each.get("type", None)
+                comments = each.get("comments", None)
+                if not cpe:
+                    wl.abort(400, "Missing cpe parameter in request body")
+                if not t_type:
+                    wl.abort(400, "Missing type parameter in request body")
+
+                ret_val[cpe] = insertWhitelist(cpe, t_type, comments)
+
+            ret_val = json.dumps(dict(ret_val))
+
+        else:
+            cpe = request.json.get("cpe", None)
+            t_type = request.json.get("type", None)
+            comments = request.json.get("comments", None)
+            if not cpe:
+                wl.abort(400, "Missing cpe parameter in request body")
+            if not t_type:
+                wl.abort(400, "Missing type parameter in request body")
+
+            ret_val = insertWhitelist(cpe, t_type, comments)
+
+        return {"message": ret_val}
+
+    @wl.marshal_with(message)
+    @jwt_required
+    def delete(self):
+        """
+        Remove
+
+        Deletes a CPE from the whitelist.
+        """
+        if not request.is_json:
+            wl.abort(400, "Missing JSON in request")
+
+        if isinstance(request.json, list):
+            ret_val = defaultdict(str)
+            for each in request.json:
+                cpe = each.get("cpe", None)
+                if not cpe:
+                    wl.abort(400, "Missing cpe parameter in request body")
+
+                ret_val[cpe] = removeWhitelist(cpe)
+
+            ret_val = json.dumps(dict(ret_val))
+
+        else:
+            cpe = request.json.get("cpe", None)
+
+            if not cpe:
+                wl.abort(400, "Missing cpe parameter in request body")
+
+            ret_val = removeWhitelist(cpe)
+
+        return {"message": ret_val}
+
+
+@bl.route("/blacklist")
+@bl.response(400, "Error processing request", model=message)
+@bl.response(401, "Unauthorized or missing token in request", model=message)
+@bl.response(500, "Server error", model=message)
+@bl.param(
+    name="Authorization",
+    description="JWT Token",
+    _in="header",
+    required=True,
+    example="Bearer 'extreme long jwt token'",
+)
+class BlacklistClass(Resource):
+    @bl.marshal_list_with(white_black_list, skip_none=True)
+    @jwt_required
+    def get(self):
+        """
+        List
+
+        Returns the content of the blacklist.
+        The blacklist is a list of CPEs that will hide a CVE when all the CPEs a product applies to are blacklisted.
+        It is intended to be used as a way to hide unwanted information.
+        There are three types of CPEs:
+        <ul>
+          <li>cpe - A fully qualified CPE code in CPE2.2 or CPE2.3 format</li>
+          <li>targetsoftware - A software the CPE applies to. Equivalent to cpe:2.3:-:-:-:-:-:-:-:-:&lt;cpe&gt;</li>
+          <li>targethardware - A hardware the CPE applies to. Equivalent to cpe:2.3:-:-:-:-:-:-:-:-:-:&lt;cpe&gt;</li>
+        </ul>
+        Other types are possible, but are not used by the software.
+        """
+        return getBlacklist()
+
+    @bl.marshal_with(message)
+    @jwt_required
+    def delete(self):
+        """
+        Drop
+
+        Endpoint that drops the content of the blacklist.
+        """
+        return {"message": dropBlacklist()}
+
+    @bl.marshal_with(message)
+    @wl.doc(body=[white_black_list])
+    @jwt_required
+    def put(self):
+        """
+        Import
+
+        Endpoint that imports the blacklist. The file should be structured the same as the /whitelist
+        endpoint, for example:
+        <br>
+        <pre>
+        [
+          {
+            "id": "cpe:2.3:h:-:wireless_ip_camera_360:-:*:*:*:*:*:*:*",
+            "type": "cpe"
+          },
+          {
+            "id": "cpe:2.3:a:.bbsoftware:bb_flashback:*:*:*:*:*:*:*:*",
+            "type": "cpe"
+          },
+          {
+            "comments": [
+              " test"
+            ],
+            "id": "cpe:2.3:a:.joomclan:com_joomclip:*:*:*:*:*:*:*:*",
+            "type": "cpe"
+          }
+        ]
+        </pre>
+        """
+        data = request.data
+
+        if len(data) == 0:
+            wl.abort(400, "No file selected")
+
+        return {"message": importBlacklist(data)}
+
+
+@bl.route("/blacklist/entry")
+@bl.response(400, "Error processing request", model=message)
+@bl.response(401, "Unauthorized or missing token in request", model=message)
+@bl.response(500, "Server error", model=message)
+@bl.param(
+    name="Authorization",
+    description="JWT Token",
+    _in="header",
+    required=True,
+    example="Bearer 'extreme long jwt token'",
+)
+class BlacklistEntryClass(Resource):
+    @bl.doc(body=white_black_entry)
+    @bl.marshal_with(message)
+    @jwt_required
+    def post(self):
+        """
+        Add
+
+        Puts a single or multiple CPE(s) into the blacklist.
+        Passing a single request body schema adds a single entry into the whitelist. Combining multiple request body
+        schemas into a list adds multiple entries into the whitelist
+        """
+        if not request.is_json:
+            wl.abort(400, "Missing JSON in request")
+
+        if isinstance(request.json, list):
+            ret_val = defaultdict(str)
+            for each in request.json:
+                cpe = each.get("cpe", None)
+                t_type = each.get("type", None)
+                comments = each.get("comments", None)
+                if not cpe:
+                    wl.abort(400, "Missing cpe parameter in request body")
+                if not t_type:
+                    wl.abort(400, "Missing type parameter in request body")
+
+                ret_val[cpe] = insertBlacklist(cpe, t_type, comments)
+
+            ret_val = json.dumps(dict(ret_val))
+
+        else:
+            cpe = request.json.get("cpe", None)
+            t_type = request.json.get("type", None)
+            comments = request.json.get("comments", None)
+            if not cpe:
+                wl.abort(400, "Missing cpe parameter in request body")
+            if not t_type:
+                wl.abort(400, "Missing type parameter in request body")
+
+            ret_val = insertBlacklist(cpe, t_type, comments)
+
+        return {"message": ret_val}
+
+    @bl.marshal_with(message)
+    @jwt_required
+    def delete(self):
+        """
+        Remove
+
+        Deletes a CPE from the blacklist.
+        """
+        if not request.is_json:
+            wl.abort(400, "Missing JSON in request")
+
+        if isinstance(request.json, list):
+            ret_val = defaultdict(str)
+            for each in request.json:
+                cpe = each.get("cpe", None)
+                if not cpe:
+                    wl.abort(400, "Missing cpe parameter in request body")
+
+                ret_val[cpe] = removeBlacklist(cpe)
+
+            ret_val = json.dumps(dict(ret_val))
+
+        else:
+            cpe = request.json.get("cpe", None)
+
+            if not cpe:
+                wl.abort(400, "Missing cpe parameter in request body")
+
+            ret_val = removeBlacklist(cpe)
+
+        return {"message": ret_val}

@@ -1,0 +1,49 @@
+{% extends "layouts/auth_base.html" %}
+{% block title %}Register{% endblock %}
+{% block body %}
+<div class="register">
+	<h1>Register</h1>
+	<div class="links">
+		<a href="{{ url_for('auth.login') }}">Login</a>
+		<a href="{{ url_for('auth.register') }}" class="active">Register</a>
+	</div>
+	<form action="" method="post" autocomplete="off">
+		{{ form.hidden_tag() }}
+
+		<label for="username">
+			<i class="fas fa-user-secret"></i>
+		</label>
+		{{ form.username }}
+
+		<label for="password">
+			<i class="fas fa-lock"></i>
+		</label>
+		{{ form.password }}
+
+		<label for="confirm_password">
+			<i class="fas fa-lock"></i>
+		</label>
+		{{ form.confirm_password }}
+
+		{{ form.submit }}
+	</form>
+	{% if form.errors %}
+	<div class="alert alert-error">
+		{% for field, errors in form.errors.items() %}
+			{% for each in errors %}
+				{% for error in each %}
+				<div class="alert_cat">
+					{{error}}
+				</div>
+				<ul>
+					{% for item in each[error] %}
+					<li> {{ item }}</li>
+					{% endfor %}
+				</ul>
+				{% endfor %}
+			{% endfor %}
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

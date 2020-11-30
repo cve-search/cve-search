@@ -1,0 +1,33 @@
+from flask import Blueprint
+from flask_restx import Api
+
+from web.run import app
+from .cpe_convert import api as cpe_api
+from .cve import api as cve_api
+from .cwe import api as cwe_api
+from .capec import api as capec_api
+from .query import api as query_api
+from .browse_vendor import api as browse_api
+from .admin import wl as wl_api
+from .admin import bl as bl_api
+from .auth import api as auth_api
+
+namespaces = [cpe_api, cve_api, cwe_api, capec_api, query_api, browse_api]
+
+blueprint = Blueprint("api", __name__, url_prefix="/api")
+
+api = Api(
+    blueprint,
+    title="CVE-Search",
+    version=app.config["version"],
+    description="CVE-Search API documentation",
+    doc=False,
+)
+
+for each in namespaces:
+    api.add_namespace(each)
+
+if not app.config["WebInterface"]:
+    api.add_namespace(auth_api)
+    api.add_namespace(wl_api)
+    api.add_namespace(bl_api)

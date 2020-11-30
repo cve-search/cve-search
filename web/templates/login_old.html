@@ -1,0 +1,20 @@
+{% extends 'layouts/master-page.html' %}
+{% block title %}Login page{% endblock %}
+{% block content %}
+  <div class="well well-small">
+    <form method="POST" id="login" class="nav form-search" action="/login">
+      <strong>Login</strong>
+      <table>
+        <tr>
+          <td>Username: </td>
+          <td><input type="text" id="username" name="username" placeholder="Username" /></td>
+        </tr>
+        <tr>
+          <td>Password: </td>
+          <td><input type="password" id="password" name="password" placeholder="*****" /></td>
+        </tr>
+      </table>
+      <input type="submit" value="Log in"/>
+    </form>
+  </div>
+{% endblock %}

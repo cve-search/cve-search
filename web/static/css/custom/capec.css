@@ -1,0 +1,13 @@
+th[colspan="2"] {
+    text-align: center;
+}
+
+
+table.table_outer > tbody > tr > td:first-child {
+	background-color: #990808;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	width: 250px;
+}
