@@ -1,0 +1,77 @@
+{% set minimal = get_WebInterface() %}
+<html lang="en">
+  <head>
+    <!-- metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://github.com/cve-search/cve-search - cve-search"/>
+
+    <!-- css -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/sweetalert2/bootstrap-4.min.css') }}" rel="stylesheet" />
+
+    {% if not minimal %}
+      <link href="/static/css/sidebar.css" rel="stylesheet">
+    {% endif %}
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/img/favicon.ico') }}" />
+
+    <!-- javascript -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sweetalert2.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/custom/scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/custom/statusses.js') }}"></script>
+
+    {% if not minimal %}
+      <script type="text/javascript" src="/static/js/custom/sidebar.js"></script>
+      <script type="text/javascript" src="/static/js/custom/autoload.js"></script>
+    {% endif %}
+
+    <title>{% block title %}{% endblock %} - CVE-Search</title>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+  {% include 'subpages/menu.html' %}
+    <div class="container-fluid content_top_margin">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- Side Nav -->
+          {% if not minimal %}
+            <nav id="sidebar" class='sidebar sidebar-menu-collapsed hidden'>
+              <a href='#' id='justify-icon'>
+                <span class='glyphicon glyphicon-th'></span>
+              </a>
+              <ul id="plugin-pages">
+                <li><a class='expandable' href='#'> <span class='expanded-element'>Plugin</span> </a></li>
+              </ul>
+            </nav>
+          {% endif %}
+          <!-- End Side Nav -->
+          <!-- Status window-->
+          <div id="status-box"></div>
+          <!-- End Status Window-->
+          <!-- Body Start -->
+          <div id="content">
+            {% block content %}{% endblock %}
+          </div>
+          <a href="#" class="back-to-top">Back to Top</a>
+          <!-- Body End -->
+        </div>
+      </div>
+    </div>
+    {% block body_scripts %}
+    {% endblock %}
+  </body>
+</html>

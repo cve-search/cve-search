@@ -1,0 +1,110 @@
+from flask import request
+from flask_jwt_extended import create_access_token, get_jti, jwt_required, get_raw_jwt
+from flask_restx import Namespace, Resource, fields
+
+from lib.Authentication import AuthenticationHandler
+from lib.User import User
+from web.restapi.cpe_convert import message
+from web.run import ACCESS_EXPIRES, token_blacklist
+
+api = Namespace("auth", description="Endpoints for authorisation", path="/")
+
+auth_handler = AuthenticationHandler()
+
+login_user = api.model("ApiLogin", {"credentials": fields.Raw(required=True)})
+
+user_token = api.model(
+    "UserToken",
+    {
+        "access_token": fields.String(
+            required=True,
+            description="Access token provided",
+            example="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTQ2NzE3NDAsIm5iZiI6MTU5NDY3MTc0MCwianRpIjoiYjcw"
+            "ZWQ1MTMtMTgyMS00MGFiLWE4YjQtZjkxNGM4ZDE1OTgzIiwiZXhwIjoxNTk0NjcyNjQwLCJpZGVudGl0eSI6ImFkbWluIiwiZn"
+            "Jlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.6gs-yGoEH_ecjgiFgfuxI7CpE5JJPlcdS6xq0ZxGxQ4",
+        )
+    },
+)
+
+credentials = api.model(
+    "credentials",
+    {
+        "username": fields.String(
+            required=True, description="Username to login", example="reaper"
+        ),
+        "password": fields.String(
+            required=True,
+            description="Password to login",
+            example="SuperSecretPassWd.01",
+        ),
+    },
+)
+
+
+@api.route("/login")
+@api.response(400, "Error processing request", model=message)
+@api.response(500, "Server error", model=message)
+class ApiLogin(Resource):
+    @api.doc(body=credentials)
+    @api.marshal_with(user_token)
+    def post(self):
+        """
+        login
+
+        Endpoint used for requesting JWT token via a username and password
+        """
+        if not request.is_json:
+            api.abort(400, "Missing JSON in request")
+
+        username = request.json.get("username", None)
+        password = request.json.get("password", None)
+        if not username:
+            api.abort(400, "Missing username parameter in request body")
+        if not password:
+            api.abort(400, "Missing password parameter in request body")
+
+        user = User.get(username, auth_handler)
+
+        if user is None:
+            api.abort(400, "Bad username or password")
+
+        if user is not None and user.authenticate(password):
+            access_token = create_access_token(identity="user_{}".format(user.id))
+
+            access_jti = get_jti(encoded_token=access_token)
+
+            token_blacklist.set(access_jti, "false", ACCESS_EXPIRES * 1.2)
+
+            ret = {
+                "access_token": access_token,
+            }
+
+            return ret
+
+        else:
+            api.abort(400, "Bad username or password")
+
+
+@api.route("/logout")
+@api.response(400, "Error processing request", model=message)
+@api.response(401, "Unauthorized or missing token in request", model=message)
+@api.response(500, "Server error", model=message)
+@api.param(
+    name="Authorization",
+    description="JWT Token",
+    _in="header",
+    required=True,
+    example="Bearer 'extreme long jwt token'",
+)
+class ApiLogout(Resource):
+    @api.response(200, "Logout successful", model=message)
+    @jwt_required
+    def get(self):
+        """
+        logout
+
+        Endpoint used for logging out and revoking the used JWT token
+        """
+        jti = get_raw_jwt()["jti"]
+        token_blacklist.set(jti, "true", ACCESS_EXPIRES * 1.2)
+        return {"message": "Logout successful"}

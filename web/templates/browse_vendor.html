@@ -1,0 +1,56 @@
+{% extends 'layouts/master-page.html' %}
+{% block title %}Vendor browsing{% endblock %}
+{% block head %}
+<!-- css -->
+<link href="/static/css/custom/browse.css" rel="stylesheet" />
+<link href="/static/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<!-- javascript -->
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/dataTables.bootstrap4.min.js"></script>
+
+{% endblock %}
+{% block content %}
+  <!-- breadcrumb -->
+{% include 'subpages/breadcrumbs.html' %}
+  <!-- browse -->
+  <table id="vendorTable" class="table table-hover table-striped">
+    <thead class="thead-dark">
+      <tr>
+          <th class="center_header">
+            Vendors
+          </th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+{% endblock %}
+{% block body_scripts %}
+<script>
+  $(document).ready(function() {
+    $('#vendorTable').DataTable( {
+        "processing": true,
+        "ajax": {
+               "url": "/browse/fetch_data",
+               "type": "POST"
+        },
+        "columns": [
+               { "data": "vendors" ,
+                   render : function(data, type, row) {
+                      return '<a href="/browse/'+ row['vendors'] + '">'+ row['vendors'] +'</a>'
+                   }
+               },
+           ],
+           "iDisplayLength": 10,
+           "language": { "processing": "<img src='{{ url_for('static', filename='img/ajaxload.gif') }}'> Loading...",
+               "zeroRecords": "No records to display", searchPlaceholder: "Regex search...", search: ""},
+           "search": {
+               "regex": true
+           }
+       });
+} );
+</script>
+
+{% endblock %}

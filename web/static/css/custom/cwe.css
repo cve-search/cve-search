@@ -1,0 +1,37 @@
+.partial.collapse:not(.show) {
+  display: block;
+  /* height = lineheight * no of lines to display */
+  height: 12em;
+  overflow: hidden;
+}
+
+.partial.collapsing {
+    height: 12em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.pointer:hover {
+    color: grey;
+}
+
+.collapse > ul > li {
+    margin-bottom: 5px;
+}
+
+.collapsing > ul > li {
+    margin-bottom: 5px;
+}
+
+.search_form {
+    margin-bottom: 0px;
+}
+
+#dom_filter {
+    height: 25px;
+    float: right;
+    position: absolute;
+    margin-left: 250px;
+}
