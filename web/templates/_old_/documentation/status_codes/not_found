@@ -1,7 +1,0 @@
-{% extends 'layouts/status_code_accordion-child' %}
-{% set id     = "not_found"                      %}
-{% set title  = "Resource Not Found"             %}
-{% set code   = 404                              %}
-{% block desc %}
-  The url requested does not exist. You might need to check upper/lowercase, or revert back to the documentation.
-{% endblock %}

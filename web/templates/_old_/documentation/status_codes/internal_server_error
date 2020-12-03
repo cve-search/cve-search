@@ -1,8 +1,0 @@
-{% extends 'layouts/status_code_accordion-child' %}
-{% set id     = "internal_server_error"          %}
-{% set title  = "Internal Server Error"          %}
-{% set code   = 500                              %}
-{% block desc %}
-  These errors get thrown when the server experienced an error it did not expect. <br />
-  In case this happens, the server should print the error to the console.
-{% endblock %}
