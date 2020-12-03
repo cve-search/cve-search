@@ -1,7 +1,0 @@
-{% extends 'layouts/status_code_accordion-child' %}
-{% set id     = "limit_must_be_int"              %}
-{% set title  = "'Limit' Must be an Integer"     %}
-{% set code   = 400                              %}
-{% block desc %}
-  The limit parameter in your query could not be parsed as an integer.
-{% endblock %}

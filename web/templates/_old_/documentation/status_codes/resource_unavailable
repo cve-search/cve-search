@@ -1,9 +1,0 @@
-{% extends 'layouts/status_code_accordion-child'                      %}
-{% set id     = "resource_unavailable"                                %}
-{% set title  = "Server could not connect to the browsing repository" %}
-{% set code   = 503                                                   %}
-{% block desc %}
-  The browsing repository is currently not available. <br />
-  This could be because Redis is not running, the link between CVE-Search and Redis cannot be
-  established, or other reasons.
-{% endblock %}
