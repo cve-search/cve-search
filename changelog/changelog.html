@@ -1,0 +1,3795 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Changelog &mdash; CVE-Search  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="License" href="../license/license.html" />
+    <link rel="prev" title="Software using cve-search" href="../software/software.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> CVE-Search
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webgui/webgui.html">Webgui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/docker.html">Docker versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/software.html">Software using cve-search</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v3-0-2020-10-01">v3.0 (2020-10-01)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-9-2020-07-29">v2.9 (2020-07-29)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-8-2020-06-03">v2.8 (2020-06-03)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-7-2020-01-12">v2.7 (2020-01-12)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-6-2019-11-08">v2.6 (2019-11-08)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fix">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-5-2019-10-24">v2.5 (2019-10-24)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-4-2019-10-06">v2.4 (2019-10-06)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-3-2019-09-18">v2.3 (2019-09-18)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new">New</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-2-2016-12-29">v2.2 (2016-12-29)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-1-2016-06-13">v2.1 (2016-06-13)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v2-0-2016-05-01">v2.0 (2016-05-01)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CVE-Search</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Changelog</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/changelog/changelog.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v3-0-2020-10-01">
+<h2>v3.0 (2020-10-01)<a class="headerlink" href="#v3-0-2020-10-01" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[travis] fix to use JSON NVD source + removed unsupported Python
+version. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #451 from P-T-I/import_impr. [Alexandre Dulaunoy]</p>
+<p>Initial import restructure</p>
+</li>
+<li><p>Final fix for missing field. [Paul Tikken Laptop]</p></li>
+<li><p>Fix for missing last-modified field in cve documents. [Paul Tikken
+Laptop]</p></li>
+<li><p>Fix for missing last-modified field in cve documents. [Paul Tikken
+Laptop]</p></li>
+<li><p>Minor adjustment travis.yml. [Paul Tikken Laptop]</p></li>
+<li><p>Merge from master. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #478 from P-T-I/unit_tests. [Alexandre Dulaunoy]</p>
+<p>Unit tests</p>
+</li>
+<li><p>Added specific parser to BeautifulSoup. [Paul Tikken Laptop]</p></li>
+<li><p>Added build arguments to travis file. [Paul Tikken Laptop]</p></li>
+<li><p>Final travis file. [Paul Tikken Laptop]</p></li>
+<li><p>Working on tests. [Paul Tikken Laptop]</p></li>
+<li><p>Working on tests. [Paul Tikken Laptop]</p></li>
+<li><p>Working on tests. [Paul Tikken Laptop]</p></li>
+<li><p>Working on tests. [Paul Tikken Laptop]</p></li>
+<li><p>Added BeautifulSoup to requirements. [Paul Tikken Laptop]</p></li>
+<li><p>Working on unit tests. [Paul Tikken Laptop]</p></li>
+<li><p>Working on unit tests. [Paul Tikken Laptop]</p></li>
+<li><p>Added dict to xml requirement. [Paul Tikken Laptop]</p></li>
+<li><p>Fix search.py not returning xml. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing_travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing with travis. [Paul Tikken Laptop]</p></li>
+<li><p>Testing travis file. [Paul Tikken Laptop]</p></li>
+<li><p>Testing travis file. [Paul Tikken Laptop]</p></li>
+<li><p>Testing travis file. [Paul Tikken Laptop]</p></li>
+<li><p>Fixed -p switch travis file. [Paul Tikken Laptop]</p></li>
+<li><p>Change to unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Change to unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Change to unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Change in unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Change in unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Change in unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Requirements.txt fix. [Paul Tikken Laptop]</p></li>
+<li><p>Altered travis for pytest support. [Paul Tikken Laptop]</p></li>
+<li><p>Setup unit testing scripts. [Paul Tikken Laptop]</p></li>
+<li><p>Init files added when needed for unit_tests. [Paul Tikken Laptop]</p></li>
+<li><p>Black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Added nltk to requirements.txt as it was not covered. [Paul Tikken
+Laptop]</p></li>
+<li><p>Black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Config files added for testing. [Paul Tikken Laptop]</p></li>
+<li><p>Added pytest requirements. [Paul Tikken Laptop]</p></li>
+<li><p>Removed old testing file. [Paul Tikken Laptop]</p></li>
+<li><p>Black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Testing with travis. [Paul Tikken Laptop]</p></li>
+<li><p>Merge remote-tracking branch ‘origin/master’ [Paul Tikken Laptop]</p></li>
+<li><p>Create stale.yml. [PT]</p></li>
+<li><p>Merge branch ‘up_master’ into import_impr. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #470 from P-T-I/cve-search-469. [Alexandre
+Dulaunoy]</p>
+<p>cve-search-469; fix for not deplaying results</p>
+</li>
+<li><p>Cve-search-469; fix for not deplaying results. [Paul Tikken Laptop]</p></li>
+<li><p>Merge branch ‘up_master’ into import_impr. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #468 from P-T-I/regex_options. [Alexandre Dulaunoy]</p>
+<p>fix #464; corrects bad fix from #465</p>
+</li>
+<li><p>Fix #464; corrects bad fix from #465. [Paul Tikken Laptop]</p></li>
+<li><p>Merging. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #465 from P-T-I/regex_fail. [Alexandre Dulaunoy]</p>
+<p>Regex fail</p>
+</li>
+<li><p>Alter .gitignore. [Paul Tikken]</p></li>
+<li><p>Fixes #464; double options (IGNORE_CASE) declaration for a regex
+search. [Paul Tikken]</p></li>
+<li><p>Altered .gitignore. [Paul Tikken]</p></li>
+<li><p>Fixed syntax warnings. [Paul Tikken Laptop]</p></li>
+<li><p>Added jsonpickle requirement. [Paul Tikken Laptop]</p></li>
+<li><p>Added auto creation of log dir. [Paul Tikken Laptop]</p></li>
+<li><p>Troubleshooting build error on feedformatter version. [Paul Tikken
+Laptop]</p></li>
+<li><p>Merge branch ‘master’ into import_impr. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #459 from P-T-I/docker_version. [Alexandre
+Dulaunoy]</p>
+<p>fix #205; official dockerized version of CVE-Search added</p>
+</li>
+<li><p>Fix #205; official dockerized version of CVE-Search added. [Paul
+Tikken Laptop]</p></li>
+<li><p>Merge pull request #460 from P-T-I/cve_search_#395. [Alexandre
+Dulaunoy]</p>
+<p>fix #395; Fixed warning message Mongoclient create pre-fork</p>
+</li>
+<li><p>Fix #395; Fixed warning message Mongoclient create pre-fork. [Paul
+Tikken Laptop]</p></li>
+<li><p>Added variable interval counter for debug logging. [Paul Tikken
+Laptop]</p></li>
+<li><p>Corrected update error. [Paul Tikken Laptop]</p></li>
+<li><p>Rebase. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #456 from P-T-I/syntax_warnings. [Alexandre
+Dulaunoy]</p>
+<p>Fixed Tornado’s syntax warnings</p>
+</li>
+<li><p>Fixed Tornado’s syntax warnings. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #454 from P-T-I/cve_search-449. [Alexandre
+Dulaunoy]</p>
+<p>fix #449; Added stricter regex for matching CVE on CPE</p>
+</li>
+<li><p>Fix #449; added stricter cpe regex when matching CVEs on CPEs. [Paul
+Tikken Laptop]</p></li>
+<li><p>Refactor. [Paul Tikken Laptop]</p></li>
+<li><p>Refactor. [Paul Tikken Laptop]</p></li>
+<li><p>Refactor. [Paul Tikken Laptop]</p></li>
+<li><p>Merge branch ‘master’ into cve_search-449. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #453 from P-T-I/doc_update. [Alexandre Dulaunoy]</p>
+<p>fix #452; Documentation update</p>
+</li>
+<li><p>Fix #452; Documentation update to bring the docs in line with the
+readme.md in the root. [Paul Tikken Laptop]</p></li>
+<li><p>Cleanup. [Paul Tikken Laptop]</p></li>
+<li><p>Black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Missing sys import and black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Moved DatabaseIndexer to separate class in Sources_process.py. [Paul
+Tikken Laptop]</p></li>
+<li><p>Moved DatabaseIndexer to separate class in Sources_process.py. [Paul
+Tikken Laptop]</p></li>
+<li><p>Added additional log entries. [Paul Tikken Laptop]</p></li>
+<li><p>Changed logger name. [Paul Tikken Laptop]</p></li>
+<li><p>Added description to tqdm progressbar from CPERedisBrowser class.
+[Paul Tikken Laptop]</p></li>
+<li><p>Unified logging with updater and black formatting. [Paul Tikken
+Laptop]</p></li>
+<li><p>Import refactor and minor edit. [Paul Tikken Laptop]</p></li>
+<li><p>Set JSON file progress debug logging to every 5000 items. [Paul Tikken
+Laptop]</p></li>
+<li><p>Moved logic to process class. [Paul Tikken Laptop]</p></li>
+<li><p>Added CPERedisBrowser class. [Paul Tikken Laptop]</p></li>
+<li><p>Added logging and tqdm progressbar. [Paul Tikken Laptop]</p></li>
+<li><p>Added logging. [Paul Tikken Laptop]</p></li>
+<li><p>Fixed misspelled method (getCVEID instead of getCVEIDs) and black
+formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Added debug counter from processing items from file every 1000 items.
+[Paul Tikken Laptop]</p></li>
+<li><p>Added debug counter from processing items from file. [Paul Tikken
+Laptop]</p></li>
+<li><p>Refactor and unified logging with process classes. [Paul Tikken
+Laptop]</p></li>
+<li><p>Refactor and unified logging with process classes. [Paul Tikken
+Laptop]</p></li>
+<li><p>Modified update doc versus insert doc. [Paul Tikken Laptop]</p></li>
+<li><p>Moved process classes to separate file. [Paul Tikken Laptop]</p></li>
+<li><p>Refactor. [Paul Tikken Laptop]</p></li>
+<li><p>Separate file for source process classes. [Paul Tikken Laptop]</p></li>
+<li><p>Separate file for xml Content Handlers. [Paul Tikken Laptop]</p></li>
+<li><p>Methods refactor. [Paul Tikken Laptop]</p></li>
+<li><p>Added process methods to class instead. [Paul Tikken Laptop]</p></li>
+<li><p>Changed process_item method. [Paul Tikken Laptop]</p></li>
+<li><p>Added process_item to DownloadHandler class. [Paul Tikken Laptop]</p></li>
+<li><p>Added method to retrieve the entire redis list. [Paul Tikken Laptop]</p></li>
+<li><p>Added process_item to XMLFileHandler class. [Paul Tikken Laptop]</p></li>
+<li><p>Added db (9) for redis queue. [Paul Tikken Laptop]</p></li>
+<li><p>Added RedisQueue. [Paul Tikken Laptop]</p></li>
+<li><p>Moved download_site method to DownloadHandler.py. [Paul Tikken Laptop]</p></li>
+<li><p>Added redis queue as a replacement of multiprocessing queue. [Paul
+Tikken Laptop]</p></li>
+<li><p>Added database action class. [Paul Tikken Laptop]</p></li>
+<li><p>Refactor. [Paul Tikken Laptop]</p></li>
+<li><p>Added additional logging. [Paul Tikken Laptop]</p></li>
+<li><p>Minor changes. [Paul Tikken Laptop]</p></li>
+<li><p>Reset insert to original. [Paul Tikken Laptop]</p></li>
+<li><p>Added different handlers. [Paul Tikken Laptop]</p></li>
+<li><p>Added different handlers. [Paul Tikken Laptop]</p></li>
+<li><p>Added different handlers. [Paul Tikken Laptop]</p></li>
+<li><p>Minor. [Paul Tikken Laptop]</p></li>
+<li><p>Minor. [Paul Tikken Laptop]</p></li>
+<li><p>Set debug print to every 10 cycles. [Paul Tikken Laptop]</p></li>
+<li><p>Added venv and .idea folders to ignore. [Paul Tikken Laptop]</p></li>
+<li><p>Set exit code on errors to 1. [Paul Tikken Laptop]</p></li>
+<li><p>Added VIADownloads class for update optimalization. [Paul Tikken
+Laptop]</p></li>
+<li><p>Moved updates of info collection to DownloadHandler. [Paul Tikken
+Laptop]</p></li>
+<li><p>Added requirements ijson and tqdm. [Paul Tikken Laptop]</p></li>
+<li><p>Added logging and file extension specific classes. [Paul Tikken
+Laptop]</p></li>
+<li><p>Added tqdm and ijson requirements. [Paul Tikken Laptop]</p></li>
+<li><p>Added queues and multiprocessing. [Paul Tikken Laptop]</p></li>
+<li><p>Added further multiprocessing. [Paul Tikken Laptop]</p></li>
+<li><p>Added speed improvements for initial import. [Paul Tikken Laptop]</p></li>
+<li><p>Black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Black formatting. [Paul Tikken Laptop]</p></li>
+<li><p>Speed improvements for initial import of data. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #450 from P-T-I/web_impr. [Alexandre Dulaunoy]</p>
+<p>minor admin page gui adjustments</p>
+</li>
+<li><p>Minor admin page gui adjustments. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #448 from P-T-I/query_opt. [Alexandre Dulaunoy]</p>
+<p>small http query optimalization and black formatting</p>
+</li>
+<li><p>Small http query optimalization and black formatting. [Paul Tikken
+Laptop]</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-9-2020-07-29">
+<h2>v2.9 (2020-07-29)<a class="headerlink" href="#v2-9-2020-07-29" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Changes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[doc] reference to the ChangeLog updated. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Other<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #436 from noraj/patch-2. [Alexandre Dulaunoy]</p>
+<p>add docker ref</p>
+</li>
+<li><p>Update README.md. [Alexandre Dulaunoy]</p>
+<p>Make it more markdown friendly.</p>
+</li>
+<li><p>Add docker ref. [Alexandre ZANNI]</p></li>
+<li><p>Merge pull request #442 from P-T-I/fix_cpe_other. [Alexandre Dulaunoy]</p>
+<p>fix #441</p>
+</li>
+<li><p>Fix #441. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #444 from P-T-I/capec. [Alexandre Dulaunoy]</p>
+<p>fix #443 and #402 and #414</p>
+</li>
+<li><p>Fix #443. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #445 from P-T-I/version_bumps. [Alexandre Dulaunoy]</p>
+<p>version bump of cwe and capec</p>
+</li>
+<li><p>Version bump of cwe. [Paul Tikken Laptop]</p></li>
+<li><p>Merge pull request #438 from AndreC10002/patch-2. [Alexandre Dulaunoy]</p>
+<p>Redis password parameter</p>
+</li>
+<li><p>Redis password parameter. [AndreC10002]</p>
+<p>Redis password parameter</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-8-2020-06-03">
+<h2>v2.8 (2020-06-03)<a class="headerlink" href="#v2-8-2020-06-03" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Changes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>[source] default to nvd cve 1.1. [Alexandre Dulaunoy]</p></li>
+<li><p>[cve source] now officially use nvd 1.1 version. [Alexandre Dulaunoy]</p></li>
+<li><p>[config] download CVE JSON feed in version 1.1. [Alexandre Dulaunoy]</p></li>
+<li><p>[DatabaseLayer] access field missing added - Fix #404. [Alexandre
+Dulaunoy]</p></li>
+<li><p>[DatabaseLayer] add missing impact field in the update. [Alexandre
+Dulaunoy]</p>
+<p>Thanks to the good report in issue #403.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Other<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #429 from tydeu/master. [Alexandre Dulaunoy]</p>
+<p>Drop the <cite>cves</cite> (not the <cite>cve</cite>) collection when repopulating</p>
+</li>
+<li><p>Drop  the <cite>cves</cite> (not the <cite>cve</cite>) collection. [Mac Malone]</p></li>
+<li><p>Merge branch ‘master’ of github.com:cve-search/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #423 from eaydin/master. [Alexandre Dulaunoy]</p>
+<p>Resolve issue #375</p>
+</li>
+<li><p>Resolve issue #375. [eaydin]</p></li>
+<li><p>Update README.md. [Pidgey]</p></li>
+<li><p>Merge pull request #415 from guiguitodelperuu/fix-capec-v3.2.
+[Alexandre Dulaunoy]</p>
+<p>Add support for the latest CAPEC XML file version (3.2).</p>
+</li>
+<li><p>Add support for the lastest CAPEC XML file version (3.2). Issue #414.
+[Guillaume Petit]</p></li>
+<li><p>Merge pull request #412 from Schuilnaam/master. [Alexandre Dulaunoy]</p>
+<p>notification bug fix</p>
+</li>
+<li><p>Revert “Update .travis.yml” [rocco]</p>
+<p>This reverts commit ea3059c7344f76748d42ccd1747b085d736cdfcf.</p>
+</li>
+<li><p>Update .travis.yml. [Rocc00]</p>
+<p>python 3.3 is not available</p>
+</li>
+<li><p>Notification bug fix. [rocco]</p></li>
+<li><p>Merge pull request #409 from jgilman99/jgilman99-patch-1. [Alexandre
+Dulaunoy]</p>
+<p>Typo - <cite>access</cite> spelled <cite>acccess</cite></p>
+</li>
+<li><p>Typo - <cite>access</cite> spelled <cite>acccess</cite> [John]</p>
+<p>Starting cve
+Traceback (most recent call last):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>File “/cve-search/sbin/db_mgmt_json.py”, line 202, in &lt;module&gt;</dt><dd><p>db.updateCVE(item)</p>
+</dd>
+<dt>File “/cve-search/sbin/../lib/DatabaseLayer.py”, line 72, in updateCVE</dt><dd><p>“vulnerable_product”: cve[“vulnerable_product”], “access”: cve[‘acccess’],</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-7-2020-01-12">
+<h2>v2.7 (2020-01-12)<a class="headerlink" href="#v2-7-2020-01-12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Changes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[cpe/bulkUpdate] use format instead of concat. [Alexandre Dulaunoy]</p></li>
+<li><p>[db] all regex queries are now case insensitive. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>Other<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #401 from Agh42/feature/improve-bulk-updates.
+[Alexandre Dulaunoy]</p>
+<p>Speed up bulk update (i.e. CPE update) operations.</p>
+</li>
+<li><p>Speed up bulk update operations. [Agh42]</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-6-2019-11-08">
+<h2>v2.6 (2019-11-08)<a class="headerlink" href="#v2-6-2019-11-08" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Changes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[web] template vulnerable_product and assigner is a default field.
+[Alexandre Dulaunoy]</p></li>
+<li><p>[sources] revert back CAPEC XML source (parser is broken with recent
+version) [Alexandre Dulaunoy]</p></li>
+<li><p>[db_mgmt_json] use of format. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="fix">
+<h3>Fix<a class="headerlink" href="#fix" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[db_mgmt_json] if cpe_name is missing from original CPE then use
+default cpe23 URI. [Alexandre Dulaunoy]</p></li>
+<li><p>[minimal] link result is now using the proper cve result key.
+[Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Other<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #391 from kairis/master. [Alexandre Dulaunoy]</p>
+<p>CPE and CVE fixes</p>
+</li>
+<li><p>Drop CPE and CVE databases if force populating. [Sami Kairajarvi]</p>
+<p>This is done in db_updater, but if someone calls either
+CPE or CVE updaters directly with “-pa”, it will duplicate
+the data</p>
+</li>
+<li><p>Change order of updating CVE and CPE. [Sami Kairajarvi]</p>
+<p>CPE needs to be updated first, as CVE uses CPE data</p>
+</li>
+<li><p>Add fields to CVE only if they don’t exist already. [Sami Kairajarvi]</p></li>
+<li><p>Fix CPE matching for vulnerable children. [Sami Kairajarvi]</p></li>
+<li><p>Add warning to product search. [Sami Kairajarvi]</p></li>
+<li><p>Remove non_vulnerable_configuration. [Sami Kairajarvi]</p></li>
+<li><p>Add all vulnerable products to vulnerable_products, not only
+applications. [Sami Kairajarvi]</p></li>
+<li><p>Merge pull request #386 from kairis/master. [Alexandre Dulaunoy]</p>
+<p>Append all items of CVE description field into summary</p>
+</li>
+<li><p>Append all items of CVE description field into summary. [Sami
+Kairajarvi]</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-5-2019-10-24">
+<h2>v2.5 (2019-10-24)<a class="headerlink" href="#v2-5-2019-10-24" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Changes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>[cwe] CWE import fixed using pull-request #353. [Alexandre Dulaunoy]</p>
+<p>This should fix issue #252 #348</p>
+<p>Thanks to &#64;DocArmoryTech &#64;FafnerKeyZee</p>
+</li>
+<li><p>[cveforCPE] fix to use the new result part. [Alexandre Dulaunoy]</p>
+<p>Fix #382</p>
+</li>
+<li><p>[cpe browser] redis - quick fix for browser to work with recent cpe
+version. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Other<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #380 from kairis/master. [Alexandre Dulaunoy]</p>
+<p>Update CPE to use JSON feed</p>
+</li>
+<li><p>Add applications to vulnerable_application. [Sami Kairajarvi]</p></li>
+<li><p>Add generate_title function. [Sami Kairajarvi]</p>
+<p>Generates a title based on CPE string that is human
+readable</p>
+</li>
+<li><p>Update CPE to use JSON feed. [Sami Kairajärvi]</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-4-2019-10-06">
+<h2>v2.4 (2019-10-06)<a class="headerlink" href="#v2-4-2019-10-06" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>Changes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[search] use format as output instead of concatenation. [Alexandre
+Dulaunoy]</p></li>
+<li><p>[DatabaseLayer] cleanup. [Alexandre Dulaunoy]</p></li>
+<li><p>[search] fix due to the recent change of the library interface.
+[Alexandre Dulaunoy]</p></li>
+<li><p>[cpe search] fixed for the JSON output. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>Other<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge branch ‘janidetiger-master’ [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/janidetiger/cve-search">https://github.com/janidetiger/cve-search</a>
+into janidetiger-master. [Alexandre Dulaunoy]</p></li>
+<li><p>Small update. [Ján Doboš]</p></li>
+<li><p>Config.py optimalization. [Ján Doboš]</p></li>
+<li><p>Config.py optimalization. [Ján Doboš]</p></li>
+<li><ul class="simple">
+<li><p>rework of getMongoConnection() function to correctly catch exception</p></li>
+</ul>
+<p>due to changes in pymongo 2.9 and later. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>update of getMaxLogSize(): default values should be in MB, .lower() replaced by .upper() as b,kb can be confusing when referring to Bytes</p></li>
+<li><p>getCVEStartYear() cleaned</p></li>
+</ul>
+</li>
+<li><p>Merge branch ‘janidetiger-master’ [Alexandre Dulaunoy]</p></li>
+<li><p>Update table.html. [Ján Doboš]</p></li>
+<li><p>Update pager.html. [Ján Doboš]</p></li>
+<li><p>Update search.html. [Ján Doboš]</p></li>
+<li><p>Update pager.js. [Ján Doboš]</p></li>
+<li><p>Update minimal.py. [Ján Doboš]</p></li>
+<li><p>Update index.py. [Ján Doboš]</p></li>
+<li><p>Update db_mgmt_cpe_other_dictionary.py. [Ján Doboš]</p></li>
+<li><p>Update Query.py. [Ján Doboš]</p></li>
+<li><p>Update DatabaseLayer.py. [Ján Doboš]</p></li>
+<li><p>Update CVEs.py. [Ján Doboš]</p></li>
+<li><p>Update index.py. [Ján Doboš]</p></li>
+<li><p>Update api.py. [Ján Doboš]</p></li>
+<li><p>Update table.html. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>maintain original functionality because of recent changes of return values of getCVEs function</p></li>
+<li><p>we need to access the ‘cves’ key of the returned dictionary</p></li>
+</ul>
+</li>
+<li><p>Update pager.html. [Ján Doboš]</p>
+<p>complete rework of pagination
+- now correctly calculates the total number of pages and creates correct pagination elements</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>for pages with index close to beginning hides later pages</p></li>
+<li><p>for pages with index in the middle hides some pages in front and some in end</p></li>
+<li><p>for pages with index close to end hides pages in the beginning</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Update filters.html. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>addition of action=”/r/0” tag</p></li>
+<li><p>if filter is set manually, then it changes the resulting data, so we want to display the first page (offset /r/0)</p></li>
+</ul>
+</li>
+<li><p>Update index.html. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>function setSettings() renamed to SetFilters()</p></li>
+<li><p>if CVE filtering is enabled and sent via POST, setFilters() is run on document.ready and sets values of the filtering elements
+- python variable filters now stores the current filter settings</p></li>
+</ul>
+</li>
+<li><p>Update index-minimal.html. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>unification of setFilters() javascript function with index.html</p></li>
+<li><p>if CVE filtering has been enabled and sent by POST, setFilters() is called on document.ready and set the current filter values on filtering elements</p></li>
+</ul>
+</li>
+<li><p>Update pager.js. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>simplification of functions used for pagination</p></li>
+<li><p>function paginator_jump(n) now jumps to the required offset of results and is called by clicking on pagination elements</p></li>
+</ul>
+</li>
+<li><p>Update minimal.py. [Ján Doboš]</p>
+<p>function getFilterSettingsFromPost has been polished</p>
+</li>
+<li><p>Update index.py. [Ján Doboš]</p>
+<p>maintain original functionality because of recent changes of return values of getCVEs function</p>
+</li>
+<li><p>Update api.py. [Ján Doboš]</p>
+<p>maintain original functionality because of recent changes of return values of getCVEs function</p>
+</li>
+<li><p>Update db_mgmt_cpe_other_dictionary.py. [Ján Doboš]</p>
+<p>maintain same functionality because of changes of return values inside the getCVEs function (now return a dictionary)</p>
+</li>
+<li><p>Update Query.py. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>maintain same functionality because of changes of return values of getCVEs function</p></li>
+</ul>
+</li>
+<li><p>Update DatabaseLayer.py. [Ján Doboš]</p>
+<ul class="simple">
+<li><p>getCVEs
+- update of return values in order to support pagination
+- now returns a dictionary containing both data ‘cves’ and total number of results  ‘total’ for pagination purposes)</p></li>
+<li><p>getCVEsNewerThan, via4Linked
+- maintain same functionality by selecting the ‘cves’ result from the dictionary because of update of getCVEs
+- removal of sanitization, because it is already called inside the getCVE function</p></li>
+</ul>
+</li>
+<li><p>Update CVEs.py. [Ján Doboš]</p>
+<p>maintain functionality because of changes of values returned by getCVEs function</p>
+</li>
+<li><p>Update search.py. [Ján Doboš]</p>
+<p>maintain same functionality because of changes values returned by getCVEs function</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-3-2019-09-18">
+<h2>v2.3 (2019-09-18)<a class="headerlink" href="#v2-3-2019-09-18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new">
+<h3>New<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[db_mgmt_json] first version of importing NVD CVE from the new JSON
+format. [Alexandre Dulaunoy]</p>
+<ul>
+<li><p>new import script (db_mgmt_json) added to parse the JSON entries and import in MongoDB</p></li>
+<li><p>Goal was to map existing data found in the old XML format from the new NVD JSON format</p></li>
+<li><p>cpe2.2 is now discarded (cpe2.3 should be the default in cve-search)</p></li>
+<li><p>CWE contains additional type of fields from the NVD which need to be fixed</p></li>
+<li><p>ranking is currently disabled (WiP to add it back in minimal API later)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Changes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>[doc] Python 3.6 required. [Alexandre Dulaunoy]</p></li>
+<li><p>[db_mgmt_json] improve the parsing of the vulnerable_configuration
+tree format. [Alexandre Dulaunoy]</p>
+<ul class="simple">
+<li><p>children entries are now taken into account</p></li>
+<li><p>a new field is added to add the non_vulnerable_configuration</p></li>
+</ul>
+<p>This should fix a very old bug in XML where non vulnerable configuration
+were imported into the vulnerable_configuration.</p>
+<p>And it should also fix the issue #373</p>
+</li>
+<li><p>[db_mgmt_json] force option to update the current JSON of NVD.
+[Alexandre Dulaunoy]</p></li>
+<li><p>[db_mgmt_json] CVSSv2 vector is now imported. [Alexandre Dulaunoy]</p></li>
+<li><p>[search_cpe] references added in output and csv output added.
+[Alexandre Dulaunoy]</p></li>
+<li><p>[db_mgmt_json] minor fixes (format) [Alexandre Dulaunoy]</p></li>
+<li><p>[doc] README updated with JSON feed download. [Alexandre Dulaunoy]</p></li>
+<li><p>[source] fix CPE v2.3 url. [Alexandre Dulaunoy]</p></li>
+<li><p>[doc] add new MISP modules using cve-search. [Alexandre Dulaunoy]</p></li>
+<li><p>[doc] Added initial import indication. [Steve Clement]</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>Other<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #374 from FafnerKeyZee/master. [Alexandre Dulaunoy]</p>
+<p>Adding some filters on result page</p>
+</li>
+<li><p>Update filters.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Update table.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Update filters.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Update filters.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Update table.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Create filters2.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Update search.html. [Fafner [_KeyZee_]]</p></li>
+<li><p>Merge pull request #359 from joanrodriguezr/patch-6. [Alexandre
+Dulaunoy]</p>
+<p>Keep freetext search value in the top textarea after executing the search.</p>
+</li>
+<li><p>Keep free text search text value. [Joan Rodriguez Rodriguez]</p>
+<p>Update this subpage with the recently executed search</p>
+</li>
+<li><p>Keep free text search in the top textArea. [Joan Rodriguez Rodriguez]</p>
+<p>Send parameter to the template we want to render with the search text we have executed</p>
+</li>
+<li><p>Merge pull request #343 from joanrodriguezr/patch-1. [Alexandre
+Dulaunoy]</p>
+<p>Fix system crash when empty search</p>
+</li>
+<li><p>Fix system crash when empty search. [Joan Rodriguez Rodriguez]</p>
+<p>Fixes #335 issue. It performs an empty search without crashing system. (server side)</p>
+</li>
+<li><p>Update scripts.js. [Joan Rodriguez Rodriguez]</p>
+<p>Fixes #335 issue. It performs an empty search without crashing system.</p>
+</li>
+<li><p>Merge pull request #344 from joanrodriguezr/patch-2. [Pidgey]</p>
+<p>Fix logout</p>
+</li>
+<li><p>Fix logout. [Joan Rodriguez Rodriguez]</p>
+<p>It fixes issue #338. Just change the Method from POST to GET to get it running.</p>
+</li>
+<li><p>Missing update for #339. [Pidgey]</p></li>
+<li><p>Merge pull request #349 from joanrodriguezr/patch-3. [Pidgey]</p>
+<p>Fix default user agent style in Chrome</p>
+</li>
+<li><p>Fix default user agent style in Chrome. [Joan Rodriguez Rodriguez]</p>
+<p>It fixes look&amp;feel in chrome #339. Overriding the user agent stylesheet for “nav navbar-nav”</p>
+</li>
+<li><p>Merge pull request #345 from noraj/patch-1. [Alexandre Dulaunoy]</p>
+<p>readme: add missing dep and sort them alphabetically</p>
+</li>
+<li><p>Readme: add missing dep and sort them alphabetically. [Alexandre
+ZANNI]</p></li>
+<li><p>Merge pull request #341 from iammyr/pyscan. [Alexandre Dulaunoy]</p>
+<p>new feature:  scan of pip requirements file for CVEs</p>
+</li>
+<li><p>Merge branch ‘master’ into pyscan. [iammyr]</p></li>
+<li><p>Merge pull request #333 from siisar/patch-1. [Alexandre Dulaunoy]</p>
+<p>Setting redis password</p>
+</li>
+<li><p>Setting redis password. [siisar]</p>
+<p>Optionally, with this change we are able to connect to a Redis server that is protected with a password.
+This password is provided in the configuration.ini, in the Redis section, with the keyword “Password”.
+By default, the password is None, as currently happens</p>
+</li>
+<li><p>Merge pull request #325 from noraj/patch-1. [Alexandre Dulaunoy]</p>
+<p>readme: whoosh appears two times</p>
+</li>
+<li><p>Whoosh appears two times. [Alexandre ZANNI]</p></li>
+<li><p>Merge pull request #326 from noraj/patch-2. [Alexandre Dulaunoy]</p>
+<p>readme: add missing deps (from requests.txt)</p>
+</li>
+<li><p>Readme: add missing deps (from requests.txt) [Alexandre ZANNI]</p></li>
+<li><p>Merge pull request #327 from Grenzdebiel/html-qoute. [Alexandre
+Dulaunoy]</p>
+<p>Update dump_last.py</p>
+</li>
+<li><p>Update dump_last.py. [Rene]</p>
+<p>Add html.escape for summary in html output.</p>
+</li>
+<li><p>Merge pull request #320 from itsbriany/multiple_product_search.
+[Alexandre Dulaunoy]</p>
+<p>Added support to search for multiple products in a single query</p>
+</li>
+<li><p>Added support to search for multiple products in a single query.
+[Brian Yip]</p></li>
+<li><p>Merge pull request #322 from SergeOlivierP/cwe-completeness-fix-
+related. [Alexandre Dulaunoy]</p>
+<p>Cwe completeness: added related weaknesses and categories</p>
+</li>
+<li><p>Removed forgetten debugging options. [serge]</p></li>
+<li><p>Added support for cases where multiple views use same related
+weaknesses hierarchy. [serge]</p></li>
+<li><p>Removed debugging commented code. [serge]</p></li>
+<li><p>Added support for categories. [serge]</p></li>
+<li><p>Added ability to force update, useful for debugging purpose. [serge]</p></li>
+<li><p>Switched parsing to use version 2.12 of cwe xml. [serge]</p></li>
+<li><p>Adding related weaknesses tree structure. [serge]</p></li>
+<li><p>Set theme jekyll-theme-minimal. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #311 from StCyr/stcyr-Issue308. [Alexandre
+Dulaunoy]</p>
+<p>Issue 308: Updated documentation how to fulltext index all the CVEs.</p>
+</li>
+<li><p>Issue-308: Improved markdown documentation formating. [Cyrille Bollu]</p></li>
+<li><p>Issue 308: Added reference to the /doc folder in the README.md file.
+[Cyrille Bollu]</p></li>
+<li><p>Issue 308: Updated how to fulltext index all the CVEs. [Cyrille Bollu]</p>
+<p>Cyrille</p>
+</li>
+<li><p>Merge pull request #301 from CriimBow/patch-1. [Alexandre Dulaunoy]</p>
+<p>Fix error when researching CVE with no CVSS</p>
+</li>
+<li><p>Fix error when researching CVE with no CVSS. [Guillaume G]</p>
+<p>Example : ./search.py -c cve-2018-8373
+Format fixed: CSV, HTML, XML</p>
+</li>
+<li><p>Merge pull request #306 from CriimBow/patch-1. [Alexandre Dulaunoy]</p>
+<p>Update README to import local VIA4CVE</p>
+</li>
+<li><p>Update README to import local VIA4CVE. [Guillaume G]</p>
+<p>Import your own VIA4CVE</p>
+</li>
+<li><p>Merge pull request #312 from SteveClement/master. [Alexandre Dulaunoy]</p>
+<p>chg: [doc] Added initial import indication</p>
+</li>
+<li><p>Merge pull request #314 from Agh42/master. [Alexandre Dulaunoy]</p>
+<p>Added support for field “vulnerable_product”</p>
+</li>
+<li><p>Added support for field vulnerable_product. [Agh42]</p>
+<p>Parser now ingests the field “vulerable_product” from the NVD XML-feed.
+New option “–vulnerable-product-only” uses this field:</p>
+<p>With this option, “-p” will only return vulnerabilities directly
+assigned to the product.</p>
+<p>I.e. it will not consider “windows_7” if it is only mentioned as
+affected OS in a “foxit_reader” vulnerability.</p>
+</li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/CVE-Search/CVE-Search">https://github.com/CVE-Search/CVE-Search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #298 from paralax/patch-1. [Alexandre Dulaunoy]</p>
+<p>prettier markdown formatting, no content changes</p>
+</li>
+<li><p>Prettier markdown formatting, no content changes. [jose nazario]</p></li>
+<li><p>Merge pull request #297 from Anderson-Liu/patch-1. [Alexandre
+Dulaunoy]</p>
+<p>Update sources.ini.sample</p>
+</li>
+<li><p>Update sources.ini.sample. [Anderson]</p>
+<p>Upgrade source to new version.</p>
+</li>
+<li><p>License Change to AGPL - Discussed in issue #281. [PidgeyL]</p></li>
+<li><p>Merge pull request #289 from Alexandre-Bartel/upto-search-option.
+[Alexandre Dulaunoy]</p>
+<p>New parameter for ‘lax’ search</p>
+</li>
+<li><p>Added parameter for ‘lax’ search. [Alexandre Bartel]</p></li>
+<li><p>Merge pull request #286 from jbmaillet/fix_nvd_feeds. [Pidgey]</p>
+<p>Update NVD feeds</p>
+</li>
+<li><p>Update NVD feeds. [Jean-Baptiste Maillet]</p></li>
+<li><p>Merge pull request #284 from Patristo/master. [Alexandre Dulaunoy]</p>
+<p>Fix #283 - db_updater when running a virtualenv executable.</p>
+</li>
+<li><p>Fix #283 - db_updater when running a virtualenv executable. [Nathaniel
+Jensen]</p></li>
+<li><p>Merge pull request #257 from chervaliery/master. [Alexandre Dulaunoy]</p>
+<p>Convert wrong encoding of CPE2.3</p>
+</li>
+<li><p>Convert wrong encoding of CPE2.3. [chervaliery]</p>
+<p>Add the unquote function to convert the url encoded to escaped character</p>
+</li>
+<li><p>Use SSL in all sources. [PidgeyL]</p></li>
+<li><p>Add ‘ignore certificates’ option. [PidgeyL]</p></li>
+<li><p>Update CWE version. [PidgeyL]</p></li>
+<li><p>Merge pull request #255 from guntbert/master. [Pidgey]</p>
+<p>Improve grammar in the “rationale” paragraph.</p>
+</li>
+<li><p>Improve grammar in the “rationale” paragraph. [Guntbert Reiter]</p>
+<p>The last sentence seems to have been built from two sentences…</p>
+</li>
+<li><p>Bugfix #247. [PidgeyL]</p></li>
+<li><p>Pyscan: dependency from requirements-parser in order to scan pip
+requirements file. [iammyr]</p>
+<p>#major</p>
+</li>
+<li><p>Pyscan: added scan of pip requirements file for CVEs as a new feature.
+[iammyr]</p>
+<p>#major</p>
+</li>
+<li><p>Remove vendor statements, as they are in VIA4. [PidgeyL]</p></li>
+<li><p>Bugfix for bson date conversion. [PidgeyL]</p></li>
+<li><p>Fix typo in example (-f is full json output) [Alexandre Dulaunoy]</p></li>
+<li><p>Fix example as vulnerable_configuration is now cpe version 2.3 (not
+more 2.2) [Alexandre Dulaunoy]</p></li>
+<li><p>Ensure consistent JSON output with previous version of the API for
+datetime element. [Alexandre Dulaunoy]</p>
+<p>The datetime bson output has a different format and use $date key when dealing
+with datetime value. The output is just kept consistent with the previous version of the API.</p>
+</li>
+<li><p>Bug fixed for empty cvss values. [Alexandre Dulaunoy]</p></li>
+<li><p>As MongoClient is not safe regarding fork. Connect is set to False by
+default. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge remote-tracking branch ‘origin/master’ [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #237 from IrootGeek/master. [Alexandre Dulaunoy]</p>
+<p>Add ranking to every possible output</p>
+</li>
+<li><p>Add new function search text in all summary. [IrootGeek]</p></li>
+<li><p>Add ranking text. [IrootGeek]</p></li>
+<li><p>Merge remote-tracking branch ‘pj/master’ [Alexandre Dulaunoy]</p></li>
+<li><p>Bugfix comment in #226. [PidgeyL]</p></li>
+<li><p>Bugfix #226. [Pieter-Jan Moreels]</p></li>
+<li><p>Remove unused script. [Pieter-Jan Moreels]</p></li>
+<li><p>Resolve #219. [Pieter-Jan Moreels]</p></li>
+<li><p>Implement request #197. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Bugfix #131. [Pidgey]</p></li>
+<li><p>Add requests (#130) and sort alphabetically. [Pidgey]</p></li>
+<li><p>Documentation update. [PidgeyL]</p></li>
+<li><p>Bugfix filter. [PidgeyL]</p></li>
+<li><p>Bugfixes + code clean-up. [PidgeyL]</p></li>
+<li><p>Bugfix + code clean-up. [PidgeyL]</p></li>
+<li><p>Bugfix + code clean-up. [PidgeyL]</p></li>
+<li><p>Status codes in documentation. [PidgeyL]</p></li>
+<li><p>Fix status codes in web/api. [PidgeyL]</p></li>
+<li><p>Add session authentication. [PidgeyL]</p></li>
+<li><p>Bugfix #131. [PidgeyL]</p></li>
+<li><p>Update readme ‘copyright’ [PidgeyL]</p></li>
+<li><p>Merge branch ‘api_reworking’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>
+into api_reworking. [PidgeyL]</p></li>
+<li><p>Merge branch ‘api_reworking’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>
+into api_reworking. [PidgeyL]</p></li>
+<li><p>Sepparate auth to reduce code. [PidgeyL]</p></li>
+<li><p>API Documentation update. [PidgeyL]</p></li>
+<li><p>Add query and link to api. [PidgeyL]</p></li>
+<li><p>Forgot to add the js. [PidgeyL]</p></li>
+<li><p>Token in admin page. [PidgeyL]</p></li>
+<li><p>Singleton objects. [PidgeyL]</p></li>
+<li><p>Add jsonp support. [PidgeyL]</p></li>
+<li><p>Add documentation, advancedAPI &amp; fix info on admin page. [PidgeyL]</p></li>
+<li><p>Bugfix via4. [PidgeyL]</p></li>
+<li><p>Bugfix + rename cve info collection to cves. [PidgeyL]</p></li>
+<li><p>Fix dbStats on admin page. [PidgeyL]</p></li>
+<li><p>Fix dbstats. [PidgeyL]</p></li>
+<li><p>Initial api reworking. [PidgeyL]</p></li>
+<li><p>Add query and link to api. [PidgeyL]</p></li>
+<li><p>Sepparate auth to reduce code. [PidgeyL]</p></li>
+<li><p>API Documentation update. [PidgeyL]</p></li>
+<li><p>Forgot to add the js. [PidgeyL]</p></li>
+<li><p>Token in admin page. [PidgeyL]</p></li>
+<li><p>Singleton objects. [PidgeyL]</p></li>
+<li><p>Add jsonp support. [PidgeyL]</p></li>
+<li><p>Add documentation, advancedAPI &amp; fix info on admin page. [PidgeyL]</p></li>
+<li><p>Bugfix via4. [PidgeyL]</p></li>
+<li><p>Bugfix + rename cve info collection to cves. [PidgeyL]</p></li>
+<li><p>Fix dbStats on admin page. [PidgeyL]</p></li>
+<li><p>Fix dbstats. [PidgeyL]</p></li>
+<li><p>Initial api reworking. [PidgeyL]</p></li>
+<li><p>‘self’ bugfix. [PidgeyL]</p></li>
+<li><p>Merge pull request #230 from igama/master. [Alexandre Dulaunoy]</p>
+<p>Ensure that redis-cache-cpe runs when selected</p>
+</li>
+<li><p>Ensure that redis-cache-cpe runs when selected. [igama]</p></li>
+<li><p>Merge pull request #217 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge pull request #137 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfix for issue described in #216</p>
+</li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream2/master’ [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Bugfix plugin settings for dictionaries. [PidgeyL]</p></li>
+<li><p>Merge pull request #212 from jbmaillet/bugfix_web_login_broken.
+[Pidgey]</p></li>
+<li><p>Bugfix: web server login broken. [Jean-Baptiste Maillet]</p></li>
+<li><p>VIA4CVE reference added. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-2-2016-12-29">
+<h2>v2.2 (2016-12-29)<a class="headerlink" href="#v2-2-2016-12-29" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>Fix<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Display the correct number of elements in cves. [Alexandre Dulaunoy]</p></li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>Other<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Merge pull request #211 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>via4cvs and many other fixes</p>
+</li>
+<li><p>Msupdater removed as it’s now part of VIA4CVE. [Alexandre Dulaunoy]</p></li>
+<li><p>Indent fixed. [Alexandre Dulaunoy]</p></li>
+<li><p>Use of bson utils instead of jsonify. [Alexandre Dulaunoy]</p></li>
+<li><p>Fix #133. [Alexandre Dulaunoy]</p></li>
+<li><p>Fix broken merged. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:PidgeyL/cve-search. [Alexandre
+Dulaunoy]</p>
+<dl class="simple">
+<dt>Conflicts:</dt><dd><p>lib/Config.py</p>
+</dd>
+</dl>
+</li>
+<li><p>Forgot to load plug-ins. [PidgeyL]</p></li>
+<li><p>Add VIA4 source. [PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>VIA4CVE default feed added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #135 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Replace vFeed with VIA4, and modify the API and web server classes for inheritance</p>
+</li>
+<li><p>Bugfixes. [PidgeyL]</p></li>
+<li><p>Fix irc &amp; xmpp bot. [Pieter-Jan Moreels]</p></li>
+<li><p>API modularization (step 1) [PidgeyL]</p></li>
+<li><p>Via4 searchability and linking. [PidgeyL]</p></li>
+<li><p>Visualize via4 data. [PidgeyL]</p></li>
+<li><p>Initial commit via4. [PidgeyL]</p></li>
+<li><p>Merge pull request #209 from rmarsollier/refactoring. [Alexandre
+Dulaunoy]</p>
+<p>refactoring of displaying functions and usage of them in cveid search mode (-c)</p>
+</li>
+<li><p>Refactoring of displaying functions and usage of them in more mode
+(-c) [robin.marsollier]</p></li>
+<li><p>Merge pull request #204 from pombredanne/patch-2. [Alexandre Dulaunoy]</p>
+<p>Create proper __init__.py to make lib a module</p>
+</li>
+<li><p>Create proper __init__.py to make lib a module. [Philippe Ombredanne]</p>
+<p>lib is not a package but is used as such with absolute imports. The proper way is to make this a bona fide package with an __init__.py</p>
+</li>
+<li><p>Merge pull request #208 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>New reference lookup added + bug fixes</p>
+</li>
+<li><p>References database added in the README. [Alexandre Dulaunoy]</p></li>
+<li><p>How to add cross-references. [Alexandre Dulaunoy]</p></li>
+<li><p>Add: more references added. [Alexandre Dulaunoy]</p></li>
+<li><p>Clarification about the initial CPE import that might take some time.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge remote-tracking branch ‘pidgeyl/master’ [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Bugfix #129. [Pieter-Jan Moreels]</p></li>
+<li><p>Try to remove vFeed (step 1) [PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Bugfix database population. [Pieter-Jan Moreels]</p></li>
+<li><p>VFeed replacement. [Pieter-Jan Moreels]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Merge pull request #206 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many bug fixes and clean-up (including the removal of vfeed)</p>
+</li>
+<li><p>Merge pull request #134 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Several bugfixes and minor changes</p>
+</li>
+<li><p>Remove vFeed as a source since it’s not automatable anymore. [PidgeyL]</p></li>
+<li><p>Bugfix for #128. [PidgeyL]</p></li>
+<li><p>Make it possible to hide white&amp;blacklist from unauthenticated users.
+[PidgeyL]</p></li>
+<li><p>Temporarily disable vfeed while looking for alternative sources for
+data. [PidgeyL]</p></li>
+<li><p>Add get option on /r/&lt;int:r&gt; [PidgeyL]</p></li>
+<li><p>Change the way sources are accessed &amp; move sources &amp; make it more
+scalable. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of github.com:cve-search/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #202 from pombredanne/patch-1. [Alexandre Dulaunoy]</p>
+<p>Simplify places to fetch sources in install doc</p>
+</li>
+<li><p>Simplify places to fetch sources in install doc. [Philippe Ombredanne]</p>
+<ul class="simple">
+<li><p>List only cve-search as the place to fetch sources</p></li>
+<li><p>Other forks do not seem entirely up to date</p></li>
+</ul>
+</li>
+<li><p>Merge pull request #132 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>pam style authentication manager + bugfixes</p>
+</li>
+<li><p>Merge remote-tracking branch ‘upstream+/master’ [Pieter-Jan Moreels]</p></li>
+<li><p>Merge pull request #199 from sec9/fix-utf8-encoding-issue. [Alexandre
+Dulaunoy]</p>
+<p>Fix UTF-8 encoding issue when parsing CWE and ExploitDB Files</p>
+</li>
+<li><p>Fix UTF-8 encoding issue when parsing CWE and ExploitDB Files.
+[Sebastien AUCOUTURIER]</p></li>
+<li><p>Clarification regarding the proprietary vfeed database. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #196 from igama/master. [Alexandre Dulaunoy]</p>
+<p>Update NIST Vendor Statements processing</p>
+</li>
+<li><p>Update data format on parsing NIST Vendor Statements. [Marco Silva]</p></li>
+<li><p>Update NIST Vendor Statements url. [Marco Silva]</p></li>
+<li><p>Cve_refs added - first version to lookup NIST ref database. [Alexandre
+Dulaunoy]</p>
+<p>cve_refs.py queries the Redis database where the NIST ref are.</p>
+<p>You can query a CVE id and it will return the known references by NIST.
+If you use the option “-u”, the URL expansion is done. The expansion
+table is not complete and need to be extended. This codes might move
+in the core cve-search library soon.</p>
+<p>python3 cve_refs.py -u -c CVE-2016-3100</p>
+<p>SUSE:openSUSE-SU-2016:1723
+https://bugs.kde.org/show_bug.cgi?id=363140
+https://www.kde.org/info/security/advisory-20160621-1.txt
+https://quickgit.kde.org/?p=kinit.git&amp;a=commitdiff&amp;h=dece8fd89979cd1a86c03bcaceef6e9221e8d8cd
+https://quickgit.kde.org/?p=kinit.git&amp;a=commitdiff&amp;h=72f3702dbe6cf15c06dc13da2c99c864e9022a58
+http://www.kde.com/announcements/kde-frameworks-5.23.0.php
+https://bugs.kde.org/show_bug.cgi?id=358593</p>
+<p>python3 cve_refs.py -c CVE-2016-3100
+CONFIRM:https://www.kde.org/info/security/advisory-20160621-1.txt
+CONFIRM:https://bugs.kde.org/show_bug.cgi?id=358593
+CONFIRM:https://bugs.kde.org/show_bug.cgi?id=363140
+CONFIRM:https://quickgit.kde.org/?p=kinit.git&amp;a=commitdiff&amp;h=72f3702dbe6cf15c06dc13da2c99c864e9022a58
+SUSE:openSUSE-SU-2016:1723
+CONFIRM:https://quickgit.kde.org/?p=kinit.git&amp;a=commitdiff&amp;h=dece8fd89979cd1a86c03bcaceef6e9221e8d8cd
+CONFIRM:http://www.kde.com/announcements/kde-frameworks-5.23.0.php</p>
+</li>
+<li><p>Fix #198. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #194 from igama/master. [Pidgey]</p>
+<p>Variable name should be errors in /r/&lt;int:r&gt;</p>
+</li>
+<li><p>Variable name should be errors in /r/&lt;int:r&gt; [Marco Silva]</p></li>
+<li><p>Merge branch ‘master’ of github.com:cve-search/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Minimal API documentation added. [Alexandre Dulaunoy]</p></li>
+<li><p>Send pending bugfix. [Pieter-Jan Moreels]</p></li>
+<li><p>Incomplete fix for #188. [PidgeyL]</p></li>
+<li><p>Bugfix for #188. [PidgeyL]</p></li>
+<li><p>Add readme for authentication modules. [PidgeyL]</p></li>
+<li><p>Bugfix for Issue #184. [PidgeyL]</p></li>
+<li><p>Fix typo. [PidgeyL]</p></li>
+<li><p>Change shebang from python3.3 to python3 (compatibility) [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream+/master’ [PidgeyL]</p></li>
+<li><p>PluginManager: handling of configuration file. [Jean-Baptiste Maillet]</p>
+<p>Handle spaces as well as tabs, use portable splitlines().</p>
+</li>
+<li><p>Merge pull request #186 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge pull request #183 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #131 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix</p>
+</li>
+<li><p>Merge pull request #130 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfixes</p>
+</li>
+<li><p>Authentication manager. [PidgeyL]</p></li>
+<li><p>Move password hashing to database layer. [PidgeyL]</p></li>
+<li><p>Bugfix multiplier &amp; bugfix kb. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #177 from
+jbmaillet/pip_requirements_web_add_missing. [Alexandre Dulaunoy]</p>
+<p>Add missing Python modules required for web/<a href="#id17"><span class="problematic" id="id18">*</span></a>.py</p>
+</li>
+<li><p>Add missing Python modules required for web/<a href="#id19"><span class="problematic" id="id20">*</span></a>.py. [Jean-Baptiste
+Maillet]</p></li>
+<li><p>Merge pull request #176 from jbmaillet/pip_requirements_add_missing.
+[Alexandre Dulaunoy]</p>
+<p>Add some missing requirements, keeping docs in sync</p>
+</li>
+<li><p>Add some missing requirements, keeping docs in sync. [Jean-Baptiste
+Maillet]</p>
+<p>irc is needed by bin/search_irc.py
+sleekxmpp is needed by bin/search_xmpp.py</p>
+<p>Update relevant documentation files, reordering python modules
+requirements when needed considering the root README.md as the
+reference.</p>
+</li>
+<li><p>Merge pull request #173 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fixed datetime.datetime issue with JSON</p>
+</li>
+<li><p>Merge pull request #129 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix for #172 of the master branch</p>
+</li>
+<li><p>Merge pull request #171 from adulau/master. [Pidgey]</p>
+<p>Bug fix</p>
+</li>
+<li><p>Merge pull request #128 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>re-add import that was accidentally removed</p>
+</li>
+<li><p>Error handling on date issues. [PidgeyL]</p></li>
+<li><p>Update the documentation to explain the plugins.txt error. [PidgeyL]</p></li>
+<li><p>Bugfix for #172 of the master branch. [PidgeyL]</p></li>
+<li><p>Re-add import that was accidentally removed. [PidgeyL]</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-1-2016-06-13">
+<h2>v2.1 (2016-06-13)<a class="headerlink" href="#v2-1-2016-06-13" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Merge pull request #170 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many fixes</p>
+</li>
+<li><p>Merge pull request #127 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Plug-in manager fixes, updates etc</p>
+</li>
+<li><p>Review imports. [PidgeyL]</p></li>
+<li><p>Fix missing changes. [PidgeyL]</p></li>
+<li><p>Merge branch ‘mattoufoutu-master’ [PidgeyL]</p></li>
+<li><p>Merge branch with &#64;mattoufoutu. [PidgeyL]</p></li>
+<li><p>Convert datetime objects to string when dumping db. [MatToufoutu]</p></li>
+<li><p>Convert datetime objects before output + pretty print json when doing
+free search. [MatToufoutu]</p></li>
+<li><p>Make date parsing in webui compatible with db datetime objects.
+[MatToufoutu]</p></li>
+<li><p>CurrentTimeFilter is no longer used. [MatToufoutu]</p></li>
+<li><p>Flask.ext notation is deprecated, use real package name instead.
+[MatToufoutu]</p></li>
+<li><p>Remove unused imports. [MatToufoutu]</p></li>
+<li><p>When running external scripts, use same interpreter as the current
+one. [MatToufoutu]</p></li>
+<li><p>Dates can now be formatted without using a custom filter as they are
+datetime objects. [MatToufoutu]</p></li>
+<li><p>Merge branch ‘master’ of git://github.com/cve-search/cve-search.
+[MatToufoutu]</p></li>
+<li><p>Merge pull request #168 from gitter-badger/gitter-badge. [Alexandre
+Dulaunoy]</p>
+<p>Add a Gitter chat badge to README.md</p>
+</li>
+<li><p>Add Gitter badge. [The Gitter Badger]</p></li>
+<li><p>Merge pull request #167 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many updates and bug fixes in the plug-ins</p>
+</li>
+<li><p>Merge pull request #126 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Add plug-in features, bugfixes and update documentation</p>
+</li>
+<li><p>Merge pull request #125 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Features and fixes</p>
+</li>
+<li><p>Merge pull request #124 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>javascript/jquery bugfix</p>
+</li>
+<li><p>Merge pull request #123 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfix</p>
+</li>
+<li><p>Merge pull request #122 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Compatibiliy bugfix for Flask-PyMongo</p>
+</li>
+<li><p>Dates can’t be implicitely converted to strings, convert explicitely.
+[Mathieu Deous]</p></li>
+<li><p>Make all ./sbin/* scripts executable. [Mathieu Deous]</p></li>
+<li><p>Make all ./bin/* scripts executable. [Mathieu Deous]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/cve-search/cve-search">https://github.com/cve-search/cve-search</a>.
+[Mathieu Deous]</p></li>
+<li><p>Merge pull request #162 from maximilianhuber/fix/repairReadmeExamples.
+[Alexandre Dulaunoy]</p>
+<p>fix(README): examlary calls were broken, i.e. were prefixed by <cite>./python3.3</cite></p>
+</li>
+<li><p>Fix(README): examlary calls were broken, i.e. were prefixed by
+<cite>./python3.3</cite> [maximilianhuber]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/cve-search/cve-search">https://github.com/cve-search/cve-search</a>.
+[Mathieu Deous]</p></li>
+<li><p>Merge upstream. [Mathieu Deous]</p></li>
+<li><p>Create .gitignore file and configure to not track files/folders that
+shouldn’t be. [MatToufoutu]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/cve-search/cve-search">https://github.com/cve-search/cve-search</a>.
+[MatToufoutu]</p></li>
+<li><p>Ignore timezone when parsing date. [Mathieu Deous]</p></li>
+<li><p>Fix mistake when handling last modified date. [Mathieu Deous]</p></li>
+<li><p>Merge upstream changes. [Mathieu Deous]</p></li>
+<li><p>Get last-modified header from new response object. [Mathieu Deous]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/cve-search/cve-search">https://github.com/cve-search/cve-search</a> into
+merge-upstream. [Mathieu Deous]</p>
+<dl class="simple">
+<dt>Conflicts:</dt><dd><p>sbin/db_mgmt.py
+sbin/db_mgmt_capec.py
+sbin/db_mgmt_cpe_dictionary.py
+sbin/db_mgmt_cwe.py
+sbin/db_mgmt_d2sec.py
+sbin/db_mgmt_vendorstatements.py
+sbin/db_mgmt_vfeed.py
+web/index.py
+web/minimal-web.py
+web/static/js/custom/scripts.js</p>
+</dd>
+</dl>
+</li>
+<li><p>Force date conversion to string. [Mathieu Deous]</p></li>
+<li><p>Merge branch ‘master’ of github.com:mattoufoutu/cve-search. [Mathieu
+Deous]</p></li>
+<li><p>Fix datetimes display. [Mathieu Deous]</p></li>
+<li><p>Code format (PEP8 compliance) [Mathieu Deous]</p></li>
+<li><p>Missing semicolons. [Mathieu Deous]</p></li>
+<li><p>Inline variables where possible. [Mathieu Deous]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/wimremes/cve-search">https://github.com/wimremes/cve-search</a>
+(forgotten changes: exit codes) [Mathieu Deous]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/wimremes/cve-search">https://github.com/wimremes/cve-search</a>.
+[Mathieu Deous]</p></li>
+<li><p>Use datetime objects everywhere for last-modified field. [Mathieu
+Deous]</p></li>
+<li><p>ID for page manipulation. [PidgeyL]</p></li>
+<li><p>Allow plug-ins to pass dictionaries as well as the ‘success boolean’
+[PidgeyL]</p></li>
+<li><p>Add error handling. [PidgeyL]</p></li>
+<li><p>Move pluginArgs to a function and fix <a href="#id21"><span class="problematic" id="id22">**</span></a>args missing in search.
+[PidgeyL]</p></li>
+<li><p>Move filters to a subpage and move javascript around. [PidgeyL]</p></li>
+<li><p>Change search format to list of CVEs instead of list of dictionaries
+with cve as ID. [PidgeyL]</p></li>
+<li><p>Bugfix for lists in settings. [PidgeyL]</p></li>
+<li><p>Sort plug-ins in plug-in manager. [PidgeyL]</p></li>
+<li><p>Sort functions for visibility. [PidgeyL]</p></li>
+<li><p>More checkings to prevent plug-in errors. [PidgeyL]</p></li>
+<li><p>More plug-in actions. [PidgeyL]</p></li>
+<li><p>Fix bug where only one instance gets loaded if multiple are given.
+[PidgeyL]</p></li>
+<li><p>Sort plug-ins. [PidgeyL]</p></li>
+<li><p>Make plugin bugs impact cve-search less. [PidgeyL]</p></li>
+<li><p>Bugfix with overlapping html id’s and css rules. [PidgeyL]</p></li>
+<li><p>Add user settings and pass current_user to get_filters in plug-in
+manager. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Update documentation. [Pieter-Jan Moreels]</p></li>
+<li><p>Api only script. [Pieter-Jan Moreels]</p></li>
+<li><p>Remove plug-in related things from the minimal interface. [Pieter-Jan
+Moreels]</p></li>
+<li><p>Plug-in info on admin page. [PidgeyL]</p></li>
+<li><p>Add drop for plug-ins. [PidgeyL]</p></li>
+<li><p>Add ‘change password’ option in web interface. [PidgeyL]</p></li>
+<li><p>Javascript/jquery bugfix. [PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Fix for #124 - right message when auth required. [PidgeyL]</p></li>
+<li><p>Remove forgotten debug code. [PidgeyL]</p></li>
+<li><p>Fix checkbox issue in filter settings. [PidgeyL]</p></li>
+<li><p>Allow ‘bulk update’ of one element. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #161 from mathrock/master. [Alexandre Dulaunoy]</p>
+<p>Fix bug in CPE parsing</p>
+</li>
+<li><p>Fix bug in CPE parsing. [mathrock]</p>
+<p>The current CPE dictionary parsing didn’t catch the end of the ‘title’
+tag and would have extra data in the ‘title’ attribute of the CPE.</p>
+<p>As an example using CVE-2015-7183 from
+<a class="reference external" href="https://cve.circl.lu/api/cve/CVE-2015-7183">https://cve.circl.lu/api/cve/CVE-2015-7183</a>:</p>
+<dl>
+<dt>Currently shows up like this:</dt><dd><dl class="simple">
+<dt>{</dt><dd><p>“id”: “cpe:2.3:a:mozilla:firefox:41.0.2”,
+“title”: “Mozilla Firefox 41.0.2n    n      Vendor”</p>
+</dd>
+</dl>
+<p>},</p>
+</dd>
+<dt>Should be:</dt><dd><dl class="simple">
+<dt>{</dt><dd><p>“id”: “cpe:2.3:a:mozilla:firefox:41.0.2”,
+“title”: “Mozilla Firefox 41.0.2”</p>
+</dd>
+</dl>
+<p>},</p>
+</dd>
+</dl>
+</li>
+<li><p>Merge pull request #159 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes and updates</p>
+</li>
+<li><p>Merge pull request #121 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Small bugfixes and plug-in features</p>
+</li>
+<li><p>Add compatibility bugfix for Flask-PyMongo version 4.x. [PidgeyL]</p></li>
+<li><p>Added sample for plugin.txt. [PidgeyL]</p></li>
+<li><p>Bugfixes. [PidgeyL]</p></li>
+<li><p>Bugfix for dictionaries. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Give more options to functions. [PidgeyL]</p></li>
+<li><p>Show reasons for plug-in failure. [PidgeyL]</p></li>
+<li><p>Bugfix for dicts in p_addToList. [PidgeyL]</p></li>
+</ul>
+</div>
+<div class="section" id="v2-0-2016-05-01">
+<h2>v2.0 (2016-05-01)<a class="headerlink" href="#v2-0-2016-05-01" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>MITRE now serves the files in TLS (config updated) [Alexandre
+Dulaunoy]</p></li>
+<li><p>MITRE now serves the files in TLS (config updated) [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #120 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Several updates and fixes in both index.py and cpeList.py</p>
+</li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Update copyrights. [PidgeyL]</p></li>
+<li><p>Merge pull request #120 from PidgeyL/pluginmanager. [Pidgey]</p>
+<p>extend gitignore</p>
+</li>
+<li><p>.gitignore indexdir. [PidgeyL]</p></li>
+<li><p>Git ignore .gitignore. [PidgeyL]</p></li>
+<li><p>Merge pull request #119 from PidgeyL/pluginmanager. [Pidgey]</p>
+<p>Pluginmanager</p>
+</li>
+<li><p>Move the ‘seen’ functionality to its own plug-in. [PidgeyL]</p></li>
+<li><p>Bugfix in adding entries. [PidgeyL]</p></li>
+<li><p>Remove print(ex) [PidgeyL]</p></li>
+<li><p>Word-wrap pre &amp; add padding. [PidgeyL]</p></li>
+<li><p>Add functionality of subpages. [PidgeyL]</p></li>
+<li><p>Add initial database search for plug-ins. [PidgeyL]</p></li>
+<li><p>Remove custom files from .gitignore. [PidgeyL]</p></li>
+<li><p>Add .gitignore for developer ease. [PidgeyL]</p></li>
+<li><p>Move MISP to a plug-in. [PidgeyL]</p></li>
+<li><p>New plug-in feature. [PidgeyL]</p></li>
+<li><p>Bugfixes, error handling and new function. [PidgeyL]</p></li>
+<li><p>New plug-in manager features + fix function names. [PidgeyL]</p></li>
+<li><p>Remove bookmarks &amp; error handling. [PidgeyL]</p></li>
+<li><p>Initial commit plugin manager. [PidgeyL]</p></li>
+<li><p>Fix absolute/relative path issue. [PidgeyL]</p></li>
+<li><p>Finish moving all statusses to the status file. [PidgeyL]</p></li>
+<li><p>Add statusses of login to statusses.js. [PidgeyL]</p></li>
+<li><p>Merging more responses to statusses.js. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Bugfix and some updates in control panel. [Pieter-Jan Moreels]</p></li>
+<li><p>Update black-/whitelist import &amp; export. [Pieter-Jan Moreels]</p></li>
+<li><p>Merge pull request #154 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fix #147</p>
+</li>
+<li><p>Fix #147. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #146 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Replace syslog modules to logging module (to support Windows)</p>
+</li>
+<li><p>Replace syslog modules to logging module (to support Windows)
+[Alexandre Dulaunoy]</p>
+<p>This is just a quick replacement of syslog to support Windows
+platform. Potential fix for #143.</p>
+</li>
+<li><p>Merge pull request #145 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Major web interface clean-up + some fixes for the minimal part</p>
+</li>
+<li><p>Minimal option. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/adulau/cve-search">https://github.com/adulau/cve-search</a>.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #119 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>fix typo</p>
+</li>
+<li><p>Fix typo. [Pieter-Jan Moreels]</p></li>
+<li><p>Minimal option added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #118 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Some code optimization</p>
+</li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [Pieter-Jan Moreels]</p></li>
+<li><p>Complete master pages. [PidgeyL]</p></li>
+<li><p>Initial commit using master-pages. [PidgeyL]</p></li>
+<li><p>Shorten the update overview. [PidgeyL]</p></li>
+<li><p>Merge pull request #140 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fix: search template must be minimal</p>
+</li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/adulau/cve-search">https://github.com/adulau/cve-search</a>.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #137 from treyka/master. [Pidgey]</p>
+<p>correct misspelling of Wim’s name</p>
+</li>
+<li><p>Correct misspelling of Wim’s name. [Trey Darley]</p></li>
+<li><p>Merge pull request #136 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>vfeed fixes</p>
+</li>
+<li><p>Merge pull request #135 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Added pytz in the requirements (required for MISP module) - Fix #134</p>
+</li>
+<li><p>Merge pull request #131 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Handle exploit definition without ref element to fix #129</p>
+</li>
+<li><p>Merge pull request #130 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>doc and more</p>
+</li>
+<li><p>Merge pull request #128 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>cve-search branch for travis</p>
+</li>
+<li><p>Merge pull request #127 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Python requirements &gt;= 3.3</p>
+</li>
+<li><p>Merge pull request #126 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Travis test added</p>
+</li>
+<li><p>Merge pull request #125 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>MISP support + bug fixes</p>
+</li>
+<li><p>Bug fix: minimal template must be used for the search too. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #117 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Fix for #134 (master repo)</p>
+</li>
+<li><p>Update search to search through vFeed IDs. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Update requirements. [PidgeyL]</p></li>
+<li><p>Added pytz in the requirements (required for MISP module) - Fix #134.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Handle exploit definition without ref element to fix #129. [Alexandre
+Dulaunoy]</p>
+<p>XML document of d2sec can have exploit without any reference.</p>
+</li>
+<li><p>Merge pull request #116 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>add documentation in markdown &amp; remove unused config variable</p>
+</li>
+<li><p>Fix links. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Cve-search branch for travis. [Alexandre Dulaunoy]</p></li>
+<li><p>Python requirements &gt;= 3.3. [Alexandre Dulaunoy]</p></li>
+<li><p>Travis build status added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #115 from Rafiot/travis. [Alexandre Dulaunoy]</p>
+<p>Add initial Travis file</p>
+</li>
+<li><p>Add initial Travis file. [Raphaël Vinot]</p></li>
+<li><p>Merge pull request #114 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfix + new features</p>
+</li>
+<li><p>Remove presentation (moved to separate repo) [PidgeyL]</p></li>
+<li><p>Remove unused variable. [PidgeyL]</p></li>
+<li><p>Add markdown documentation. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [Pieter-Jan Moreels]</p></li>
+<li><p>Update freetext to be mongo 3 compatible ( #124 ) [Pidgey]</p></li>
+<li><p>Merge pull request #119 from pchaigno/fix-paths-readme. [Alexandre
+Dulaunoy]</p>
+<p>Fix paths to scripts in README</p>
+</li>
+<li><p>Fix path to scripts in README. [Paul Chaignon]</p></li>
+<li><p>Merge pull request #118 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>jq example fixed</p>
+</li>
+<li><p>Merge pull request #115 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>-o option added - to group search query by OR clause</p>
+</li>
+<li><p>Merge pull request #114 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Commit missing part to Fix #97</p>
+</li>
+<li><p>Merge pull request #113 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fixed #112</p>
+</li>
+<li><p>Merge pull request #110 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Updated with the general logo, added the public cve-search demo site.</p>
+</li>
+<li><p>Merge pull request #109 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fix issue #113 when cvssList is emtpy</p>
+</li>
+<li><p>Merge pull request #108 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various updates and fixes</p>
+</li>
+<li><p>Merge pull request #107 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fix #97 - get index path from Configuration</p>
+</li>
+<li><p>Merge pull request #106 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CWS and CAPEC support added</p>
+</li>
+<li><p>Merge pull request #105 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Database abstraction layer added</p>
+</li>
+<li><p>Merge pull request #104 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>More DB abstraction</p>
+</li>
+<li><p>Add pymisp requirement. [Pidgey]</p></li>
+<li><p>Remove unneeded vars. [Pieter-Jan Moreels]</p></li>
+<li><p>Undo accidental code commit. [Pieter-Jan Moreels]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Jq -r -&gt; jq -c. [Alexandre Dulaunoy]</p></li>
+<li><p>Fix the Brucon presentation regarding #117. [Alexandre Dulaunoy]</p></li>
+<li><p>Add misp to updater. [PidgeyL]</p></li>
+<li><p>Allow searching on MISP info. [PidgeyL]</p></li>
+<li><p>Misp info on cve page. [PidgeyL]</p></li>
+<li><p>Misp database updater. [PidgeyL]</p></li>
+<li><p>Basic implementation of misp info. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>-o option added - to group search query by OR clause. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Commit missing part to Fix #97. [Alexandre Dulaunoy]</p></li>
+<li><p>Fixed #112. [Alexandre Dulaunoy]</p></li>
+<li><p>Updated with the general logo, added the public cve-search demo site.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Fix issue #113 when cvssList is emtpy. [Alexandre Dulaunoy]</p></li>
+<li><p>DbInfo fixed in minimal web interface. [Alexandre Dulaunoy]</p></li>
+<li><p>Output a meaningful message when Redis is not running. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #112 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfix + new features</p>
+</li>
+<li><p>Bugfix for empty bulk operations. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Make db stats queryable via api. [PidgeyL]</p></li>
+<li><p>Fix #97 - get index path from Configuration. [Alexandre Dulaunoy]</p>
+<p>fulltext search client didn’t use the configuration parameters
+to get the index path. This is now fixed.</p>
+</li>
+<li><p>Fix ssl cert path issue. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Mininal web interface: menu clarified. [Alexandre Dulaunoy]</p></li>
+<li><p>Fixed CAPEC and CWE view for the minimal web interface. [Alexandre
+Dulaunoy]</p></li>
+<li><p>CWE internal link updated. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #111 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Missed links on minimal.py</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #110 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>CWE &amp; CAPEC Browser</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #108 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>urgent bugfixes</p>
+</li>
+<li><p>Merge pull request #107 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>finalizing the database layer</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #106 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Updates + bugfixes</p>
+</li>
+<li><p>Merge pull request #103 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various updates and fixes</p>
+</li>
+<li><p>Merge pull request #102 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Exploit databased added in cve-search</p>
+</li>
+<li><p>Merge pull request #101 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Minor fixes</p>
+</li>
+<li><p>Merge pull request #100 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>No more default CVSS value when no CVSS are set for a CVE.</p>
+</li>
+<li><p>Merge pull request #99 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fix the NIST issue where NVD data feed is only accesible in gzip format.</p>
+</li>
+<li><p>Merge pull request #96 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Remove _id from ranking output</p>
+</li>
+<li><p>Merge pull request #95 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fix #89 following</p>
+</li>
+<li><p>Merge pull request #94 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CVSS float issue fixed in dump and JSON output for CPE search</p>
+</li>
+<li><p>Merge pull request #91 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Initial version of a CVE converter to asciidoc</p>
+</li>
+<li><p>Merge pull request #90 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Db layers changed from PJ merged</p>
+</li>
+<li><p>Merge pull request #86 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>API update</p>
+</li>
+<li><p>Merge pull request #83 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge pull request #81 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various updates and fixes</p>
+</li>
+<li><p>Merge pull request #80 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Updates + new NIST ref database + MS bulleting database</p>
+</li>
+<li><p>Merge pull request #77 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Web interface updates and bug fixes</p>
+</li>
+<li><p>Merge pull request #76 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Web interface updates</p>
+</li>
+<li><p>Merge pull request #73 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Proxy support added + browser fixed</p>
+</li>
+<li><p>Merge pull request #72 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various updates</p>
+</li>
+<li><p>View last update in web interface. [PidgeyL]</p></li>
+<li><p>Log updates. [Pieter-Jan Moreels]</p></li>
+<li><p>Missed links on minimal.py. [PidgeyL]</p></li>
+<li><p>Add browser to minimal. [PidgeyL]</p></li>
+<li><p>Link CAPEC from within CVE. [PidgeyL]</p></li>
+<li><p>Implementation CAPEC and CWE browsing. [PidgeyL]</p></li>
+<li><p>Initial commit cwe. [PidgeyL]</p></li>
+<li><p>Add minimal updater function. [Pieter-Jan Moreels]</p></li>
+<li><p>Bugfixes. [PidgeyL]</p></li>
+<li><p>Missed in last commit. [Pieter-Jan Moreels]</p></li>
+<li><p>Final database abstraction. [Pieter-Jan Moreels]</p></li>
+<li><p>More database layer abstracton. [Pieter-Jan Moreels]</p></li>
+<li><p>More abstraction. [Pieter-Jan Moreels]</p></li>
+<li><p>Bugfix + more abstraction. [Pieter-Jan Moreels]</p></li>
+<li><p>Fix typo. [Pieter-Jan Moreels]</p></li>
+<li><p>More database stuff. [PidgeyL]</p></li>
+<li><p>Cleaning-up and bugfixes. [PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>More database abstraction. [Pieter-Jan Moreels]</p></li>
+<li><p>More database abstraction. [Pieter-Jan Moreels]</p></li>
+<li><p>Reduce code size. [Pieter-Jan Moreels]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [Pieter-Jan Moreels]</p></li>
+<li><p>Db_mgmt_exploitdb.py: verbose mode added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #105 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>More database layer abstraction + initial starring</p>
+</li>
+<li><p>Bugfix file selector. [Pieter-Jan Moreels]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #113 from tunkaflux/patch-3. [Pidgey]</p>
+<p>Small bugfix</p>
+</li>
+<li><p>Small bugfix. [laurensv]</p>
+<p>This fixes:</p>
+<p>Starting capec
+Traceback (most recent call last):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>File “/home/laurens/Source/cve-search/sbin/db_mgmt_capec.py”, line 172, in &lt;module&gt;</dt><dd><p>i = dbLayer.getLastModified(‘capec’)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>NameError: name ‘dbLayer’ is not defined
+capec has 463 elements (0 update)</p>
+<p>When doing ‘’’python3 ./db_updater.py -c -i -v’’’</p>
+</li>
+<li><p>More db layer abstraction + bugfix import/export. [PidgeyL]</p></li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>Added bookmarks page. [Pieter-Jan Moreels]</p></li>
+<li><p>Bugfixes. [PidgeyL]</p></li>
+<li><p>Merge. [PidgeyL]</p></li>
+<li><p>Number of collections updated. [Alexandre Dulaunoy]</p></li>
+<li><p>Exploit database added. [Alexandre Dulaunoy]</p></li>
+<li><p>Exploit database import added in configuration. [Alexandre Dulaunoy]</p></li>
+<li><p>First version of exploit database import script. [Alexandre Dulaunoy]</p>
+<p>The script import the exploit database into a new database exploitdb.</p>
+<p>The link between the exploitdb id and the cve will be done with the
+NIST ref database.</p>
+</li>
+<li><p>Cleanup. [Alexandre Dulaunoy]</p></li>
+<li><p>Fail safe if content-type is not gzip. [Alexandre Dulaunoy]</p></li>
+<li><p>No more default CVSS value when no CVSS are set for a CVE. [Alexandre
+Dulaunoy]</p>
+<p>This should fix #93.</p>
+<p>As the default CVSS feature seems not to be used, it will be removed
+too.</p>
+</li>
+<li><p>Fetch compressed NIST cvedb files only. Fix #98. [Alexandre Dulaunoy]</p></li>
+<li><p>NIST vendor statement not more available in uncompressed format.
+[Alexandre Dulaunoy]</p></li>
+<li><p>GetFile method can download compressed files via compressed argument.
+[Alexandre Dulaunoy]</p>
+<p>default (False) is to fetch uncompressed file.</p>
+<p>Related to issue #98</p>
+</li>
+<li><p>Only fetch NIST dump in gzip format when populating  due to:
+[Alexandre Dulaunoy]</p>
+<p>“Effective October 16, 2015 the XML data feeds will no longer be
+available for download in an uncompressed format.”</p>
+<p><a class="reference external" href="https://nvd.nist.gov/Data-Feeds/datafeedinfo">https://nvd.nist.gov/Data-Feeds/datafeedinfo</a></p>
+<p>Reported by &#64;Grazfather - Fix #98</p>
+</li>
+<li><p>More database stuff. [PidgeyL]</p></li>
+<li><p>More database layer stuff. [PidgeyL]</p></li>
+<li><p>Bugfix. [Pieter-Jan Moreels]</p></li>
+<li><p>Bugfix. [Pieter-Jan Moreels]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Pres added. [Alexandre Dulaunoy]</p></li>
+<li><p>Remove _id from ranking output. [Alexandre Dulaunoy]</p></li>
+<li><p>Fix #89 following. [Alexandre Dulaunoy]</p>
+<p><a class="reference external" href="https://github.com/maxcountryman/flask-login/issues/230">https://github.com/maxcountryman/flask-login/issues/230</a></p>
+</li>
+<li><p>Show bookmarks in index.html. [PidgeyL]</p></li>
+<li><p>Database abstraction. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Bugfix. [Pieter-Jan Moreels]</p></li>
+<li><p>Merge pull request #111 from tunkaflux/patch-2. [Pidgey]</p>
+<p>Small bugfix</p>
+</li>
+<li><p>Small bugfix. [laurensv]</p>
+<p>Small bugfix to import :) This fixes:</p>
+<p>Starting redis-cache-cpe
+redis-cache-cpe updated
+Starting d2sec
+Traceback (most recent call last):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>File “/home/laurens/Source/cve-search/sbin/db_mgmt_d2sec.py”, line 22, in &lt;module&gt;</dt><dd><p>import DatabaseLayer as dbLayer</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>ImportError: No module named ‘DatabaseLayer’
+d2sec has 246 elements (0 update)</p>
+</li>
+<li><p>Initial commit starring. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>CVSS casting to float. [Alexandre Dulaunoy]</p></li>
+<li><p>JSON output added to CPE search. [Alexandre Dulaunoy]</p></li>
+<li><p>Initial version of a CVE converter to asciidoc. [Alexandre Dulaunoy]</p>
+<p>The asciidoc file can be converted to any format supported by
+an asciidoc parser. The CVE is fetched via the standard web API
+(so it can be used in standalone mode).</p>
+<p>You can generate an HTML file from the asciidoc:</p>
+<p>python3 cve_doc.py  -c CVE-2015-0003 | asciidoctor - &gt;test.html</p>
+</li>
+<li><p>Merge pull request #99 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Initial work on Database Layer remodelling</p>
+</li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #110 from tunkaflux/patch-1. [Pidgey]</p>
+<p>Update defaultHead.html</p>
+</li>
+<li><p>Update defaultHead.html. [laurensv]</p>
+<p>This fixes the 404 error message in the logs when IE tries to load that Javascript file.</p>
+</li>
+<li><p>More database abstraction. [PidgeyL]</p></li>
+<li><p>Remove unused imports &amp; bug. [PidgeyL]</p></li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Remove unneeded imports, vars and the like. [PidgeyL]</p></li>
+<li><p>Bugfix: missing import. [PidgeyL]</p></li>
+<li><p>Bugfix search page minimal. [PidgeyL]</p></li>
+<li><p>Fully implement dblayer in minimal.py. [PidgeyL]</p></li>
+<li><p>Complete dblayer in index.py. [PidgeyL]</p></li>
+<li><p>Fix merge. [PidgeyL]</p></li>
+<li><p>Bugfix with typos. [PidgeyL]</p></li>
+<li><p>Bugfixes. [PidgeyL]</p></li>
+<li><p>Typo fix. [PidgeyL]</p></li>
+<li><p>Bugfix database layer None Type. [PidgeyL]</p></li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Dump last 30 entries in JSON (via the API). [Alexandre Dulaunoy]</p>
+<p>API /api/last dump in JSON the last 30 updated entries of CVE.
+The entries are expanded including CPE, CAPEC and CWE.</p>
+</li>
+<li><p>Remove ObjectID from last entries dump. [Alexandre Dulaunoy]</p></li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>More database layer abstraction. [PidgeyL]</p></li>
+<li><p>More database abstraction. [PidgeyL]</p></li>
+<li><p>More database abstraction. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #98 from psychedelys/master. [Alexandre Dulaunoy]</p>
+<p>MS feed seem to be only available as xlsx and not anymore as xls</p>
+</li>
+<li><p>Now seem to be only available as xlsx. [psychedelys]</p></li>
+<li><p>Merge pull request #97 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes</p>
+</li>
+<li><p>Bugfix html output. [PidgeyL]</p></li>
+<li><p>Debug debug output ;) [PidgeyL]</p></li>
+<li><p>Debug debug output ;) [PidgeyL]</p></li>
+<li><p>Merge pull request #96 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Little tweaks</p>
+</li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #95 from psychedelys/master. [Alexandre Dulaunoy]</p>
+<p>move sme ‘./tmp/’ to config file.</p>
+</li>
+<li><p>Shebang standardisation. [psychedelys]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [psychedelys]</p></li>
+<li><p>Merge pull request #94 from psychedelys/master. [Alexandre Dulaunoy]</p>
+<p>fetch with std methods</p>
+</li>
+<li><p>Move the ‘./tmp/’ from some script to a config value. [psychedelys]</p></li>
+<li><p>Using the Configuration.getFile instead of urlopen for the proxy if
+needed. [psychedelys]</p></li>
+<li><p>Lxml requirement added. [Alexandre Dulaunoy]</p></li>
+<li><p>Remove prints and add more info to default page. [PidgeyL]</p></li>
+<li><p>Better overview failed indexes. [PidgeyL]</p></li>
+<li><p>Minimal getref method to list all known NIST references. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Redis databases documented. [Alexandre Dulaunoy]</p></li>
+<li><p>Verbose mode added as an option. [Alexandre Dulaunoy]</p></li>
+<li><p>Db_mgmt_ref.py added in the updater (Redis required) [Alexandre
+Dulaunoy]</p></li>
+<li><p>First working version of the NIST ref importer into Redis (db 12)
+[Alexandre Dulaunoy]</p></li>
+<li><p>Redis RefDB - getRedisRefConnection function added. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Redis database 12 is reserved for RefDB. [Alexandre Dulaunoy]</p></li>
+<li><p>Microsoft bulletins added in the documentation. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #92 from chervaliery/master. [Alexandre Dulaunoy]</p>
+<p>Add MS-Bulletin</p>
+</li>
+<li><p>Add MS-Bulletin. [Yoann Chevalier]</p>
+<p>Get ms-bulletin from Microsoft and add them in the collection ‘ms’
+New requirement xlrd to parse xls</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #91 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Fulltext search in minimal + fix typo in doc</p>
+</li>
+<li><p>Merge pull request #90 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>documentation for fulltext search</p>
+</li>
+<li><p>Mgmt ref downloader added. [Alexandre Dulaunoy]</p></li>
+<li><p>Initial commit database layer. [PidgeyL]</p></li>
+<li><p>Fix typo in documentation. [Pieter-Jan]</p></li>
+<li><p>Add full text search to minimal. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #89 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfixes and remove unneeded code</p>
+</li>
+<li><p>Merge pull request #88 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>continuation POST to AJAX + important bugfix</p>
+</li>
+<li><p>Merge pull request #87 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>replace posts with ajax requests</p>
+</li>
+<li><p>Merge pull request #86 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes</p>
+</li>
+<li><p>Bugfix clearing fields after adding item to black/whitelist. [PidgeyL]</p></li>
+<li><p>Documentation for fulltext search. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Bugfix. [Pieter-Jan]</p></li>
+<li><p>Fulltext search on database. [PidgeyL]</p></li>
+<li><p>Remove unneeded class. [PidgeyL]</p></li>
+<li><p>Continuation POST to AJAX + important bugfix. [PidgeyL]</p></li>
+<li><p>Fix incomplete commit. [PidgeyL]</p></li>
+<li><p>Replace posts with ajax requests. [PidgeyL]</p></li>
+<li><p>Update. [PidgeyL]</p></li>
+<li><p>Merge pull request #85 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>vFeed info in cvesfor</p>
+</li>
+<li><p>Fixed pull request #84 - test case of proxy configuration. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #84 from psychedelys/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix on pager + added the http proxy support.</p>
+</li>
+<li><p>Implementation http proxy for db_mgmt process. [Psychedelys]</p></li>
+<li><p>Bugfix: broken pager. [Psychedelys]</p></li>
+<li><p>Merge remote-tracking branch ‘cherval/capec-structure’ [Alexandre
+Dulaunoy]</p></li>
+<li><p>Change the CAPEC structure. [Yoann Chevalier]</p>
+<p>The summary, prerequisites and solutions were saved in array. This was useless, a simple text field is more convenient.</p>
+</li>
+<li><p>Merge pull request #69 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes, updates and improvement</p>
+</li>
+<li><p>Merge pull request #83 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Initial commit of moving functions like adding/removing items from white/blacklists to AJAX requests</p>
+</li>
+<li><p>Merge pull request #82 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfixes</p>
+</li>
+<li><p>Merge pull request #81 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>seen CVEs per user</p>
+</li>
+<li><p>Merge pull request #106 from PidgeyL/development. [Pieter-Jan]</p>
+<p>several bugfixes</p>
+</li>
+<li><p>Several bugfixesé. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #105 from PidgeyL/development. [Pieter-Jan]</p>
+<p>initial commit moving funtions to ajax</p>
+</li>
+<li><p>Initial commit moving funtions to ajax. [PidgeyL]</p></li>
+<li><p>Bugfix for pymongo3. [PidgeyL]</p></li>
+<li><p>Mark linked items. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of github.com:wimremes/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #68 from timeemit/authentication. [Alexandre
+Dulaunoy]</p>
+<p>Mongo authentication</p>
+</li>
+<li><p>Provide auth credentials on when provided. [TimeEmit]</p></li>
+<li><p>URL Escape the username and password. [TimeEmit]</p></li>
+<li><p>Mongo authentication. [TimeEmit]</p></li>
+<li><p>Merge pull request #67 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes and initial code for NIST reference</p>
+</li>
+<li><p>Merge pull request #66 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Enhanced output of the web admin part</p>
+</li>
+<li><p>Merge pull request #65 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fix</p>
+</li>
+<li><p>Merge pull request #63 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fix #62</p>
+</li>
+<li><p>Merge pull request #61 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various updates</p>
+</li>
+<li><p>Merge pull request #60 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge pull request #59 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many updates</p>
+</li>
+<li><p>Merge pull request #54 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes and updates</p>
+</li>
+<li><p>Merge pull request #52 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CPE 2.2 and 2.3 support - XMPP support extended</p>
+</li>
+<li><p>Merge pull request #51 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>XMPP client updated</p>
+</li>
+<li><p>Merge pull request #50 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Major update of the directory structure</p>
+</li>
+<li><p>Merge pull request #49 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Web JSON API added + Flush database option + various fixes</p>
+</li>
+<li><p>Merge pull request #46 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge pull request #44 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many updates</p>
+</li>
+<li><p>Merge pull request #42 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes and updates</p>
+</li>
+<li><p>Merge pull request #40 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many fixes and PEP-8 cleanup</p>
+</li>
+<li><p>Merge pull request #38 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Merge of downstream and upstream pulls + fixes</p>
+</li>
+<li><p>_id removed from the return list. [Alexandre Dulaunoy]</p></li>
+<li><p>Help clarified for the top terms used. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fix: Exit if the Whoosh index is locked. [Alexandre Dulaunoy]</p></li>
+<li><p>Help regarding full indexing added (0 to index all) [Alexandre
+Dulaunoy]</p></li>
+<li><p>Empty rankings are discarded. [Alexandre Dulaunoy]</p></li>
+<li><p>Don’t add ranking if ranking is empty. [Alexandre Dulaunoy]</p></li>
+<li><p>-l option added to limit the number of elements (default: unlimited)
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #80 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Fix progress bar issue</p>
+</li>
+<li><p>Merge pull request #104 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Completion seen/unseen. [PidgeyL]</p></li>
+<li><p>Implementation mark seen. [PidgeyL]</p></li>
+<li><p>Remove test data. [PidgeyL]</p></li>
+<li><p>Implementation ‘seen’ on opened cves. [PidgeyL]</p></li>
+<li><p>Bugfix placeholder _dummy_ [PidgeyL]</p></li>
+<li><p>Initial commit ‘seen’ status. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>NIST CVE Reference Key/Maps added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #79 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Console output feature for the web interface</p>
+</li>
+<li><p>NIST Reference Map URL added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #103 from PidgeyL/development. [Pieter-Jan]</p>
+<p>remove progress bar from console output</p>
+</li>
+<li><p>Remove progress bar from console output. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #78 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix by &#64;rlintu</p>
+</li>
+<li><p>Merge pull request #77 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix</p>
+</li>
+<li><p>Merge pull request #76 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Error Handling</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #75 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>searching for CVEs case insensitive</p>
+</li>
+<li><p>Import cpeother database in Redis cache (-o option added) [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #74 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Better pager</p>
+</li>
+<li><p>Merge pull request #102 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Enhance output console. [PidgeyL]</p></li>
+<li><p>Output of console in admin pannel. [PidgeyL]</p></li>
+<li><p>Include vfeed info to cvesfor, allowing tools using the api more
+options. [PidgeyL]</p></li>
+<li><p>Merge pull request #101 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Bugfix by &#64;rlintu</p>
+</li>
+<li><p>Bugfix by &#64;rlintu. [PidgeyL]</p></li>
+<li><p>Merge pull request #100 from PidgeyL/development. [Pieter-Jan]</p>
+<p>bugfix empty collections</p>
+</li>
+<li><p>Bugfix empty collections. [PidgeyL]</p></li>
+<li><p>Merge pull request #99 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Remove excess code. [PidgeyL]</p></li>
+<li><p>#87 error handling on no/bad internet connection and invalid urls.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #96 from PidgeyL/development. [Pieter-Jan]</p>
+<p>make searching for cves case insensitive</p>
+</li>
+<li><p>Make searching for cves case insensitive. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #73 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>fix javascript pager bug</p>
+</li>
+<li><p>Merge pull request #72 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Extend pager to browe faster</p>
+</li>
+<li><p>Merge pull request #71 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Merge pull request #95 from PidgeyL/development. [Pieter-Jan]</p>
+<p>update better pager</p>
+</li>
+<li><p>Update better pager. [PidgeyL]</p></li>
+<li><p>Merge pull request #94 from PidgeyL/development. [Pieter-Jan]</p>
+<p>fix javascript pager bug</p>
+</li>
+<li><p>Fix javascript pager bug. [PidgeyL]</p></li>
+<li><p>Merge pull request #93 from PidgeyL/development. [Pieter-Jan]</p>
+<p>pager update #21</p>
+</li>
+<li><p>Pager update #21. [PidgeyL]</p></li>
+<li><p>Gracious shutdown. [PidgeyL]</p></li>
+<li><p>Remove unused imports. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Https URLs. [Alexandre Dulaunoy]</p></li>
+<li><p>/r/ is used from client side (JS/POST) and Bot via GET. [Alexandre
+Dulaunoy]</p></li>
+<li><p>/r/ can be GET request too. [Alexandre Dulaunoy]</p></li>
+<li><p>Initial commit irc search bot. [PidgeyL]</p></li>
+<li><p>Abstract query code for esier implementation. [PidgeyL]</p></li>
+<li><p>Fix structure change bug. [PidgeyL]</p></li>
+<li><p>Merge upstream. [PidgeyL]</p></li>
+<li><p>(temp) Bug fix: replace HTML/XML encoded value of “!” with nothing.
+[Alexandre Dulaunoy]</p>
+<p>Like “joomla%21” -&gt; “joomla”</p>
+<p>Maybe this needs to be reviewed at the import process to ensure
+the XML elements encoded are properly encoded also in the Redis cache.</p>
+</li>
+<li><p>About box added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #69 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>File structure</p>
+</li>
+<li><p>Merge pull request #92 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Encoding and decoding in webpages. [PidgeyL]</p></li>
+<li><p>Update “current supported commands” list. [PidgeyL]</p></li>
+<li><p>Fix bug caused by structure update. [PidgeyL]</p></li>
+<li><p>Merge pull request #91 from PidgeyL/development. [Pieter-Jan]</p>
+<p>file structure update</p>
+</li>
+<li><p>File structure update. [PidgeyL]</p></li>
+<li><p>Fix imports. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Javascript fixed to not get undeclared elements. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #68 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Duplicate code removal</p>
+</li>
+<li><p>Merge pull request #67 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Satisfy pyflakes. [PidgeyL]</p></li>
+<li><p>Extract functions to avoid duplicate code. [PidgeyL]</p></li>
+<li><p>Test padding. [PidgeyL]</p></li>
+<li><p>Add cpe 2.3 to 2.2 to api. [PidgeyL]</p></li>
+<li><p>Bugfix for ‘empty collection’ [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Minimal navbar updated. [Alexandre Dulaunoy]</p></li>
+<li><p>Linked minimal template added. [Alexandre Dulaunoy]</p></li>
+<li><p>Linked minimal added. [Alexandre Dulaunoy]</p></li>
+<li><p>Minimal templates added. [Alexandre Dulaunoy]</p></li>
+<li><p>First minimal web interface for cve-search. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #66 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Merge pull request #90 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Api for backwards translation. [PidgeyL]</p></li>
+<li><p>Backwards translation of CPE 2.3 to 2.2. [PidgeyL]</p></li>
+<li><p>Backwards translation of CPE 2.3 to 2.2. [PidgeyL]</p></li>
+<li><p>Initial commit backwards translation. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #89 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Fix 10.1 on complete impact. [PidgeyL]</p></li>
+<li><p>Cpe 2.2 to 2.3 api url. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Fix #65. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #64 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Error Handling</p>
+</li>
+<li><p>Fix path issue. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #88 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Error Handling</p>
+</li>
+<li><p>Error Handling. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Skip on empty collections. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #63 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Error Handling</p>
+</li>
+<li><p>Make api understand both cpe formats. [PidgeyL]</p></li>
+<li><p>Api plugin to get cves for cpe. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #62 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>XMPP&lt;-&gt;API browse, search and get options added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #86 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Add path for admin (ease of access) [PidgeyL]</p></li>
+<li><p>Error handling. [PidgeyL]</p></li>
+<li><p>Merge pull request #85 from PidgeyL/development. [Pieter-Jan]</p>
+<p>add keyword feature to commandline</p>
+</li>
+<li><p>Add keyword feature to commandline. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #61 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes + new features</p>
+</li>
+<li><p>-l and -f are conflictual. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #60 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Merge pull request #84 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Allow adding keywords. [PidgeyL]</p></li>
+<li><p>Bugfix new cpe format redis cache. [PidgeyL]</p></li>
+<li><p>Bugfix redis cache. [PidgeyL]</p></li>
+<li><p>Change function names. [PidgeyL]</p></li>
+<li><p>Update cpe regex. [PidgeyL]</p></li>
+<li><p>Bugfix cpeold. [PidgeyL]</p></li>
+<li><p>Merge pull request #83 from PidgeyL/development. [Pieter-Jan]</p>
+<p>bugfix</p>
+</li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Bugfix new CPE. [PidgeyL]</p></li>
+<li><p>Merge pull request #82 from PidgeyL/test. [Pieter-Jan]</p>
+<p>Test</p>
+</li>
+<li><p>Merge master. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #81 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Fix merge. [PidgeyL]</p></li>
+<li><p>Bugfixes and CPE update. [PidgeyL]</p></li>
+<li><p>Bugfix for empty collection. [PidgeyL]</p></li>
+<li><p>Xmpp: -m option add to limit the range of elements. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Search command removed. [Alexandre Dulaunoy]</p>
+<p>Search command removed was too buggy. The command will be added
+again when a clean API is available for the full-text search via
+the local indexer.</p>
+</li>
+<li><p>Search ordered by Modified field. [Alexandre Dulaunoy]</p></li>
+<li><p>-4 option added to disable IPv6 connectivity (enabled by default)
+[Alexandre Dulaunoy]</p></li>
+<li><p>CVSS typo (CSS -&gt;CVSS) in the table head. [Alexandre Dulaunoy]</p></li>
+<li><p>-f option explained - repopulate all cve-search collections.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #57 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Update to new cpe format. [PidgeyL]</p></li>
+<li><p>Bugfix for empty collection. [PidgeyL]</p></li>
+<li><p>Test branch. [PidgeyL]</p></li>
+<li><p>Move file structure. [PidgeyL]</p></li>
+<li><p>CVSS sub score bugfix. [PidgeyL]</p></li>
+<li><p>Fix moving scripts to bin folder. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>API: HTTP GET method only. [Alexandre Dulaunoy]</p></li>
+<li><p>Bugfix for bug created in ff9389a3b68b2368c10ed31aa2073852b6064723.
+[PidgeyL]</p></li>
+<li><p>Bugfix with trying to decode strings. [PidgeyL]</p></li>
+<li><p>Bug fixed - f was out of scope. [Alexandre Dulaunoy]</p></li>
+<li><p>Condition fixed. [Alexandre Dulaunoy]</p></li>
+<li><p>-f option: drop metadata about download and force CVE new population.
+[Alexandre Dulaunoy]</p></li>
+<li><p>-f option added - drop all collections. [Alexandre Dulaunoy]</p>
+<p>The -f option is required when the datastore structure changed or
+new elements are supported by cve-search. As there is no specific
+user information in the database, if the data sources are available,
+no data should be lost. The import can take sometime.</p>
+</li>
+<li><p>Change file structure. [PidgeyL]</p></li>
+<li><p>CVSS Sub scores added. [PidgeyL]</p></li>
+<li><p>Bugfix with trying to decode strings. [PidgeyL]</p></li>
+<li><p>Bugfix for bug created in ff9389a3b68b2368c10ed31aa2073852b6064723.
+[PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Minimal API documentation added. [Alexandre Dulaunoy]</p></li>
+<li><p>Redis clean-up : UTF-8 encoding at the library level. [Alexandre
+Dulaunoy]</p></li>
+<li><p>CAPEC collection added in the documentation. [Alexandre Dulaunoy]</p></li>
+<li><p>API: /api/search/&lt;vendor&gt;/&lt;path:product&gt; added. [Alexandre Dulaunoy]</p></li>
+<li><p>API: /api/browse and /api/browse/vendor added. [Alexandre Dulaunoy]</p></li>
+<li><p>Redis cache: ensure that responses are UTF-8 encoded. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #55 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes</p>
+</li>
+<li><p>Merge pull request #54 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development</p>
+</li>
+<li><p>Merge pull request #80 from PidgeyL/development. [Pieter-Jan]</p>
+<p>change file structure for better overview</p>
+</li>
+<li><p>Change file structure for better overview. [PidgeyL]</p></li>
+<li><p>Update ‘last modified’ after succesful script run + commenting.
+[PidgeyL]</p></li>
+<li><p>Bugzilla confirmed bugfix. [PidgeyL]</p></li>
+<li><p>Fix bad merge. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>JSON API /api/cve/&lt;cveid&gt; added. [Alexandre Dulaunoy]</p></li>
+<li><p>Do not expose ObjectID to getcve() and getcapec() [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #53 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Merge pull request #78 from PidgeyL/development. [Pieter-Jan]</p>
+<p>fix bad merge</p>
+</li>
+<li><p>Fix bad merge. [PidgeyL]</p></li>
+<li><p>Merge pull request #77 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Update merge. [PidgeyL]</p></li>
+<li><p>Initial commit cpe formalization. [PidgeyL]</p></li>
+<li><p>Remove vfeed prefix in web ui for better visibility. [PidgeyL]</p></li>
+<li><p>Automatically create clickable urls from vfeed urls. [PidgeyL]</p></li>
+<li><p>Fix bugzilla field. [PidgeyL]</p></li>
+<li><p>Re-arrange order so cpeOther isn’t always one cycle later. [PidgeyL]</p></li>
+<li><p>Merge update. [PidgeyL]</p></li>
+<li><p>Merge update. [PidgeyL]</p></li>
+<li><p>Add placeholder to allow merge. [PidgeyL]</p></li>
+<li><p>Update linked items with new vFeed format. [PidgeyL]</p></li>
+<li><p>Update web ui for new vFeed sorting. [PidgeyL]</p></li>
+<li><p>Grouping vFeed maps. [PidgeyL]</p></li>
+<li><p>Black/whitelisting on target hard/software. [PidgeyL]</p></li>
+<li><p>Remove useless var + Copy2Clip text. [PidgeyL]</p></li>
+<li><p>Merge upstream. [PidgeyL]</p></li>
+<li><p>Remove the phantom getBlackRules - maybe associated functions need to
+be removed too. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #52 from Rafiot/PEP8. [Alexandre Dulaunoy]</p>
+<p>Make PEP8 happy.</p>
+</li>
+<li><p>Make PEP8 happy. [Raphaël Vinot]</p></li>
+<li><p>Merge pull request #75 from PidgeyL/development. [Pieter-Jan]</p>
+<p>bugfixes</p>
+</li>
+<li><p>Fix html decoding title. [PidgeyL]</p></li>
+<li><p>Fix blacklistrules. [PidgeyL]</p></li>
+<li><p>Fix html encoding. [PidgeyL]</p></li>
+<li><p>Merge pull request #74 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Iconize button + replace. [PidgeyL]</p></li>
+<li><p>Update bootstrap js. [PidgeyL]</p></li>
+<li><p>Update bootstrap. [PidgeyL]</p></li>
+<li><p>Temp bugfix with path. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #51 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes + new features</p>
+</li>
+<li><p>Sorting of vfeed data. [PidgeyL]</p></li>
+<li><p>Merge pull request #73 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Remove abundant files. [PidgeyL]</p></li>
+<li><p>Abstract default head for easier updating. [PidgeyL]</p></li>
+<li><p>Initial commit #8. [PidgeyL]</p></li>
+<li><p>Merge pull request #72 from PidgeyL/development. [Pieter-Jan]</p>
+<p>fix math + add more info</p>
+</li>
+<li><p>Fix math + add more info. [PidgeyL]</p></li>
+<li><p>Merge pull request #71 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Extra database info. [PidgeyL]</p></li>
+<li><p>Add white-/blacklist info to admin pannel. [PidgeyL]</p></li>
+<li><p>Merge branch ‘development’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>
+into development. [PidgeyL]</p></li>
+<li><p>Bugfixes upsert. [PidgeyL]</p></li>
+<li><p>Minimal database stats. [PidgeyL]</p></li>
+<li><p>Stats for linked cves. [PidgeyL]</p></li>
+<li><p>Merge pull request #70 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development + Bugfixes</p>
+</li>
+<li><p>Bugfixes upsert. [PidgeyL]</p></li>
+<li><p>Minimal database stats. [PidgeyL]</p></li>
+<li><p>Stats for linked cves. [PidgeyL]</p></li>
+<li><p>Merge pull request #69 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Fix the library import - (TODO: name shadowing still to be fixed)
+[Alexandre Dulaunoy]</p></li>
+<li><p>Cleanup - name shadowing. [Alexandre Dulaunoy]</p></li>
+<li><p>Import lib.CVEs. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:wimremes/cve-search. [Alexandre
+Dulaunoy]</p>
+<dl class="simple">
+<dt>Conflicts:</dt><dd><p>dump_last.py</p>
+</dd>
+</dl>
+</li>
+<li><p>Merge pull request #37 from mattoufoutu/fixes. [Alexandre Dulaunoy]</p>
+<p>multiple fixes</p>
+</li>
+<li><p>Avoid name shadowing with builtins and custom vars. [Mathieu Deous]</p></li>
+<li><p>Create the UserNotFoundError exception class. [Mathieu Deous]</p></li>
+<li><p>Stop messing with sys.path, make lib a read package. [Mathieu Deous]</p></li>
+<li><p>Remove unexpected argument when calling BulkUpsertOperation.update()
+[Mathieu Deous]</p></li>
+<li><p>When fulltext indexing is enabled, subprocess’ wait() method is not
+called. [Mathieu Deous]</p></li>
+<li><p>Merge pull request #36 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes and updates</p>
+</li>
+<li><p>Merge pull request #35 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes and updates</p>
+</li>
+<li><p>Merge pull request #33 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Important bugfix</p>
+</li>
+<li><p>Merge pull request #31 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CAPEC support added, many bug fixes and improvement</p>
+</li>
+<li><p>Merge pull request #30 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CAPEC support added + many bug fixes</p>
+</li>
+<li><p>Merge pull request #29 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes, updates and improvement</p>
+</li>
+<li><p>Merge pull request #28 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CAPEC support added + many bug fixes</p>
+</li>
+<li><p>Merge pull request #27 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes and updates</p>
+</li>
+<li><p>Merge pull request #25 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>PBKDF2 support added</p>
+</li>
+<li><p>Merge pull request #24 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Various fixes and updates</p>
+</li>
+<li><p>Merge pull request #23 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Updates and bug fixes</p>
+</li>
+<li><p>Merge pull request #22 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Updates</p>
+</li>
+<li><p>Merge pull request #21 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Many updates</p>
+</li>
+<li><p>Merge pull request #20 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Bug fixes</p>
+</li>
+<li><p>Merge pull request #19 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Web view updates</p>
+</li>
+<li><p>Merge pull request #18 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Fixes</p>
+</li>
+<li><p>Merge pull request #17 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Configuration enhancement + various bug fixes</p>
+</li>
+<li><p>Merge pull request #16 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Configuration enhancement</p>
+</li>
+<li><p>Merge pull request #15 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>Major sync</p>
+</li>
+<li><p>Merge pull request #14 from adulau/master. [Alexandre Dulaunoy]</p>
+<p>CWE version updated + CPE references added</p>
+</li>
+<li><p>Merge pull request #13 from adulau/master. [Wim Remes]</p>
+<p>Documentation updates and bug fixes in the full text search tool.</p>
+</li>
+<li><p>Merge pull request #12 from adulau/master. [Wim Remes]</p>
+<p>Cleanup of db dump code + vfeed updates</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #50 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>Development</p>
+</li>
+<li><p>Fix bug with dot (.) in path. [PidgeyL]</p></li>
+<li><p>Move table to separate html for easier modification. [PidgeyL]</p></li>
+<li><p>Move CVSS for better visibility. [PidgeyL]</p></li>
+<li><p>Took out milw0rm as it’s not available anymore. [PidgeyL]</p></li>
+<li><p>CAPEC option added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #49 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>bugfix + new web feature</p>
+</li>
+<li><p>Merge pull request #68 from PidgeyL/development. [Pieter-Jan]</p>
+<p>fix lowercase/uppercase issue</p>
+</li>
+<li><p>Fix lowercase/uppercase issue. [PidgeyL]</p></li>
+<li><p>Merge pull request #67 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Html encode/decode for url building. [PidgeyL]</p></li>
+<li><p>Bugfix vendorstatement. [PidgeyL]</p></li>
+<li><p>Initial commit linked cve’s. [PidgeyL]</p></li>
+<li><p>Merge pull request #48 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Important (stupid) bugs fixed</p>
+</li>
+<li><p>Merge pull request #65 from PidgeyL/development. [Pieter-Jan]</p>
+<p>fixing some (stupid) bug</p>
+</li>
+<li><p>Fixing some (stupid) bug. [PidgeyL]</p></li>
+<li><p>Merge pull request #47 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix + Performance Increase</p>
+</li>
+<li><p>Merge pull request #64 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development + Optimization</p>
+</li>
+<li><p>Progress bar + bulk operations. [PidgeyL]</p></li>
+<li><p>Batch operations for speeding up intake. [PidgeyL]</p></li>
+<li><p>Merge pull request #63 from PidgeyL/development. [Pieter-Jan]</p>
+<p>bugfixes</p>
+</li>
+<li><p>Bugfix. [PidgeyL]</p></li>
+<li><p>Bugfix after optimization. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #46 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix + Code optimization</p>
+</li>
+<li><p>Merge pull request #45 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>User friendlyness</p>
+</li>
+<li><p>CAPEC output option added (-c) to db dump. [Alexandre Dulaunoy]</p></li>
+<li><p>-a option added - CAPEC output. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #62 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Bugfix + Performance Increase</p>
+</li>
+<li><p>Optimization - Performance increase. [PidgeyL]</p></li>
+<li><p>Add bug with redhat_bugzilla. [PidgeyL]</p></li>
+<li><p>Merge pull request #61 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Bugfix + Code optimization</p>
+</li>
+<li><p>Bugfix for CPE lookup. [PidgeyL]</p></li>
+<li><p>Code optimization. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #44 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Addition of CAPEC to the CVE info (webcomponent)</p>
+</li>
+<li><p>CAPEC in get() function. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #43 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>bugfixes + user friendlyness</p>
+</li>
+<li><p>Merge pull request #42 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfix for missing CVSS-Time</p>
+</li>
+<li><p>Merge pull request #41 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Selectively turn on/off aditional feeds</p>
+</li>
+<li><p>Merge pull request #59 from PidgeyL/development. [Pieter-Jan]</p>
+<p>collapsible option for multiple fields</p>
+</li>
+<li><p>Collapsible option for multiple fields. [PidgeyL]</p></li>
+<li><p>Merge pull request #58 from PidgeyL/development. [Pieter-Jan]</p>
+<p>adding CAPEC to the web interface</p>
+</li>
+<li><p>Adding CAPEC to the web interface. [PidgeyL]</p></li>
+<li><p>Merge pull request #57 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Bugfix double expand (child-arent) [PidgeyL]</p></li>
+<li><p>Fix abundant css class. [PidgeyL]</p></li>
+<li><p>Missing css update. [PidgeyL]</p></li>
+<li><p>Semi-collapsed vuln-conf field for easy scrolling. [PidgeyL]</p></li>
+<li><p>Critical bugfix on unknown cwe. [PidgeyL]</p></li>
+<li><p>Merge pull request #55 from PidgeyL/development. [Pieter-Jan]</p>
+<p>bugfix for missing cvss-time</p>
+</li>
+<li><p>Bugfix for missing cvss-time. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Add CAPEC entries even if CPE are not present in the CVE. [Alexandre
+Dulaunoy]</p></li>
+<li><p>CAPEC lookup added in the cve library. [Alexandre Dulaunoy]</p></li>
+<li><p>Getcapec per CWE id function added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #40 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Minimum requirements for six</p>
+</li>
+<li><p>Merge pull request #39 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Enrich the database with more info</p>
+</li>
+<li><p>Merge pull request #54 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Selectively toggle on and off feeds. [PidgeyL]</p></li>
+<li><p>Initial commit allowing to turn off feeds. [PidgeyL]</p></li>
+<li><p>Merge pull request #53 from PidgeyL/development. [Pieter-Jan]</p>
+<p>update minimum requirements for six</p>
+</li>
+<li><p>Update minimum requirements for six. [PidgeyL]</p></li>
+<li><p>Merge pull request #52 from PidgeyL/development. [Pieter-Jan]</p>
+<p>CVE aditional info</p>
+</li>
+<li><p>Putting cvss time on the correct place. [PidgeyL]</p></li>
+<li><p>Adding access and impact to cve.html. [PidgeyL]</p></li>
+<li><p>Adding more CVE information to database (access &amp; impact) [PidgeyL]</p></li>
+<li><p>Related_weakness index added in CAPEC. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #38 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>enhancement for url’s to different websites</p>
+</li>
+<li><p>Merge pull request #50 from PidgeyL/development. [Pieter-Jan]</p>
+<p>URLs</p>
+</li>
+<li><p>Make map_cve_scip_sciplink a url. [PidgeyL]</p></li>
+<li><p>Open references in new tabs. [PidgeyL]</p></li>
+<li><p>CAPEC import script added in the updater. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #37 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Adding software with CVE-Search</p>
+</li>
+<li><p>Add software using cve-search. [PidgeyL]</p></li>
+<li><p>Addition of software using cve-search. [Pieter-Jan]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Sample configuration added. [Alexandre Dulaunoy]</p></li>
+<li><p>Default configuration removed. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #35 from chervaliery/master. [Alexandre Dulaunoy]</p>
+<p>New Feature : CAPEC import script</p>
+</li>
+<li><p>Import of the CAPEC. [Yoann Chevalier]</p></li>
+<li><p>Import of the CAPEC. [Yoann Chevalier]</p></li>
+<li><p>Merge pull request #34 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>File chooser for web interface</p>
+</li>
+<li><p>Merge pull request #49 from PidgeyL/development. [Pieter-Jan]</p>
+<p>config sample instead of config prevents overriding when pulling new rel…</p>
+</li>
+<li><p>Config sample instead of config prevents overriding when pulling new
+release. [PidgeyL]</p></li>
+<li><p>Merge pull request #48 from PidgeyL/development. [Pieter-Jan]</p>
+<p>textiowrapper instead of stringio</p>
+</li>
+<li><p>Textiowrapper instead of stringio. [PidgeyL]</p></li>
+<li><p>Merge pull request #47 from PidgeyL/development. [Pieter-Jan]</p>
+<p>#26 file chooser for import/export</p>
+</li>
+<li><p>#26 file chooser for import/export. [PidgeyL]</p></li>
+<li><p>Db_fulltext: Indexdir is now configurable. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fixed: indexdir variable was not used. [Alexandre Dulaunoy]</p></li>
+<li><p>XML handler instantiated per file. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #33 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Remove unused imports</p>
+</li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Merge pull request #46 from PidgeyL/development. [Pieter-Jan]</p>
+<p>optimization</p>
+</li>
+<li><p>Remove unused imports. [PidgeyL]</p></li>
+<li><p>Remove unused imports. [PidgeyL]</p></li>
+<li><p>Merge pull request #32 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Optimization and enhancement black/whitelist</p>
+</li>
+<li><p>Merge pull request #45 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Enhancements + new features</p>
+</li>
+<li><p>Remove duplicate code. [PidgeyL]</p></li>
+<li><p>Allow reading text files for removing + argparse. [PidgeyL]</p></li>
+<li><p>Allow reading text files for input + argparse. [PidgeyL]</p></li>
+<li><p>Update info. [PidgeyL]</p></li>
+<li><p>Merge pull request #44 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #31 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>Documentation + Updating README</p>
+</li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Actualizing README. [PidgeyL]</p></li>
+<li><p>Spellcheck + update documentation. [PidgeyL]</p></li>
+<li><p>Merge pull request #30 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Documentation + Optimization</p>
+</li>
+<li><p>Merge pull request #43 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Documentation + Optimization</p>
+</li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Relative path for fulltext indexer. [PidgeyL]</p></li>
+<li><p>Add cpeother to the updater script (runs only if initialized by user)
+[PidgeyL]</p></li>
+<li><p>Use cpeother if possible. [PidgeyL]</p></li>
+<li><p>Add Config.py to cves.py. [PidgeyL]</p></li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Merge pull request #29 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Logging + Bugfix</p>
+</li>
+<li><p>Merge pull request #42 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Bugfix + New features</p>
+</li>
+<li><p>Bugfix for crash on non-existing cve. [PidgeyL]</p></li>
+<li><p>Logging functionallity for the server. [PidgeyL]</p></li>
+<li><p>Merge pull request #41 from PidgeyL/development. [Pieter-Jan]</p>
+<p>bugfix: the nltk need a string and not a bytes</p>
+</li>
+<li><p>Merge pull request #40 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Documentation</p>
+</li>
+<li><p>Merge pull request #28 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>Documentation</p>
+</li>
+<li><p>Bugfix: the nltk need a string and not a bytes. [psychedelys]</p></li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Update documentation. [PidgeyL]</p></li>
+<li><p>Initial commit documentation pages - Webcomponent. [PidgeyL]</p></li>
+<li><p>Exit on success. [Alexandre Dulaunoy]</p></li>
+<li><p>Print help by default if no argument given. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fixed in XML export - CVSS float-&gt;string. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #27 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Graceful shutdown Tornado server</p>
+</li>
+<li><p>Merge pull request #39 from PidgeyL/development. [Pieter-Jan]</p>
+<p>fix graceful shutdown for the Tornado server #30</p>
+</li>
+<li><p>Fix graceful shutdown for the Tornado server #30. [PidgeyL]</p></li>
+<li><p>Merge pull request #26 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>optimization + Security enhancement</p>
+</li>
+<li><p>Merge pull request #38 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Security Enhancement</p>
+</li>
+<li><p>Upgrade from normal hashing to PBKDF2 #4. [PidgeyL]</p></li>
+<li><p>Merge branch ‘development’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>
+into development. [PidgeyL]</p></li>
+<li><p>Merge pull request #37 from PidgeyL/master. [Pieter-Jan]</p>
+<p>make dev branch up to date</p>
+</li>
+<li><p>Remove duplicate code. [PidgeyL]</p></li>
+<li><p>Bugfix: missing comma. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge pull request #25 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Enhancements</p>
+</li>
+<li><p>Removed unused import. [Alexandre Dulaunoy]</p></li>
+<li><p>Double import removed. [Alexandre Dulaunoy]</p></li>
+<li><p>Unused modules removed. [Alexandre Dulaunoy]</p></li>
+<li><p>Remove unused modules. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fixed: runPath undeclared. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #24 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>New Features, Bugfixes, Optimalization</p>
+</li>
+<li><p>Merge pull request #23 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Enhancements + New Features</p>
+</li>
+<li><p>Merge pull request #36 from PidgeyL/development. [Pieter-Jan]</p>
+<p>put cve url in config file #6</p>
+</li>
+<li><p>Put cve url in config file #6. [PidgeyL]</p></li>
+<li><p>Update README.md. [Pieter-Jan]</p></li>
+<li><p>Merge pull request #35 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Enhancement + new feature</p>
+</li>
+<li><p>Give the option to require no login to access admin panel. [PidgeyL]</p></li>
+<li><p>Merge pull request #34 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Adding salt to the user database #4. [PidgeyL]</p></li>
+<li><p>Include menu.html. [PidgeyL]</p></li>
+<li><p>Merge pull request #33 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Taking psychedelys’ changes regarding the menu. [psychedelys]</p></li>
+<li><p>Taking psychedelys’ changes regarding the menu. [psychedelys]</p></li>
+<li><p>Actualize psychedelys’ commit. [PidgeyL]</p></li>
+<li><p>Moved the web menu to an external file to avoid modifying all the
+files eachtime. [psychedelys]</p></li>
+<li><p>Merge pull request #32 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Implementation SSL for webserver #31. [PidgeyL]</p></li>
+<li><p>Adding tornado for asynchronous request handling #13. [PidgeyL]</p></li>
+<li><p>Bugfix that causes the config to only read strings. [PidgeyL]</p></li>
+<li><p>Merge pull request #29 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Config class centralizes all the configuration #6. [PidgeyL]</p></li>
+<li><p>Beginning of making the config file a separate class #6. [PidgeyL]</p></li>
+<li><p>Merge pull request #28 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Development</p>
+</li>
+<li><p>Implementation login system on website #4. [PidgeyL]</p></li>
+<li><p>Merge branch ‘development’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>
+into development. [PidgeyL]</p></li>
+<li><p>Script to add admins to database #4. [PidgeyL]</p></li>
+<li><p>Enhancement for #22: easy copy of cpe by colapsable field. [PidgeyL]</p></li>
+<li><p>Config update. [PidgeyL]</p></li>
+<li><p>Merge pull request #25 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Enhancement + config update</p>
+</li>
+<li><p>Enhancement for #22: easy copy of cpe by colapsable field. [PidgeyL]</p></li>
+<li><p>Config update. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #22 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>Bugfixing and Optimization</p>
+</li>
+<li><p>Merge pull request #21 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes</p>
+</li>
+<li><p>Merge pull request #19 from PidgeyL/development. [Alexandre Dulaunoy]</p>
+<p>enhancements for web view</p>
+</li>
+<li><p>Merge pull request #24 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Enhancement + new feature</p>
+</li>
+<li><p>Solution for #22: cpe id as tooltip + marking. [PidgeyL]</p></li>
+<li><p>Using correct function for previous commit. [PidgeyL]</p></li>
+<li><p>Bugfix for previous commit. [PidgeyL]</p></li>
+<li><p>Remove duplicate code. [PidgeyL]</p></li>
+<li><p>Merge pull request #23 from PidgeyL/development. [Pieter-Jan]</p></li>
+<li><p>Merge branch ‘development’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>
+into development. [PidgeyL]</p></li>
+<li><p>Missed variable for setting globalization. [Pieter-Jan]</p></li>
+<li><p>Add default cvss score to the config file. [PidgeyL]</p></li>
+<li><p>Bugfix that allows to go to negative page numbers with the pager.
+[PidgeyL]</p></li>
+<li><p>Removing abundant function. [PidgeyL]</p></li>
+<li><p>Add page length to settings (#6) [PidgeyL]</p></li>
+<li><p>Bugfix for the browse per vendor. [PidgeyL]</p></li>
+<li><p>Remove debug message. [PidgeyL]</p></li>
+<li><p>Merge pull request #18 from PidgeyL/development. [Pieter-Jan]</p>
+<p>Bugfix</p>
+</li>
+<li><p>Bugfixing for HTML escaped url’s. [PidgeyL]</p></li>
+<li><p>Fix variable bug cvedb.vfeed instead of db.vfeed. [PidgeyL]</p></li>
+<li><p>Merge pull request #17 from PidgeyL/development. [Pieter-Jan]</p></li>
+<li><p>Bugfix for #2, the problem with the %2f being seen as a / [PidgeyL]</p></li>
+<li><p>Partial fix for #2: adding/removing cpe’s with special chars to lists
+is now possible. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #17 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>enhancements for web view</p>
+</li>
+<li><p>Merge pull request #15 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>fix the query for the blacklist: solves issue #3</p>
+</li>
+<li><p>Merge pull request #16 from PidgeyL/development. [Pieter-Jan]</p>
+<p>merged</p>
+</li>
+<li><p>Hide rejected cve’s with toggle button #9. [PidgeyL]</p></li>
+<li><p>Fix missing onLoad() [PidgeyL]</p></li>
+<li><p>Clean HTLM head, add new favicon, reintroduce html5shiv #14 (and
+beginning of #9, by adding the select) [PidgeyL]</p></li>
+<li><p>Merge pull request #15 from PidgeyL/development. [Pieter-Jan]</p>
+<p>enhancements for web view</p>
+</li>
+<li><p>Fix title from page. [PidgeyL]</p></li>
+<li><p>Back to top feature on pages #12. [PidgeyL]</p></li>
+<li><p>Collapsable filter with toggle button #11. [PidgeyL]</p></li>
+<li><p>Remove abundant code and pages thanks to the filter #10. [PidgeyL]</p></li>
+<li><p>Fix the query for the blacklist: solves issue #3. [PidgeyL]</p></li>
+<li><p>Merge pull request #13 from xme/master. [Alexandre Dulaunoy]</p>
+<p>Convert float (CVSS) to string before printing</p>
+</li>
+<li><p>Convert float (CVSS) to string before printing. [Xavier Mertens]</p></li>
+<li><p>Merge pull request #14 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes + finalizing configuration file</p>
+</li>
+<li><p>Fix crash on CPE’s with more then 4 :’s in string. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="https://github.com/pidgeyl/cve-search">https://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Fix merge. [PidgeyL]</p></li>
+<li><p>Make the mongo database an option in the configurations file.
+[PidgeyL]</p></li>
+<li><p>Fixing bug with runPath. [PidgeyL]</p></li>
+<li><p>Allow the change of webserver settings. [PidgeyL]</p></li>
+<li><p>Merge pull request #12 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Enhancements</p>
+</li>
+<li><p>Minor bugfix with the year. [PidgeyL]</p></li>
+<li><p>Allow users to specify a start year for the CVE’s to skip older CVE’s,
+if prefered. [PidgeyL]</p></li>
+<li><p>Fix crash when no cve’s for a year. [PidgeyL]</p></li>
+<li><p>Update copyright. [PidgeyL]</p></li>
+<li><p>Remove print from db_cpe_browser testing. [PidgeyL]</p></li>
+<li><p>Fix path issues &amp; allow to call scripts from any location (os.path)
+[PidgeyL]</p></li>
+<li><p>Add mongo settings to the config file. [PidgeyL]</p></li>
+<li><p>Update depricated pymongo.connection() to pymongo.MongoClient()
+[PidgeyL]</p></li>
+<li><p>Globalize mongo connector settings. [PidgeyL]</p></li>
+<li><p>Put all the Redis settings in the config file. [PidgeyL]</p></li>
+<li><p>Use update statement for editting CPE’s instead of removing and
+adding. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Fix the cancel button. [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://www.github.com/pidgeyl/cve-search">http://www.github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Allow editting of cpe’s (still a but on cancel button) [PidgeyL]</p></li>
+<li><p>Start of configuration file. [PidgeyL]</p></li>
+<li><p>Index creation now in the updater. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #11 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes</p>
+</li>
+<li><p>Bugfix: NoneType on cpe not matching regex fixed + making the regex
+match from start to end. [PidgeyL]</p></li>
+<li><p>Bugfix: database export not working when file exists. [PidgeyL]</p></li>
+<li><p>Bugfix: whitelist exports blacklist file. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Software using cve-search section added. [Alexandre Dulaunoy]</p></li>
+<li><p>Handle exception of unavailable redis server. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #10 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Filter feature</p>
+</li>
+<li><p>Bugfix that makes index.py crash when you try to add an entire vendor
+to a black/- or whitelist. [PidgeyL]</p></li>
+<li><p>Update README.md. [Pieter-Jan]</p></li>
+<li><p>Updating the Read-Me. [PidgeyL]</p></li>
+<li><p>Fix bug where the pager takes the changes in the filterfield.
+[PidgeyL]</p></li>
+<li><p>Bugfixes + multipage navigation. [PidgeyL]</p></li>
+<li><p>Make the filter page keep the settings after the search. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge pull request #9 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>fix merge screw-up</p>
+</li>
+<li><p>Merge pull request #8 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>fix merge screw-up</p>
+</li>
+<li><p>Merge pull request #7 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Bugfixes, merge and new features</p>
+</li>
+<li><p>Removing abundant code + non-working links in pages. [PidgeyL]</p></li>
+<li><p>Accept both / and - in dates and added tooltip for userfriendlyness.
+[PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Fix merge screw-up. [PidgeyL]</p></li>
+<li><p>Fix merge screw-up. [PidgeyL]</p></li>
+<li><p>Fix merge screw-up. [Pieter-Jan]</p></li>
+<li><p>Remove HEAD. [Pieter-Jan]</p></li>
+<li><p>Merge with upstream. [PidgeyL]</p></li>
+<li><p>Merge pull request #5 from psychedelys/upstream. [Alexandre Dulaunoy]</p>
+<p>standadisation of the shebang</p>
+</li>
+<li><p>Added a missing indeg according to updateed docs. [psychedelys]</p></li>
+<li><p>Added a link to MyCVE base on whitelist and blacklist, to see the CVE
+which interessed me. [psychedelys]</p></li>
+<li><p>Added the mgmt whitelist and blacklist index. [psychedelys]</p></li>
+<li><p>Splitting the cpe search from the original search just to have a
+cleaner,smaller code. Added the option to search against the cpeother
+collection. [psychedelys]</p></li>
+<li><p>Solving the duplicate on the cpeother. [psychedelys]</p></li>
+<li><p>Script to check and ensure that the recommended index are created as
+recommended. [psychedelys]</p></li>
+<li><p>Locating all cpe not found in the official cpe dictionary.
+[psychedelys]</p></li>
+<li><p>Missing an admin link. [psychedelys]</p></li>
+<li><p>Closing the zip file. [psychedelys]</p></li>
+<li><p>Duplicate keywords. [psychedelys]</p></li>
+<li><p>Standadisation of the shebang. [psychedelys]</p></li>
+<li><p>Filter function. [PidgeyL]</p></li>
+<li><p>Basis filter + small bugfixes. [PidgeyL]</p></li>
+<li><p>Visual preparations for the filter. [PidgeyL]</p></li>
+<li><p>Make the database store the cvss value in a decimal instead of a
+string, so filter actions (in the future) will be possible. [PidgeyL]</p></li>
+<li><p>URL transformation from get to post + rearrangement breadcrumbs +
+Regex bugfix + addition of breadcrumbs + fixes breadcrumbs. [PidgeyL]</p></li>
+<li><p>Search field filter search. [PidgeyL]</p></li>
+<li><p>Basics filter + placeholde in navbar. [PidgeyL]</p></li>
+<li><p>Pager tweak: no more next button at the end of the list. [PidgeyL]</p></li>
+<li><p>Implement blacklist feature + apply to whitelist. [PidgeyL]</p></li>
+<li><p>Bugfix in regex. [PidgeyL]</p></li>
+<li><p>Laying basis for filter.html + updating nav bar. [PidgeyL]</p></li>
+<li><p>Update navbar. [PidgeyL]</p></li>
+<li><p>Bugfix: Pager no longer able to go below 0. [PidgeyL]</p></li>
+<li><p>Bugfix: listmanager navigating to versions after adding a product to
+white-/or blacklist. [PidgeyL]</p></li>
+<li><p>Bugfix: load the right scrips.js file in whitelist. [PidgeyL]</p></li>
+<li><p>Upgrade from bootstrap 2 to bootstrap 3. [PidgeyL]</p></li>
+<li><p>Implementation listmanager (browe through vendors and products to add
+items to black/- or whitelist with visual navigation) + navigation
+URL’s in the admin panel. [PidgeyL]</p></li>
+<li><p>Renaming CPE by product for more uniform format, for later
+listManagement. [PidgeyL]</p></li>
+<li><p>Rearranging code, removing abundant /browse/&lt;vendor&gt;/&lt;product&gt; path,
+commenting and basis listManagement feature. [PidgeyL]</p></li>
+<li><p>Give the pages the right tiles. [PidgeyL]</p></li>
+<li><p>Add remove feature to the visual white-/and blacklist lists + bugfix
+while adding CPE. [PidgeyL]</p></li>
+<li><p>Make the blacklist work in the same way as the Whitelist. [PidgeyL]</p></li>
+<li><p>Add whitelist view + the posibility to add rules from the web page.
+[PidgeyL]</p></li>
+<li><p>Basic featurs whitelist view (list) [PidgeyL]</p></li>
+<li><p>Syntax fix in table from index.html + basis whitelist/blacklist rules.
+[PidgeyL]</p></li>
+<li><ul class="simple">
+<li><p>Fix invalid path - Fix possible path exploit - add drop and export</p></li>
+</ul>
+<p>functions to admin pannel - reformat status. [PidgeyL]</p>
+</li>
+<li><p>Add blacklist to the admin pannel + bugfixes. [PidgeyL]</p></li>
+<li><p>Fix broken index.py due to changes in db_whitelist.py. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>CPE: references support added. [Alexandre Dulaunoy]</p>
+<p>References href are now added if present in each respective CPE</p>
+</li>
+<li><p>CWE from 2.5 to 2.8. [Alexandre Dulaunoy]</p></li>
+<li><p>Ensure index on Modified key. [Alexandre Dulaunoy]</p>
+<p>db.cves.ensureIndex( {Modified:1} )</p>
+</li>
+<li><p>Remove double requirements (pip3 doesn’t like this) [Alexandre
+Dulaunoy]</p></li>
+<li><p>Add blacklist feature. [PidgeyL]</p></li>
+<li><p>Put CPEList class in the correct folder. [PidgeyL]</p></li>
+<li><p>Create the CPEList class to reduce redundant code in white- and
+blacklists. [PidgeyL]</p></li>
+<li><p>Fix whitelist bug + Fix comments in export + sanitizing input.
+[PidgeyL]</p></li>
+<li><p>Export filename argument as string. [Alexandre Dulaunoy]</p></li>
+<li><p>White-list export fixed. [Alexandre Dulaunoy]</p></li>
+<li><p>PEP. [Alexandre Dulaunoy]</p></li>
+<li><p>-l option added to list existing notifications. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #4 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Administration page with database update functionality</p>
+</li>
+<li><p>Call function to import whitelist instead of os.system() [PidgeyL]</p></li>
+<li><p>Exception handling. [PidgeyL]</p></li>
+<li><p>Allow comments for whitelisted items. [PidgeyL]</p></li>
+<li><p>Changing Modified to Last Major Update for clarity. [PidgeyL]</p></li>
+<li><p>Export function for the whitelist. [PidgeyL]</p></li>
+<li><p>Make the import selector bash-injection proof. [PidgeyL]</p></li>
+<li><p>Whitelist import from admin panel. [PidgeyL]</p></li>
+<li><p>Merge remote-tracking branch ‘upstream/master’ [PidgeyL]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Layouting the web interface. [PidgeyL]</p></li>
+<li><p>Basic database update call from web interface. [PidgeyL]</p></li>
+<li><p>Verbose mode. [Alexandre Dulaunoy]</p></li>
+<li><p>State notification flush option added. [Alexandre Dulaunoy]</p></li>
+<li><p>Notification skeleton added. [Alexandre Dulaunoy]</p></li>
+<li><p>Notification added. [Alexandre Dulaunoy]</p></li>
+<li><p>Removal of notification added (-r) [Alexandre Dulaunoy]</p></li>
+<li><p>Verbose mode added (-v) [Alexandre Dulaunoy]</p></li>
+<li><p>DB notification tool added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #3 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Whitelist feature</p>
+</li>
+<li><p>Merge pull request #1 from PidgeyL/admin. [Pieter-Jan]</p>
+<p>introducing admin page</p>
+</li>
+<li><p>Introducing admin page. [PidgeyL]</p></li>
+<li><p>Introducing admin page. [PidgeyL]</p></li>
+<li><p>Copyright references. [PidgeyL]</p></li>
+<li><p>Table tweak. [PidgeyL]</p></li>
+<li><p>Page navigation through the whitelist. [PidgeyL]</p></li>
+<li><p>Allow regex like searches on products. [PidgeyL]</p></li>
+<li><p>Whitelist marked item for better visibility. [PidgeyL]</p></li>
+<li><p>Remove abundant files. [PidgeyL]</p></li>
+<li><p>Add add and remove feature to db_whitelist.py. [PidgeyL]</p></li>
+<li><p>Remove abundant files. [PidgeyL]</p></li>
+<li><p>Reformatting bootstrap for viewability. [PidgeyL]</p></li>
+<li><p>Script for manipulating the whitelist, adding the whitelist link to
+the pages, implementing the logic in index.py and creating a whitelist
+class in style.css. [PidgeyL]</p></li>
+<li><p>Add the whitelist page. [PidgeyL]</p></li>
+<li><p>Basis for the whitelisting view: whitelist management script.
+[PidgeyL]</p></li>
+<li><p>Snort and nmap map added. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #2 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Formatting + requirements update</p>
+</li>
+<li><p>Updating the requirements to run CVE-Search. [PidgeyL]</p></li>
+<li><p>Fixing missing ” that caused the search function to break. [PidgeyL]</p></li>
+<li><p>Updating the dependency (db_mgmt_cpe_dictionary.py) [PidgeyL]</p></li>
+<li><p>Rename db_mgmt_cpe_dictionnary.py to db_mgmt_cpe_dictionary.py.
+[Pieter-Jan]</p></li>
+<li><p>Merge branch ‘master’ of <a class="reference external" href="http://github.com/pidgeyl/cve-search">http://github.com/pidgeyl/cve-search</a>.
+[PidgeyL]</p></li>
+<li><p>Fix of the requirements.txt file. [PidgeyL]</p></li>
+<li><p>Sorting on Modified instead of last-modified. [PidgeyL]</p></li>
+<li><p>Updated requirements.txt for new requirements. [PidgeyL]</p></li>
+<li><p>More information on CVE’s in Search.html, and changed ‘last-modified’
+with ‘published’ in index.html and search.html. [PidgeyL]</p></li>
+<li><p>Better formatting, by using a function instead of substring, that
+gives the local time. [PidgeyL]</p></li>
+<li><p>Formatting dates to a more userfriendly datetime format. [PidgeyL]</p></li>
+<li><p>Add Flask-PyMongo requirement. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #1 from PidgeyL/master. [Alexandre Dulaunoy]</p>
+<p>Web interface update: reverse vulnerable config + search interface</p>
+</li>
+<li><p>Reverse sorting order for products from vendors. [PidgeyL]</p></li>
+<li><p>Adding a CVE search function to the web pages. [PidgeyL]</p></li>
+<li><p>Cleanup and log when the process is waiting. [Alexandre Dulaunoy]</p></li>
+<li><p>Remove unused module. [Alexandre Dulaunoy]</p></li>
+<li><p>Fixed incorrect keyword used for the getranking method. [Alexandre
+Dulaunoy]</p>
+<p>Thanks to Didier Stevens and his colleague for the bug report.</p>
+</li>
+<li><p>PEP. [Alexandre Dulaunoy]</p></li>
+<li><p>Remove unused modules. [Alexandre Dulaunoy]</p></li>
+<li><p>Most common terms option (-m) fixed. [Alexandre Dulaunoy]</p></li>
+<li><p>Code block of samples added. [Alexandre Dulaunoy]</p></li>
+<li><p>Add an advanced usage section. [Alexandre Dulaunoy]</p></li>
+<li><p>Output human readable JSON. [Alexandre Dulaunoy]</p></li>
+<li><p>Terms are encoded in byte object and it doesn’t match a JSON object
+type. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fix: quit if there is an empty query. [Alexandre Dulaunoy]</p></li>
+<li><p>How to install required modules using pip. [Alexandre Dulaunoy]</p></li>
+<li><p>PIP requirements.txt file added. [Alexandre Dulaunoy]</p>
+<p>cve-search required packages can be installed via PIP</p>
+<p>sudo pip3 install -r requirements.txt</p>
+</li>
+<li><p>Cleanup. [Alexandre Dulaunoy]</p></li>
+<li><p>Square Security feed added to add exploit reference. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Square Security feed added to add exploit reference. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Square Security feed added to add exploit reference. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Double import bug fixed and –force option added. [Alexandre Dulaunoy]</p>
+<p>–force option has been added to import again CVE records if the
+initial 2002 CVE exists</p>
+</li>
+<li><p>Bug fixed: check correct record for bulk import. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>-c option added to support the CPE redis cache. [Alexandre Dulaunoy]</p></li>
+<li><p>CPE browser and search functionality added. [Alexandre Dulaunoy]</p></li>
+<li><p>Importing CPE entries in a Redis database to improve lookup.
+[Alexandre Dulaunoy]</p>
+<p>Until now, this part is only used by the web interface to improve response time</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Clean up: use the library. [Alexandre Dulaunoy]</p></li>
+<li><p>Skip parameter added when getting last CVEs. [Alexandre Dulaunoy]</p></li>
+<li><p>Pager added while browsing CVEs. [Alexandre Dulaunoy]</p></li>
+<li><p>CWE link to MITRE added. [Alexandre Dulaunoy]</p></li>
+<li><p>VFeed new mapping added. [Alexandre Dulaunoy]</p>
+<p>map_cve_hp and map_cve_bid added</p>
+</li>
+<li><p>Add -n option to index the cpe name. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fix: last-modified is Modified. [Alexandre Dulaunoy]</p></li>
+<li><p>Bug fix: last-modified field is “Modified” [Alexandre Dulaunoy]</p>
+<p>When searching the last modified order was not respected and
+the descending option (-l). The mongodb query was using the wrong
+field name.</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Code cleanup - library is now used. [Alexandre Dulaunoy]</p></li>
+<li><p>-n (cpe lookup) option adds cpe entries to CSV output. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>CWE collection added. [Alexandre Dulaunoy]</p></li>
+<li><p>CWE initial support added. [Alexandre Dulaunoy]</p>
+<p>CWE Weakness import added. This version only imports weaknesses
+and their description. The XML includes much more information
+including a hierarchical structure. More work is required to support
+the whole CWE format.</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Support for NIST NVD vendor statements on CVE added. [Alexandre
+Dulaunoy]</p></li>
+<li><p>-r option only prints entries with ranking available. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Bug fix: skip empty ranking removal if key not presents. [Alexandre
+Dulaunoy]</p></li>
+<li><p>CWE is now imported from the NIST NVD database. [Alexandre Dulaunoy]</p></li>
+<li><p>Reference to vfeed &#64;ToolsWatch by default web interface added.
+[Alexandre Dulaunoy]</p>
+<p>The reference is added from all the keys not part of standard
+NIST or cve-search ranking/entries.</p>
+</li>
+<li><p>Vfeed suricata and vmware tables added. [Alexandre Dulaunoy]</p>
+<p>Thanks to &#64;ToolsWatch for the notification.</p>
+</li>
+<li><p>Clarification in the installation process. [Alexandre Dulaunoy]</p></li>
+<li><p>Library used and vfeed option added. [Alexandre Dulaunoy]</p>
+<p>Dump database in JSON format</p>
+<dl>
+<dt>optional arguments:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+<dt><kbd><span class="option">-r</span></kbd></dt>
+<dd><p>Include ranking value</p>
+</dd>
+<dt><kbd><span class="option">-v</span></kbd></dt>
+<dd><p>Include vfeed map</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><p>Dumping ranking is now an option. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #11 from adulau/master. [Wim Remes]</p>
+<p>Ranking and name lookup added in full-text + various fixes including license</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Remove ranking key if there is no ranking value. [Alexandre Dulaunoy]</p></li>
+<li><p>Vfeed collection added. [Alexandre Dulaunoy]</p></li>
+<li><p>Vfeed added in the db_updater. [Alexandre Dulaunoy]</p></li>
+<li><p>Ignore UTF-8 issues while importing vfeed records. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Web.py usage clarified. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Clarify last-modified and add full summary in the tooltip. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Add cpe name|ranking|vfeed lookup in the web interface. [Alexandre
+Dulaunoy]</p>
+<p>Now the default template is displaying all the know records
+for a CVE including CPE, ranking and vfeed references.</p>
+</li>
+<li><p>Return None if CVE requested doesn’t exist. [Alexandre Dulaunoy]</p></li>
+<li><p>Vfeed dict is not merged when it’s a string. [Alexandre Dulaunoy]</p></li>
+<li><p>Vfeed lookup added in cves library. [Alexandre Dulaunoy]</p>
+<p>Lookup can be enabled using vfeedlookup=True when instantiating
+the method. The returned value will contain if the vfeed attribute
+if this exists.</p>
+</li>
+<li><p>Skip import if vfeed is not modified. [Alexandre Dulaunoy]</p></li>
+<li><p>Index to add for the vfeed CVE id collection. [Alexandre Dulaunoy]</p></li>
+<li><p>Headers added for db_mgmt_vfeed.py. [Alexandre Dulaunoy]</p></li>
+<li><p>Skip vFeed tables where there is no CVE id. [Alexandre Dulaunoy]</p>
+<p>As the CVE id is the main references for cve-search, we discard
+vFeed tables without reference to a CVE id.</p>
+</li>
+<li><p>An initial importer for the vFeed database. [Alexandre Dulaunoy]</p>
+<p>The vFeed database is containing the relationship of CVE id
+with various other vulnerability references. The importer is
+adding all the vFeed database into a single collection.</p>
+<p>Thanks to the guys working on vFeed.</p>
+</li>
+<li><p>Minimal web interface added to cve-search. [Alexandre Dulaunoy]</p>
+<p>The web interface requires flask (pip install flask). The interface
+is a minimal interface to view the last CVE entries and query
+specific CVE entries. This is the basis for extending cve-search
+in a Web environment.</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Ranking (if present) added in all output. [Alexandre Dulaunoy]</p></li>
+<li><p>License properly search.py with a compatible free software license.
+[Alexandre Dulaunoy]</p>
+<p>To make the licensing consistent within cve-search.</p>
+</li>
+<li><p>-r / -n option added (CPE and ranking lookup) [Alexandre Dulaunoy]</p></li>
+<li><p>CPE and ranking lookup added in cves.getcve() [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>CPE and ranking lookup displayed while fetching one or more CVE.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Ranking and CPE name lookup added for CPE vendor search. [Alexandre
+Dulaunoy]</p>
+<p>python3.3 search.py -p joomla: -o json -r -n</p>
+<p>Ranking or product lookup added in the output if option
+-r or -n is used.</p>
+</li>
+<li><p>Avoid title output if JSON output is active. [Alexandre Dulaunoy]</p></li>
+<li><p>Convert bytes stream into UTF-8 for most frequent terms. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Header for html output for specific CVE-ID search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of git://github.com/wimremes/cve-search.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #9 from adulau/master. [Wim Remes]</p>
+<p>JSON output fixed for search (fulltext and MongoDB) + a fix in the documentation</p>
+</li>
+<li><p>CVE search title in HTML is product search query. [Alexandre Dulaunoy]</p></li>
+<li><p>Default output of search is the list of CVE-ID. [Alexandre Dulaunoy]</p>
+<p>If no output format is specified, the default output is the CVE-ID.</p>
+</li>
+<li><p>JSON output is fixed. [Alexandre Dulaunoy]</p>
+<p>JSON output is now standard format and using the bson/json conversion.</p>
+<blockquote>
+<div><p>You can now use jq to process the results:</p>
+</div></blockquote>
+<p>JSON output is fixed</p>
+<p>The BSON format from MongoDB format is now represented following
+the standard JSON representation. Jq can now directly processes
+the results:</p>
+<blockquote>
+<div><p>python3.3 search_fulltext.py -q Java | parallel -j 10 python3.3 search.py -r -c | jq ‘. | {cvss, summary}’</p>
+</div></blockquote>
+</li>
+<li><p>JSON output is fixed. [Alexandre Dulaunoy]</p>
+<p>JSON output is now standard format and using the bson/json conversion.</p>
+<p>You can now use jq to process the results:</p>
+<blockquote>
+<div><p>python3.3 search_fulltext.py -q Java -f | jq ‘.cvss’</p>
+</div></blockquote>
+</li>
+<li><p>Documentation added for the keywords visualization. [Alexandre
+Dulaunoy]</p>
+<p>Clarification on the use of NLTK for stemming the keywords and
+how to use it.</p>
+</li>
+<li><p>Merge pull request #8 from adulau/master. [Wim Remes]</p>
+<p>Minor bug fixes, Ranking database and keyword analysis</p>
+</li>
+<li><p>Output cveid option added. [Alexandre Dulaunoy]</p>
+<p>-o cveid added to output list of the CVE number of
+the matching search.</p>
+</li>
+<li><p>Ranking option added for Atom and RSS feeds. [Alexandre Dulaunoy]</p></li>
+<li><p>-j option removed (same as -f) and the cves library is now used.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Avoid MongoDB connection when searches are done in the full-text
+index. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Lemmatize words but also verbs. [Alexandre Dulaunoy]</p></li>
+<li><p>Lemmatization and stopwords added to -s in search_fulltext. [Alexandre
+Dulaunoy]</p>
+<p>Initially I used a stemming algorithm to filter the variation of words.
+But stemming is not appropriate in this case as the use is not to create
+an index out of the terms but to keep the root of the words. Lemmatization is
+more appropriate in this case.</p>
+<p>The option -s is also checking the stopwords corpus from NTLK to remove
+known stopwords from the result.</p>
+</li>
+<li><p>A simple stemming function added to the graph output. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Link to visualization added. [Alexandre Dulaunoy]</p></li>
+<li><p>Visualization added in the README. [Alexandre Dulaunoy]</p></li>
+<li><p>Export JSON of the term frequency. [Alexandre Dulaunoy]</p>
+<p>Used for the website visualizing the 2000 most used keywords from
+CVE description. <a class="reference external" href="http://www.foo.be/cve/">http://www.foo.be/cve/</a></p>
+</li>
+<li><p>Dump terms frequency seen in indexed CVEs. [Alexandre Dulaunoy]</p>
+<p>-m &lt;n&gt; dump the &lt;n&gt; most frequent terms
+-l dump the lexicons of all the indexed terms from the CVE description.</p>
+</li>
+<li><p>Remove ranking based on cpe regexp. [Alexandre Dulaunoy]</p>
+<p>-d option added to delete the ranking based on their cpe
+name. This can be expressed in any MongoDB regexp.</p>
+</li>
+<li><p>Update the db_ranking explanation and display usage. [Alexandre
+Dulaunoy]</p>
+<p>If the group or the cpe is missing, the usage is now displayed
+with a small explanation of the cve-search ranking.</p>
+</li>
+<li><p>Output matching CVE(s) in JSON format. [Alexandre Dulaunoy]</p></li>
+<li><p>Method getcve added. [Alexandre Dulaunoy]</p></li>
+<li><p>Add a reference to Feedformatter 0.5 required. [Alexandre Dulaunoy]</p>
+<p>Feedformatter is required for dump_last in order to dump in RSS
+or Atom format. The lastest version need to be checkout from:</p>
+<p><a class="reference external" href="http://code.google.com/p/feedformatter/">http://code.google.com/p/feedformatter/</a></p>
+<p>Because the pip module is not supporting Python version 3.</p>
+</li>
+<li><p>Notes about the values to index in MongoDB. [Alexandre Dulaunoy]</p></li>
+<li><p>Python 3 interpreter for the indexing process. [Alexandre Dulaunoy]</p></li>
+<li><p>Python 3 is now default for launching updaters. [Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #7 from adulau/master. [Wim Remes]</p>
+<p>Multiple updates</p>
+</li>
+<li><p>-i option added to index new CVE entries. [Alexandre Dulaunoy]</p>
+<p>The db_updater is now calling the indexer to index new entries.</p>
+</li>
+<li><p>Add an option to index the last new entries. [Alexandre Dulaunoy]</p>
+<p>You can now index nth newest entries from CVE:</p>
+<p>%python3.3 db_fulltext.py -l 5 -v</p>
+</li>
+<li><p>Add an option to index the last new entries. [Alexandre Dulaunoy]</p>
+<p>You can now index nth newest entries from CVE:</p>
+<p>%python3.3 db_fulltext.py -l 5 -v</p>
+</li>
+<li><p>Doc-id in schema is now unique. [Alexandre Dulaunoy]</p>
+<p>If you are reindexing from an existing index, you have to
+delete it as the schema changed.</p>
+</li>
+<li><p>Update of the index is now supported. [Alexandre Dulaunoy]</p>
+<p>Index presence is checked if it exists. Update document to
+avoid duplicate document in the full-text index. To be used
+for the update process.</p>
+</li>
+<li><p>Xmppbot: cvetweet command - output cleaned-up. [Alexandre Dulaunoy]</p>
+<p>First reference is now properly displayed and seperator is
+consistent for all references.</p>
+</li>
+<li><p>Add an option to display only ranked CVE. [Alexandre Dulaunoy]</p></li>
+<li><p>Added HTML output and optional CPE lookup. [Alexandre Dulaunoy]</p>
+<p>The dump_last command now includes in addition to RSS/Atom
+an HTML output generating a table per CVE entry.</p>
+</li>
+<li><p>Clarification of the project + a basic installation guide. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Default byte array is now an unicode string. [Alexandre Dulaunoy]</p></li>
+<li><p>Basic XML output added. [Alexandre Dulaunoy]</p>
+<p>-o xml is now working when a product/cpe search is done.</p>
+<p>The output format is a minimal XML format containing each matching
+CVE-ID. The format is including the id, references, date of last
+update and the vulnerable configuration if they are present.</p>
+</li>
+<li><p>Remove old README confusing with new README.md. [Alexandre Dulaunoy]</p></li>
+<li><p>Dump_last usage added to generate RSS or Atom feeds. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Dump last CVE entries in RSS/Atom format. [Alexandre Dulaunoy]</p>
+<p>Arguments are the following:</p>
+<dl>
+<dt>optional arguments:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+<dt><kbd><span class="option">-f <var>F</var></span></kbd></dt>
+<dd><p>Output format (rss1,rss2,atom)</p>
+</dd>
+<dt><kbd><span class="option">-l <var>L</var></span></kbd></dt>
+<dd><p>Last n items (default:10)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>requires lib/cves.py</p>
+</li>
+<li><p>Minimal library to get last CVE from the database. [Alexandre
+Dulaunoy]</p>
+<p>You can add the ranking and the CPE lookup for each
+element retrieved from the CVE database by default
+rankinglookup and namelookup are disabled.</p>
+<p>A sample code:</p>
+<blockquote>
+<div><p>import cves
+l = cves.last(rankinglookup=True)
+l.get()</p>
+</div></blockquote>
+</li>
+<li><p>A simple CVE database dumper including ranking in JSON. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Print usage if no arguments are used. [Alexandre Dulaunoy]</p></li>
+<li><p>Separate ranking lookup from cpe name lookup. [Alexandre Dulaunoy]</p>
+<p>Now the output can include ranking lookup with or without cpe name.</p>
+</li>
+<li><p>Skeleton for the RSS/Atom generator. [Alexandre Dulaunoy]</p></li>
+<li><p>Remove limit for search results. [Alexandre Dulaunoy]</p></li>
+<li><p>Basic explanation for the fulltext indexing. [Alexandre Dulaunoy]</p>
+<p>db_fulltext.py and search_fulltext.py added in the documentation
+to explain their uses. Be aware that the db_fulltext.py is still
+at the early stage.</p>
+</li>
+<li><p>Crude indexer of CVEs to a Whoosh fulltext index. [Alexandre Dulaunoy]</p>
+<p>The fulltext indexer is relying on Whoosh.</p>
+<p><a class="reference external" href="http://packages.python.org/Whoosh/">http://packages.python.org/Whoosh/</a></p>
+<p>The indexing is done by enumerating all items from
+the MongoDB CVE collection and indexing the summary text of each
+CVE. The Path of each document is the CVE-ID.</p>
+<p>The current indexing is indexing all CVEs from the MongoDB. This need
+to be improved when new items are updated (TODO).</p>
+<p>The fulltext indexing is done to overcome the limitation of MongoDB
+regarding fulltext indexing and to improve response time for non-indexed
+records (especially for the XMPP bot).</p>
+</li>
+<li><p>Search interface to the fulltext index (in Whoosh) [Alexandre
+Dulaunoy]</p>
+<p>The search interface to query the Whoosh index to find the matching
+CVEs and output the CVE from the MongoDB collection.</p>
+<dl class="simple">
+<dt>python3.3 search_fulltext.py -q NFS -q Linux</dt><dd><p>-&gt; to query NFS and Linux and output the list of matching CVEs</p>
+</dd>
+<dt>python3.3 search_fulltext.py -q NFS -q Linux -j</dt><dd><p>-&gt; to query NFS and Linux and output the JSON for each CVE</p>
+</dd>
+</dl>
+</li>
+<li><p>-l option added to run the fetcher in a loop. [Alexandre Dulaunoy]</p>
+<p>If you like to run your services in a GNU Screen or a tmux
+session, this allows you to run the updates every hour. without -l
+it’s usually for a crontab usage.</p>
+</li>
+<li><p>Last-modified check added for CVE and CPE fetch. [Alexandre Dulaunoy]</p>
+<p>CVE and CPE db_mgmt are now checking the last-modified HTTP header
+to skip the download when the file has been already downloaded.
+A new collection has been created to store the meta information
+(like last-modified) about each collection.</p>
+<p>info collection is like this:</p>
+<p>{ “_id” : ObjectId(“50ba8d5f597549f61b2a25ab”), “db” : “cve”,
+“last-modified” : “Sat, 01 Dec 2012 21:01:07 GMT” }
+{ “_id” : ObjectId(“50ba8dc4597549f61b2a25ac”), “db” : “cpe”,
+“last-modified” : “Sat, 01 Dec 2012 05:12:59 GMT” }</p>
+<p>A list of the collections has been added in the README.</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Cvetweet function added in the XMPP bot. [Alexandre Dulaunoy]</p>
+<p>cveweet &lt;last&gt; is outputting a text readable output
+of the last CVE entries with the following format:</p>
+<p>CVE-2011-5058 , The CmbWebserver.dll module of the Control service in 3S CoDeSys 3.4 SP4 Patch 2 allows remote attackers to create arbitrary directories under the web root by specifying a non-existent directory using (backslash) characters in an HTTP GET request.http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-336-01A.pdf , http://xforce.iss.net/xforce/xfdb/72339 , http://secunia.com/advisories/47018 , http://aluigi.altervista.org/adv/codesys_1-adv.txt</p>
+<p>CVE-ID, summary, list of references (URLs)</p>
+</li>
+<li><p>A small clarification about secondary indexes. [Alexandre Dulaunoy]</p></li>
+<li><p>A full-text “search” query added. [Alexandre Dulaunoy]</p>
+<p>search is a full-text search on the summary field of each CVE items.
+You might consider to have an index on the summary field of the cves collection
+, if you expect to have a lot of queries.</p>
+<p>search &lt;keyword(s)&gt;</p>
+<p>You can search for one or more keywords.
+A small help has been also added to the XMPP bot</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>List ranking to be prepared for other formats. [Alexandre Dulaunoy]</p></li>
+<li><p>CPE lookup is always done for ranking lookup. [Alexandre Dulaunoy]</p></li>
+<li><p>Ranking support added in XMPP bot. [Alexandre Dulaunoy]</p>
+<p>JSON now includes the array ranking (key is ranking).
+If the ranking doesn’t exist, the array is empty.</p>
+</li>
+<li><p>-l option added to list current rankings. [Alexandre Dulaunoy]</p>
+<p>List all of the rankings in the ranking collection.</p>
+</li>
+<li><p>Merge pull request #5 from adulau/master. [Wim Remes]</p>
+<p>A new ranking functionality added and lookup cpe name added for JSON and text output.</p>
+</li>
+<li><p>A ranking functionnality added. [Alexandre Dulaunoy]</p>
+<p>Ranking database allows to rank software vulnerabilities based on
+their common platform enumeration name. The ranking can be done
+per organization or department within your organization or any
+meaningful name for you.</p>
+<p>As an example, you can add a partial CPE name like “sap:netweaver”
+which is very critical for your accounting department.</p>
+<blockquote>
+<div><p>./python3.3 db_ranking.py  -c “sap:netweaver” -g “accounting” -r 3</p>
+</div></blockquote>
+<p>and then you can lookup the ranking (-r option) for a specific CVE-ID:</p>
+<blockquote>
+<div><p>./python3.3 search.py -c CVE-2012-4341  -r  -n</p>
+</div></blockquote>
+<p>The ranking can be extended for notification in the XMPP search bot
+or alike.</p>
+<p>The ranking collection is a new collection in the MongoDB database.</p>
+<p>With the following format (a sample record):</p>
+<blockquote>
+<div><p>{ “_id” : ObjectId(“50b2081e597549f61b2a25a7”), “cpe” : “sap:netweaver”, “rank” : [ { “accounting” : 3 } ] }</p>
+</div></blockquote>
+</li>
+<li><p>Lookup cpe name for text output in product search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Merge branch ‘master’ of git://github.com/wimremes/cve-search.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #4 from adulau/master. [Wim Remes]</p>
+<p>Show vendor references only</p>
+</li>
+<li><p>Lookup cpe name for JSON output in product search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Search and show vendor references only in CSV output. [Alexandre
+Dulaunoy]</p>
+<p>Usually you just want to have the references from the vendor to
+a specific vulnerability and you don’t want the full references.</p>
+<p>The -v option allows to search in the hostname of the references
+for a specific vendor. Yep, we assume that a vendor got his own
+domain name (it’s usually the case ;-).</p>
+<blockquote>
+<div><p>./search.py -p webex: -o csv  -v “cisco”</p>
+</div></blockquote>
+<p>The following example allows you to search webex products and
+show only the vendor links.</p>
+</li>
+<li><p>Merge branch ‘master’ of git://github.com/wimremes/cve-search.
+[Alexandre Dulaunoy]</p></li>
+<li><p>Merge pull request #3 from adulau/master. [Wim Remes]</p>
+<p>Common Platform Enumeration (CPE) added</p>
+</li>
+<li><p>URLs fixed. [Alexandre Dulaunoy]</p></li>
+<li><p>New README in markdown format. [Alexandre Dulaunoy]</p></li>
+<li><p>Search CVE XMPP Bot added. [Alexandre Dulaunoy]</p>
+<p>Simple XMPP bot to query for the last entries in the CVE database
+and to get the output in JSON format. Useful for dynamic application
+requiring a constant feed of updates.</p>
+<p>Current command supported is: last &lt;max&gt;</p>
+<p>To get the n last entries from the CVE database.</p>
+<p>The sleekxmpp library is required.</p>
+</li>
+<li><p>Merge branch ‘master’ of github.com:adulau/cve-search. [Alexandre
+Dulaunoy]</p></li>
+<li><p>Updater script to start <a href="#id23"><span class="problematic" id="id24">db_</span></a> scripts and logging. [Alexandre Dulaunoy]</p>
+<p>script that can be used in cron or alike to automatically
+start the <a href="#id25"><span class="problematic" id="id26">db_</span></a> updater script and logging the # of updates done.</p>
+</li>
+<li><p>-v option added - verbose messages are now optional. [Alexandre
+Dulaunoy]</p>
+<p>logging is now optional</p>
+</li>
+<li><p>-n added to lookup Common Platform Enumeration. [Alexandre Dulaunoy]</p>
+<p>This option replaces cpe name with human-readable description
+of the common platform name. You need to have the cpe collection
+imported via db_mgmt_cpe_dictionnary.py.</p>
+<p>If there is no human-readable description available, the original
+cpe name is used.</p>
+<p>As an example, you can now search with CPE resolution enabled:</p>
+<p>search.py -c CVE-2012-2897 -n</p>
+<p>and without:</p>
+<p>search.py -c CVE-2012-2897</p>
+</li>
+<li><p>Importing Common Platform Enumeration into cvedb. [Alexandre Dulaunoy]</p>
+<p>This script is fetching the official Common Platform Enumeration[1]
+into the cve database as a standalone collection. The collection
+format is composed of an id which is the cpe name and the title
+which is the human readable name.</p>
+</li>
+<li><p>Merge pull request #2 from adulau/master. [Wim Remes]</p>
+<p>Search a list of CVE-ID</p>
+</li>
+<li><p>Search one or more CVE-ID. [Alexandre Dulaunoy]</p>
+<p>like “search.py -c CVE-2012-2897 -c CVE-2012-2553”</p>
+</li>
+<li><p>Merge pull request #1 from adulau/master. [Wim Remes]</p>
+<p>set a default CVSS value, option to sort in descending/ascending and case insensitive search</p>
+</li>
+<li><p>Fulltext search is now case insensitive. [Alexandre Dulaunoy]</p></li>
+<li><p>Option for descending/ascending sort added. [Alexandre Dulaunoy]</p></li>
+<li><p>Set a default CVSS value for item without CVSS. [Alexandre Dulaunoy]</p></li>
+<li><p>Commented source. [Wim Remes]</p></li>
+<li><p>Readme modified. [Wim Remes]</p></li>
+<li><p>Search modified. [Wim Remes]</p></li>
+<li><p>Initial commit. [Wim Remes]</p></li>
+<li><p>Scripts upload. [Wim Remes]</p></li>
+<li><p>Test. [Wim Remes]</p></li>
+<li><p>Test. [Wim Remes]</p></li>
+<li><p>Scripts. [Wim Remes]</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../license/license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../software/software.html" class="btn btn-neutral float-left" title="Software using cve-search" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, https://github.com/cve-search/cve-search
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

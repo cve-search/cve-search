@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Webgui &mdash; CVE-Search  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Docker versions" href="../docker/docker.html" />
+    <link rel="prev" title="Database" href="../database/database.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> CVE-Search
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Webgui</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-mode">Debug mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users-and-login">Users and Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#master-accounts">Master accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-accounts">Creating accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-account-passwords">Changing account passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removing-accounts">Removing accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#promoting-accounts">Promoting accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demoting-accounts">Demoting accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssl-secure-socket-layer">SSL - Secure Socket Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-ssl">Setting up SSL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-and-stopping-the-web-server">Starting and stopping the web-server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-web-server">Using the web-server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pages-for-normal-users">Pages for normal users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-pages">Admin Pages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-the-database">Updating the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-white-and-blacklists">Managing white- and blacklists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/docker.html">Docker versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/software.html">Software using cve-search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CVE-Search</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Webgui</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/webgui/webgui.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="webgui">
+<span id="web"></span><h1>Webgui<a class="headerlink" href="#webgui" title="Permalink to this headline">¶</a></h1>
+<p>This document will explain how to set up the web-component for CVE-Search.
+This documentation assumes you have installed all the components of CVE-Search and ran the first initialization scripts.</p>
+<div class="section" id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>Before we start the web server, we will go over the settings in the configuration.ini file, and explain what every
+setting means. The settings for the web-server can be found under the head [Webserver]</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 24%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default setting</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Host</p></td>
+<td><p>127.0.0.1</p></td>
+<td><div class="line-block">
+<div class="line">The address by which the web-server is accessible.</div>
+<div class="line">Either loop-back or one of the machine’s IP addresses</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Port</p></td>
+<td><p>5000</p></td>
+<td><p>The port on which the web-server will be running</p></td>
+</tr>
+<tr class="row-even"><td><p>Debug</p></td>
+<td><p>True</p></td>
+<td><div class="line-block">
+<div class="line">When the server runs in [debug mode](#debug), SSL will</div>
+<div class="line">be turned off and the web-server will be in</div>
+<div class="line"><em>Blocking Mode</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PageLength</p></td>
+<td><p>50</p></td>
+<td><p>The amount of CVEs that will be displayed per page</p></td>
+</tr>
+<tr class="row-even"><td><p>LoginRequired</p></td>
+<td><p>False</p></td>
+<td><div class="line-block">
+<div class="line">Decides whether [users](#users) have to log in to</div>
+<div class="line">access [admin pages](#admin).</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SSL</p></td>
+<td><p>False</p></td>
+<td><div class="line-block">
+<div class="line">Decides whether SSL is used to secure the connection.</div>
+<div class="line">See [SSL](#ssl) for more information on how to set</div>
+<div class="line">this up</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Certificate</p></td>
+<td><p>ssl/cve-search.crt</p></td>
+<td><div class="line-block">
+<div class="line">The certificate used for the SSL connection. More info</div>
+<div class="line">under [SSL](#ssl)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Key</p></td>
+<td><p>ssl/cve-search.key</p></td>
+<td><div class="line-block">
+<div class="line">The key used for the SSL connection.</div>
+<div class="line">More info under [SSL](#ssl)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>WebInterface</p></td>
+<td><p>Full</p></td>
+<td><p>Whether the webgui should start in full mode or minimal</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="debug-mode">
+<h2>Debug mode<a class="headerlink" href="#debug-mode" title="Permalink to this headline">¶</a></h2>
+<p>Running the server in debug mode allows for easier development of the server. By setting this value on <em>True</em>, the
+server will only use the Flask module. This means that the server will be set to <em>Blocking Mode</em>, SSL will
+be disabled, overriding the configuration.ini settings, and the server will give more visual debug output.</p>
+<p>Setting this value on <em>False</em>, the server will take the default SSL settings from the configuration.ini file and will
+enable the Gevent module, putting the server in <em>Non-Blocking mode</em>, and reduce the visual debug output.</p>
+<p>It is advised not to run the server in debug mode when you run it in a production environment. However, when you are
+developing or testing CVE-Search alone or with a small group of people, it is advised to run it in debug mode, as it
+will give you a lot more information when the application crashes for some reason.</p>
+</div>
+<div class="section" id="users-and-login">
+<h2>Users and Login<a class="headerlink" href="#users-and-login" title="Permalink to this headline">¶</a></h2>
+<p>If you decide to make use of CVE-Search’s login system, you will need to add users to the user-list. To do this,
+you’ll be using the <em>db_mgmt_admin.py</em> script.</p>
+<p>This script takes several parameters, as mentioned below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 19%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Arguments</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-h, –help</p></td>
+<td><p>None</p></td>
+<td><p>Displays the help page</p></td>
+</tr>
+<tr class="row-odd"><td><p>-a A</p></td>
+<td><p>name of user</p></td>
+<td><p>Add a user account</p></td>
+</tr>
+<tr class="row-even"><td><p>-c C</p></td>
+<td><p>name of user</p></td>
+<td><p>Change the password of a user</p></td>
+</tr>
+<tr class="row-odd"><td><p>-r R</p></td>
+<td><p>name of user</p></td>
+<td><p>Remove a user account</p></td>
+</tr>
+<tr class="row-even"><td><p>-p P</p></td>
+<td><p>name of user</p></td>
+<td><p>Promote a user account to Master</p></td>
+</tr>
+<tr class="row-odd"><td><p>-d D</p></td>
+<td><p>name of user</p></td>
+<td><p>Demote a user account to a normal user</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="master-accounts">
+<h2>Master accounts<a class="headerlink" href="#master-accounts" title="Permalink to this headline">¶</a></h2>
+<p>The first account that you add will automatically be a Master account. Master accounts are accounts with the privilege
+to add, remove, promote and demote other user accounts. Every user can access the admin panel, regardless whether he
+has a Master account or not.</p>
+</div>
+<div class="section" id="creating-accounts">
+<h2>Creating accounts<a class="headerlink" href="#creating-accounts" title="Permalink to this headline">¶</a></h2>
+<p>You can create a user account by using the command <cite>Python3 db_mgmt_admin.py -a user</cite>, where user is the name of your
+account.</p>
+<p>If this is the first account in the database, the script will not require a Master password, and the account
+created will be a Master account. If this is not the first account, the script will ask you to log in using a Master
+account, before you can proceed. Next, the script will ask you for a new password for the user. You will not see the
+characters when you type the password. This is to protect the user’s password from spying eyes. After verifying the
+password, the user account will be created.</p>
+</div>
+<div class="section" id="changing-account-passwords">
+<h2>Changing account passwords<a class="headerlink" href="#changing-account-passwords" title="Permalink to this headline">¶</a></h2>
+<p>Every user can change his or her password by typing <cite>Python3 db_mgmt_admin.py -c user</cite>, where user is the name of your
+account.</p>
+<p>Running this script will ask you the current password of your user account. After entering this password, it will ask
+you to type your new password twice. After you typed your new password, the user will be updated, and the new password
+will be stored.</p>
+</div>
+<div class="section" id="removing-accounts">
+<h2>Removing accounts<a class="headerlink" href="#removing-accounts" title="Permalink to this headline">¶</a></h2>
+<p>Master accounts can remove users by typing <cite>Python3 db_mgmt_admin.py -r user</cite>, where user is the name of the account.</p>
+<p>Removing an account requires a Master account to log in. If the account you’re trying to remove is not the last Master
+account, it will not be removed.</p>
+</div>
+<div class="section" id="promoting-accounts">
+<h2>Promoting accounts<a class="headerlink" href="#promoting-accounts" title="Permalink to this headline">¶</a></h2>
+<p>Master accounts can promote other accounts by typing <em>Python3 db_mgmt_admin.py -p user</em>, where user is the name of
+the account.</p>
+<p>Promoting a user grants this user the privileges to add, remove, promote and demote other users.</p>
+</div>
+<div class="section" id="demoting-accounts">
+<h2>Demoting accounts<a class="headerlink" href="#demoting-accounts" title="Permalink to this headline">¶</a></h2>
+<p>Master accounts can demote him/herself or other accounts by typing <cite>Python3 db_mgmt_admin.py -d user</cite>, where user is
+the name of the account.</p>
+<p>If the account you’re trying to demote is the last Master account, it won’t work. Demoting users reduces their
+privileges to that of a normal user, so he/she can only change his or her own password.</p>
+</div>
+<div class="section" id="ssl-secure-socket-layer">
+<h2>SSL - Secure Socket Layer<a class="headerlink" href="#ssl-secure-socket-layer" title="Permalink to this headline">¶</a></h2>
+<p>The use of SSL will make sure your users traffic can not be sniffed. This will make sure people with bad intentions
+can’t get user passwords or any other information.</p>
+<div class="section" id="setting-up-ssl">
+<h3>Setting up SSL<a class="headerlink" href="#setting-up-ssl" title="Permalink to this headline">¶</a></h3>
+<p>To set up SSL on your server, you need a certificate and a key. On Linux, you can create these by running the
+following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl req -x509 -nodes -days <span class="m">365</span> -newkey rsa:2048 -keyout /ssl/cve-search.key -out /ssl/cve-search.crt
+</pre></div>
+</div>
+<p>The parameter <cite>-days</cite> lets you choose the duration the certificate must be valid. In this example, this is 365 days.</p>
+<p>The parameter <cite>-newkey</cite> lets you choose the algorithm and length of the key and certificate. If you don’t know what
+you’re doing, use the default value.</p>
+<p>The parameter <cite>-keyout</cite> is the output of your new SSL key. Make sure this location is the same as the <a href="#id1"><span class="problematic" id="id2">*</span></a>Key value of your
+configuration.ini file.</p>
+<p>The parameter <cite>-out</cite> is the output for your new SSL certificate. Make sure this location is the same as the
+<em>Certificate</em> value of your configuration.ini file.</p>
+<p>After hitting the Enter key, you’ll be requested to fill out your organizational information. This will be visible on
+the certificate, and will be a way for your users to verify your certificate, as this will be <em>self-signed</em>.
+When users surf to your website, they will get a warning, and they will have to accept this certificate.</p>
+</div>
+</div>
+<div class="section" id="starting-and-stopping-the-web-server">
+<h2>Starting and stopping the web-server<a class="headerlink" href="#starting-and-stopping-the-web-server" title="Permalink to this headline">¶</a></h2>
+<p>Once you set up the configurations.ini file how you want it to be, you can start the webserver by simply
+running <cite>python3 web/index.py</cite>. To stop the server, you can simply press the <strong>CTRL+C</strong> combination.</p>
+<p>Alternatively, on Linux, you can start the server by running <cite>nohup python3 web/index.py &amp;</cite>. This will make the server
+run in the background. However, this makes it so you cannot use the <strong>CTRL+C</strong> combination. Instead, you will have to
+find the processes related to the web-server, by using <cite>ps aux | grep web/index.py</cite>. Then kill them using the
+<cite>kill -15</cite> command on all the processes related to the server.</p>
+</div>
+<div class="section" id="using-the-web-server">
+<h2>Using the web-server<a class="headerlink" href="#using-the-web-server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pages-for-normal-users">
+<h3>Pages for normal users<a class="headerlink" href="#pages-for-normal-users" title="Permalink to this headline">¶</a></h3>
+<p>All users will be able to view the recent CVE’s, search for CVEs related to a product and get all CVE information. In
+the table below, you can find a short description of each page this user can go to.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Page</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Recent</p></td>
+<td><div class="line-block">
+<div class="line">An overview of all the CVE’s, ordered from recent to old. You can use</div>
+<div class="line">the filter to enhance your search.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CVE</p></td>
+<td><div class="line-block">
+<div class="line">The overview of a CVE. You can find all the information that is in the</div>
+<div class="line">CVE-Search database in here.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Browse per vendor</p></td>
+<td><div class="line-block">
+<div class="line">Lets you search CVEs per product. The result is ordered from new to old,</div>
+<div class="line">sorted by Last Major Update</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Every CVE has a few base fields. These fields are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ID</p></td>
+<td><p>The identifier of a CVE</p></td>
+</tr>
+<tr class="row-odd"><td><p>Summary</p></td>
+<td><div class="line-block">
+<div class="line">The description of a CVE, with an explanation the attack vector</div>
+<div class="line">and the result</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>References</p></td>
+<td><div class="line-block">
+<div class="line">Links to other websites with information about the CVE. These</div>
+<div class="line">can be vendor statements, explanations, etc</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Vulnerable Configuration</p></td>
+<td><div class="line-block">
+<div class="line">The products that are vulnerable to the CVE. This field can be</div>
+<div class="line">empty if the CVEis still new, and information is not complete</div>
+<div class="line">yet.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>CVSS</p></td>
+<td><div class="line-block">
+<div class="line">The score given to a CVE. This score represents the risk and</div>
+<div class="line">damage. If this field is not yet set by NIST’s NVD, the default</div>
+<div class="line">value, specified in the configuration.ini file,will be used.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Last Major Update</p></td>
+<td><div class="line-block">
+<div class="line">The last major update a CVE had. This is set to the latest</div>
+<div class="line">update where information is added or changed</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Published</p></td>
+<td><p>The date the CVE got published</p></td>
+</tr>
+<tr class="row-odd"><td><p>Last Modified</p></td>
+<td><div class="line-block">
+<div class="line">The date the CVE got last modified. Modifications can be</div>
+<div class="line">spelling changes, changes in wording etc.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="admin-pages">
+<h3>Admin Pages<a class="headerlink" href="#admin-pages" title="Permalink to this headline">¶</a></h3>
+<p>When login is required, admins have access to more pages then normal users. If login is not required, normal users
+will have access to these pages as well.</p>
+<p>The admin page is the main control panel for the admin. From this page, he can update the database, as well as view
+and manage the white/and blacklist. All the admin functions are accessible by using the navigation buttons.</p>
+</div>
+<div class="section" id="updating-the-database">
+<h3>Updating the database<a class="headerlink" href="#updating-the-database" title="Permalink to this headline">¶</a></h3>
+<p>Updating the database can be done by a press of the update button, on the admin panel. Alternatively, you can use
+the update script <cite>db_updater.py</cite>. The button press runs <cite>python3 db_updater.py -civ</cite>. For more information on the
+scripts parameters, run <cite>Python3 db_updater -h</cite>.</p>
+<p>The sources used by CVE-Search are listed in the configuration.ini file.</p>
+</div>
+<div class="section" id="managing-white-and-blacklists">
+<h3>Managing white- and blacklists<a class="headerlink" href="#managing-white-and-blacklists" title="Permalink to this headline">¶</a></h3>
+<p>The white- and blacklists can be used to manage the information your users see. Adding a CPE to the whitelist, any
+CVE which has this CPE in its vulnerable configurations will be marked. Adding a CPE to the blacklist will hide all
+the CVEs which are only applicable to this CPE. This way you can hide CVEs for products you’re not interested in.</p>
+<p>This default behavior can be overruled by the search filter on the “Recent” page, and by no means excludes these items
+from the database.</p>
+<p>CPE’s have a specific format, and can be used as regular expression to mark or exclude CPE’s. The default format of a
+CPE is: <em>cpe:/type:vendor:product:version</em></p>
+<p>The type can be <strong>a</strong> for application, <strong>h</strong> for hardware or <strong>o</strong> for operating system.</p>
+<p><strong>Example:</strong></p>
+<p><em>cpe:/h:3com:3c13612:5.26.2</em> is a piece of hardware, produced by 3com. The product name is 3c13612, and the version
+is 5.26.2. Adding this to the whitelist will make CVE-Search mark all the CVEs applicable to this specific setup.</p>
+<p>However, if you don’t want just this version number, you could add <em>cpe:/h:3com:3c13612:</em>, for all the versions,
+or even <em>cpe:/h:3com:</em> for all the hardware 3com produces.</p>
+</div>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>Logging can be useful when multiple people are using your server, and you cannot monitor it the entire time.
+When your server does not run in debug mode, you can use logging to still get reports of crashes or malfunctions.</p>
+<p>The configurations.ini file contains a few options regarding logging, which are briefly explained below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 25%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default setting</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Logfile</p></td>
+<td><p>log/cve-search.log</p></td>
+<td><p>The file the logs will be saved to</p></td>
+</tr>
+<tr class="row-odd"><td><p>MaxSize</p></td>
+<td><p>100MB</p></td>
+<td><div class="line-block">
+<div class="line">Maximum size of the logfile. Can take the format</div>
+<div class="line">of <cite>100</cite>, <cite>100 b</cite> or <cite>100b</cite>. b means bytes, mb means</div>
+<div class="line">megabytes and gb means gigabytes.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Backlog</p></td>
+<td><p>5</p></td>
+<td><p>Amount of logfiles the server saves.</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the size of the logfile exceeds the amount set in MaxSize, a new file will be created. If the settings are like
+above, this file will be called log/cve-search.1.log. If either MaxSize or Backlog is set to 0, this will not happen,
+and the logfile will have no maximum size.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../docker/docker.html" class="btn btn-neutral float-right" title="Docker versions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../database/database.html" class="btn btn-neutral float-left" title="Database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, https://github.com/cve-search/cve-search
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
