@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Database &mdash; CVE-Search  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Webgui" href="../webgui/webgui.html" />
+    <link rel="prev" title="Getting Started" href="../getting_started/installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> CVE-Search
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mongodb">MongoDB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#populating-the-database">Populating the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-the-database">Updating the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repopulating-the-database">Repopulating the database</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#redis">Redis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Populating the database</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webgui/webgui.html">Webgui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/docker.html">Docker versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/software.html">Software using cve-search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CVE-Search</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Database</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/database/database.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="database">
+<span id="db"></span><h1>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
+<p>CVE-Search makes use of multiple databases, these are:</p>
+<ul class="simple">
+<li><p>MongoDB</p></li>
+<li><p>Redis</p></li>
+</ul>
+<div class="section" id="mongodb">
+<h2>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this headline">¶</a></h2>
+<p>The MongoDB database is (by default) called cvedb and has 11 collections:</p>
+<ul class="simple">
+<li><p>cves (Common Vulnerabilities and Exposure items) - source NVD NIST (JSON)</p></li>
+<li><p>cpe (Common Platform Enumeration items) - source NVD NIST</p></li>
+<li><p>cwe (Common Weakness Enumeration items) - source NVD NIST</p></li>
+<li><p>capec (Common Attack Pattern Enumeration and Classification) - source NVD NIST</p></li>
+<li><p>ranking (ranking rules per group) - local cve-search</p></li>
+<li><p><a class="reference external" href="https://cve.mitre.org/data/refs/">MITRE Reference Key/Maps</a> - source MITRE reference Key/Maps</p></li>
+<li><p>info (metadata of each collection like last-modified) - local cve-search</p></li>
+<li><dl class="simple">
+<dt>via4 <a class="reference external" href="https://github.com/cve-search/VIA4CVE">VIA4CVE</a> cross-references, and has 3 additional sources:</dt><dd><ul>
+<li><p><a class="reference external" href="https://cve.mitre.org/data/refs/">MITRE Reference Key/Maps</a>.</p></li>
+<li><p>Red Hat RPM to CVE database.</p></li>
+<li><p>Red Hat RHSA Oval database.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The initial setup of CVE-Search happens only once, at the installation.
+This consists of two steps and one optional step.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Populating the database</p></li>
+<li><p><em>Optional:</em> You can also run the “Other CPE Dictionary” script to help fill in the blanks</p></li>
+<li><p>Updating the database</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="populating-the-database">
+<span id="pop-db"></span><h3>Populating the database<a class="headerlink" href="#populating-the-database" title="Permalink to this headline">¶</a></h3>
+<p>For the initial run, you need to populate the CVE database by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sbin/db_mgmt_cpe_dictionary.py -p
+./sbin/db_mgmt_json.py -p
+./sbin/db_updater.py -c <span class="c1"># This will take &gt;45minutes on a decent machine, please be patient</span>
+</pre></div>
+</div>
+<p>It will fetch all the existing JSON files from the Common Vulnerabilities
+and Exposures feed and the Common Platform Enumeration. The initial
+Common Platform Enumeration (CPE) import might take some time depending
+on your configuration.</p>
+<p>If you want to add the cross-references from NIST, Red Hat and other vendors thanks to <a class="reference external" href="https://github.com/cve-search/VIA4CVE">VIA4CVE</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sbin/db_mgmt_ref.py
+</pre></div>
+</div>
+<p>NB: If you want to  import your own JSON from VIA4CVE, you have to replace URL in sources.ini the VIA4 attribute with
+<cite>file:///PATH/TO/VIA4CVE/VIA4CVE-feed.json</cite>.</p>
+</div>
+<div class="section" id="updating-the-database">
+<span id="upd-db"></span><h3>Updating the database<a class="headerlink" href="#updating-the-database" title="Permalink to this headline">¶</a></h3>
+<p>An updater script helps to start the db_mgmt_*</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sbin/db_updater.py -v
+</pre></div>
+</div>
+<p>You can run it in a crontab, logging is done in log/update_populate.log by default.</p>
+</div>
+<div class="section" id="repopulating-the-database">
+<span id="repop-db"></span><h3>Repopulating the database<a class="headerlink" href="#repopulating-the-database" title="Permalink to this headline">¶</a></h3>
+<p>To easily drop and re-populate all the databases</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sbin/db_updater.py -v -f
+</pre></div>
+</div>
+<p>This will drop all the existing external sources and reimport everything. This operation can take some time
+and it’s usually only required when new attributes parsing are added in cve-search.</p>
+</div>
+</div>
+<div class="section" id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h2>
+<p>4 Redis databases are used:</p>
+<ul class="simple">
+<li><p>Database number 9: Functions as a queue during populating and updating the MongoDB</p></li>
+<li><p>Database number 10: The cpe (Common Platform Enumeration) cache - source MongoDB cvedb collection cpe</p></li>
+<li><p>Database number 11: The notification database - source cve-search</p></li>
+<li><p>Database number 12: The <a class="reference external" href="https://cve.mitre.org/data/refs/">CVE reference database</a> is a cross-reference database to CVE IDs against various vendors ID - source NVD NIST/MITRE</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>Populating the database<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Depending on the switches that are appended to the <cite>./sbin/db_updater.py</cite> command, the redis database will be populated.
+Check the help of that specific script for further details.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../webgui/webgui.html" class="btn btn-neutral float-right" title="Webgui" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../getting_started/installation.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, https://github.com/cve-search/cve-search
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
