@@ -1,0 +1,40 @@
+.sidebar {
+  height: 0px;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  background-color: #343a40;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #818181;
+  text-decoration: none;
+}
+
+.sidebar .closebtn:hover {
+    color: #f1f1f1;
+}
+
+#main {
+  transition: margin-bottom .5s;
+  padding: 16px;
+}
+
+#PluginBar .card-header {
+    background-color: darkgrey;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
