@@ -2,6 +2,555 @@ Changelog
 =========
 
 
+v4.1.0 (2021-04-24)
+-------------------
+
+Changes
+~~~~~~~
+- [version] v4.1.0 released. [Alexandre Dulaunoy]
+
+Fix
+~~~
+- [doc] fix the default link of the public cvepremium.circl.lu.
+  [Alexandre Dulaunoy]
+- [view/capec] Non existing CAPEC value was not properly handled.
+  [Alexandre Dulaunoy]
+
+  Fix #648
+- [json import] ASSIGNER not always present (required) in NVD json feed.
+  [Alexandre Dulaunoy]
+
+  Fix #650
+
+Other
+~~~~~
+- Merge pull request #664 from P-T-I/cve-search-659. [PT]
+
+  fix #cve-search-659; wrong date format disables effective sorting on …
+- Fix #cve-search-659; wrong date format disables effective sorting on
+  table + inserted cvss3 score to vendor search table. [Paul Tikken
+  Laptop]
+- Merge pull request #663 from P-T-I/cve-search-660. [PT]
+
+  fix #cve-search-660; fixed the back to top button covering the datata…
+- Fix #cve-search-660; fixed the back to top button covering the
+  datatables buttons. [Paul Tikken Laptop]
+- Merge pull request #662 from P-T-I/master. [PT]
+
+  Proxies fix
+- Proxies fix. [Paul Tikken Laptop]
+- Proxies fix. [Paul Tikken Laptop]
+- Merge pull request #661 from P-T-I/master. [PT]
+
+  proxies fix
+- Proxies fix. [Paul Tikken Laptop]
+- Merge pull request #657 from P-T-I/cve-search-586. [PT]
+
+  Fix #cve-search-586; created possibility to set download worker size …
+- Merge branch 'master' into cve-search-586. [Paul Tikken Laptop]
+- Merge pull request #615 from EXXETA/downloadHandlerProxy. [PT]
+
+  Use http proxy in download handler
+- Move proxy setting to a more central place (get_session) [Justin
+  Kromlinger]
+- Move configuration to a class variable and import statement to the top
+  of the file. [Justin Kromlinger]
+- Use http proxy in download handler. [Justin Kromlinger]
+- Fix #cve-search-586; created possibility to set download worker size
+  via environment variable. [Paul Tikken Laptop]
+- Merge pull request #656 from FafnerKeyZee/patch-2. [Alexandre
+  Dulaunoy]
+
+  dirty patch for #651
+- Update Sources_process.py. [Fafner [_KeyZee_]]
+- Update Sources_process.py. [Fafner [_KeyZee_]]
+- Update Sources_process.py. [Fafner [_KeyZee_]]
+
+  Yeah it's a dirty fix, but it does the job for the moment.
+- Merge pull request #644 from EXXETA/vendor-search. [Alexandre
+  Dulaunoy]
+
+  Added endpoints to search for the CPE fields vendor, product and version
+- Added endpoints to search for the CPE fields vendor, product and
+  version. [weigeltj]
+- Merge pull request #647 from cve-search/dependabot/pip/nltk-3.6.2.
+  [PT]
+- Bump nltk from 3.6.1 to 3.6.2. [dependabot[bot]]
+
+  Bumps [nltk](https://github.com/nltk/nltk) from 3.6.1 to 3.6.2.
+  - [Release notes](https://github.com/nltk/nltk/releases)
+  - [Changelog](https://github.com/nltk/nltk/blob/develop/ChangeLog)
+  - [Commits](https://github.com/nltk/nltk/compare/3.6.1...3.6.2)
+- Merge pull request #643 from cve-search/dependabot/pip/sphinx-3.5.4.
+  [PT]
+- Bump sphinx from 3.5.3 to 3.5.4. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.5.3 to 3.5.4.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/4.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/commits/v3.5.4)
+- Merge pull request #642 from cve-search/dependabot/pip/nltk-3.6.1.
+  [PT]
+
+  Bump nltk from 3.5 to 3.6.1
+- Bump nltk from 3.5 to 3.6.1. [dependabot[bot]]
+
+  Bumps [nltk](https://github.com/nltk/nltk) from 3.5 to 3.6.1.
+  - [Release notes](https://github.com/nltk/nltk/releases)
+  - [Changelog](https://github.com/nltk/nltk/blob/develop/ChangeLog)
+  - [Commits](https://github.com/nltk/nltk/compare/3.5...3.6.1)
+- Merge pull request #641 from P-T-I/cve-search-625. [PT]
+
+  update to cwe4.4
+- Update to cwe4.4. [Paul Tikken Laptop]
+- Merge pull request #640 from P-T-I/new_redoc. [PT]
+
+  New redoc version added
+- New redoc version added. [Paul Tikken Laptop]
+- Merge pull request #639 from P-T-I/cve-search-612. [PT]
+
+  Cve search 612
+- Version bump. [Paul Tikken Laptop]
+- Merge branch 'master' into cve-search-612. [Paul Tikken Laptop]
+- Merge pull request #635 from cve-search/dependabot/pip/tqdm-4.60.0.
+  [PT]
+
+  Bump tqdm from 4.59.0 to 4.60.0
+- Bump tqdm from 4.59.0 to 4.60.0. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.59.0 to 4.60.0.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.59.0...v4.60.0)
+- Merge pull request #634 from cve-search/dependabot/pip/sphinx-rtd-
+  theme-0.5.2. [PT]
+
+  Bump sphinx-rtd-theme from 0.5.1 to 0.5.2
+- Bump sphinx-rtd-theme from 0.5.1 to 0.5.2. [dependabot[bot]]
+
+  Bumps [sphinx-rtd-theme](https://github.com/readthedocs/sphinx_rtd_theme) from 0.5.1 to 0.5.2.
+  - [Release notes](https://github.com/readthedocs/sphinx_rtd_theme/releases)
+  - [Changelog](https://github.com/readthedocs/sphinx_rtd_theme/blob/master/docs/changelog.rst)
+  - [Commits](https://github.com/readthedocs/sphinx_rtd_theme/compare/0.5.1...0.5.2)
+- Merge pull request #632 from cve-search/dependabot/pip/pytest-6.2.3.
+  [PT]
+- Bump pytest from 6.2.2 to 6.2.3. [dependabot[bot]]
+
+  Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.2.2 to 6.2.3.
+  - [Release notes](https://github.com/pytest-dev/pytest/releases)
+  - [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+  - [Commits](https://github.com/pytest-dev/pytest/compare/6.2.2...6.2.3)
+- Merge pull request #631 from cve-search/dependabot/pip/flask-
+  restx-0.3.0. [PT]
+
+  Bump flask-restx from 0.2.0 to 0.3.0
+- Bump flask-restx from 0.2.0 to 0.3.0. [dependabot[bot]]
+
+  Bumps [flask-restx](https://github.com/python-restx/flask-restx) from 0.2.0 to 0.3.0.
+  - [Release notes](https://github.com/python-restx/flask-restx/releases)
+  - [Changelog](https://github.com/python-restx/flask-restx/blob/master/CHANGELOG.rst)
+  - [Commits](https://github.com/python-restx/flask-restx/compare/0.2.0...0.3.0)
+- Create codeql-analysis.yml. [PT]
+- Merge pull request #630 from oh2fih/patch-1. [PT]
+
+  Correct installation order
+- Correct installation order. [oh2fih]
+
+  Because `python3` & `python3-pip` are part of `requirements.system`, the system requirements must be installed before installing CVE-Search and its Python dependencies.
+- Merge pull request #629 from jorgectf/fix-regex-injection. [PT]
+- Fix Regular Expression injection. [jorgectf]
+- Merge pull request #628 from cve-search/dependabot/pip/sphinx-3.5.3.
+  [PT]
+- Bump sphinx from 3.5.2 to 3.5.3. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.5.2 to 3.5.3.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/commits)
+- Merge pull request #627 from cve-
+  search/dependabot/pip/docs/source/jinja2-2.11.3. [PT]
+
+  Bump jinja2 from 2.11.2 to 2.11.3 in /docs/source
+- Bump jinja2 from 2.11.2 to 2.11.3 in /docs/source. [dependabot[bot]]
+
+  Bumps [jinja2](https://github.com/pallets/jinja) from 2.11.2 to 2.11.3.
+  - [Release notes](https://github.com/pallets/jinja/releases)
+  - [Changelog](https://github.com/pallets/jinja/blob/master/CHANGES.rst)
+  - [Commits](https://github.com/pallets/jinja/compare/2.11.2...2.11.3)
+- Fix #612; add min-length attribute to search input box. [Paul Tikken
+  Laptop]
+- Merge pull request #624 from P-T-I/cve-search-622. [PT]
+
+  fix #622; skip processing files when file failes to download...
+- Fix #622; skip processing files when file failes to download... [Paul
+  Tikken Laptop]
+- Merge pull request #621 from cve-search/dependabot/pip/flask-jwt-
+  extended-4.1.0. [PT]
+- Bump flask-jwt-extended from 4.0.2 to 4.1.0. [dependabot[bot]]
+
+  Bumps [flask-jwt-extended](https://github.com/vimalloc/flask-jwt-extended) from 4.0.2 to 4.1.0.
+  - [Release notes](https://github.com/vimalloc/flask-jwt-extended/releases)
+  - [Commits](https://github.com/vimalloc/flask-jwt-extended/compare/4.0.2...4.1.0)
+- Merge pull request #619 from cve-search/dependabot/pip/tqdm-4.59.0.
+  [PT]
+- Bump tqdm from 4.58.0 to 4.59.0. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.58.0 to 4.59.0.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.58.0...v4.59.0)
+- Merge pull request #620 from cve-search/dependabot/pip/sphinx-3.5.2.
+  [PT]
+- Bump sphinx from 3.5.1 to 3.5.2. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.5.1 to 3.5.2.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.5.1...v3.5.2)
+- Merge pull request #618 from EXXETA/cpeBrowseAPI. [PT]
+
+  Provide /browse endpoint to list product CPEs
+- Fix field description. [Justin Kromlinger]
+- Provide /browse endpoint to list product CPEs. [Justin Kromlinger]
+
+  The vendor isn't really required here, but it fits the current API style
+  and represents the same functionality as the webinterface.
+- Merge pull request #616 from cve-search/dependabot/pip/ijson-3.1.4.
+  [PT]
+
+  Bump ijson from 3.1.3 to 3.1.4
+- Bump ijson from 3.1.3 to 3.1.4. [dependabot[bot]]
+
+  Bumps [ijson](https://github.com/ICRAR/ijson) from 3.1.3 to 3.1.4.
+  - [Release notes](https://github.com/ICRAR/ijson/releases)
+  - [Changelog](https://github.com/ICRAR/ijson/blob/master/CHANGELOG.md)
+  - [Commits](https://github.com/ICRAR/ijson/compare/v3.1.3...v3.1.4)
+- Merge pull request #614 from cve-search/dependabot/pip/tqdm-4.58.0.
+  [PT]
+- Bump tqdm from 4.57.0 to 4.58.0. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.57.0 to 4.58.0.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.57.0...v4.58.0)
+- Merge pull request #613 from RoccovanAsselt/display_help. [PT]
+- Print_help if no parameters. [Rocco van Asselt]
+- Merge pull request #610 from cve-search/dependabot/pip/tqdm-4.57.0.
+  [PT]
+
+  Bump tqdm from 4.56.2 to 4.57.0
+- Bump tqdm from 4.56.2 to 4.57.0. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.56.2 to 4.57.0.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.56.2...v4.57.0)
+- Merge pull request #609 from cve-search/dependabot/pip/sphinx-3.5.1.
+  [PT]
+- Bump sphinx from 3.5.0 to 3.5.1. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.5.0 to 3.5.1.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.5.0...v3.5.1)
+- Merge pull request #608 from P-T-I/cve-search-607. [PT]
+
+  fix #607; updated the renamed jwt functions
+- Fix #607; updated the renamed jwt functions. [Paul Tikken Laptop]
+- Merge pull request #606 from cve-search/dependabot/pip/sphinx-3.5.0.
+  [PT]
+- Bump sphinx from 3.4.3 to 3.5.0. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.4.3 to 3.5.0.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.4.3...v3.5.0)
+- Merge pull request #605 from cve-search/dependabot/pip/flask-jwt-
+  extended-4.0.2. [PT]
+- Bump flask-jwt-extended from 3.25.0 to 4.0.2. [dependabot[bot]]
+
+  Bumps [flask-jwt-extended](https://github.com/vimalloc/flask-jwt-extended) from 3.25.0 to 4.0.2.
+  - [Release notes](https://github.com/vimalloc/flask-jwt-extended/releases)
+  - [Commits](https://github.com/vimalloc/flask-jwt-extended/compare/3.25.0...4.0.2)
+- Merge pull request #603 from cve-search/dependabot/pip/tqdm-4.56.2.
+  [PT]
+- Bump tqdm from 4.56.1 to 4.56.2. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.56.1 to 4.56.2.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.56.1...v4.56.2)
+- Merge pull request #602 from cve-search/dependabot/pip/tqdm-4.56.1.
+  [PT]
+- Bump tqdm from 4.56.0 to 4.56.1. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.56.0 to 4.56.1.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.56.0...v4.56.1)
+- Merge pull request #601 from cve-
+  search/dependabot/pip/jsonpickle-2.0.0. [PT]
+- Bump jsonpickle from 1.5.1 to 2.0.0. [dependabot[bot]]
+
+  Bumps [jsonpickle](https://github.com/jsonpickle/jsonpickle) from 1.5.1 to 2.0.0.
+  - [Release notes](https://github.com/jsonpickle/jsonpickle/releases)
+  - [Changelog](https://github.com/jsonpickle/jsonpickle/blob/master/CHANGES.rst)
+  - [Commits](https://github.com/jsonpickle/jsonpickle/compare/v1.5.1...v2.0.0)
+- Merge pull request #600 from cve-search/dependabot/pip/pymongo-3.11.3.
+  [PT]
+- Bump pymongo from 3.11.2 to 3.11.3. [dependabot[bot]]
+
+  Bumps [pymongo](https://github.com/mongodb/mongo-python-driver) from 3.11.2 to 3.11.3.
+  - [Release notes](https://github.com/mongodb/mongo-python-driver/releases)
+  - [Changelog](https://github.com/mongodb/mongo-python-driver/blob/3.11.3/doc/changelog.rst)
+  - [Commits](https://github.com/mongodb/mongo-python-driver/compare/3.11.2...3.11.3)
+- Merge pull request #599 from cve-
+  search/dependabot/pip/jsonpickle-1.5.1. [PT]
+
+  Bump jsonpickle from 1.5.0 to 1.5.1
+- Bump jsonpickle from 1.5.0 to 1.5.1. [dependabot[bot]]
+
+  Bumps [jsonpickle](https://github.com/jsonpickle/jsonpickle) from 1.5.0 to 1.5.1.
+  - [Release notes](https://github.com/jsonpickle/jsonpickle/releases)
+  - [Changelog](https://github.com/jsonpickle/jsonpickle/blob/master/CHANGES.rst)
+  - [Commits](https://github.com/jsonpickle/jsonpickle/compare/v1.5.0...v1.5.1)
+- Merge pull request #598 from cve-search/dependabot/pip/jinja2-2.11.3.
+  [PT]
+
+  Bump jinja2 from 2.11.2 to 2.11.3
+- Bump jinja2 from 2.11.2 to 2.11.3. [dependabot[bot]]
+
+  Bumps [jinja2](https://github.com/pallets/jinja) from 2.11.2 to 2.11.3.
+  - [Release notes](https://github.com/pallets/jinja/releases)
+  - [Changelog](https://github.com/pallets/jinja/blob/master/CHANGES.rst)
+  - [Commits](https://github.com/pallets/jinja/compare/2.11.2...2.11.3)
+- Merge pull request #596 from cve-search/dependabot/pip/pytest-6.2.2.
+  [PT]
+
+  Bump pytest from 6.2.1 to 6.2.2
+- Bump pytest from 6.2.1 to 6.2.2. [dependabot[bot]]
+
+  Bumps [pytest](https://github.com/pytest-dev/pytest) from 6.2.1 to 6.2.2.
+  - [Release notes](https://github.com/pytest-dev/pytest/releases)
+  - [Changelog](https://github.com/pytest-dev/pytest/blob/master/CHANGELOG.rst)
+  - [Commits](https://github.com/pytest-dev/pytest/compare/6.2.1...6.2.2)
+- Merge pull request #593 from cve-search/dependabot/pip/gevent-21.1.2.
+  [PT]
+
+  Bump gevent from 21.1.1 to 21.1.2
+- Bump gevent from 21.1.1 to 21.1.2. [dependabot[bot]]
+
+  Bumps [gevent](https://github.com/gevent/gevent) from 21.1.1 to 21.1.2.
+  - [Release notes](https://github.com/gevent/gevent/releases)
+  - [Changelog](https://github.com/gevent/gevent/blob/master/docs/changelog_pre.rst)
+  - [Commits](https://github.com/gevent/gevent/compare/21.1.1...21.1.2)
+- Merge pull request #594 from cve-search/dependabot/pip/pytest-
+  cov-2.11.1. [PT]
+
+  Bump pytest-cov from 2.11.0 to 2.11.1
+- Bump pytest-cov from 2.11.0 to 2.11.1. [dependabot[bot]]
+
+  Bumps [pytest-cov](https://github.com/pytest-dev/pytest-cov) from 2.11.0 to 2.11.1.
+  - [Release notes](https://github.com/pytest-dev/pytest-cov/releases)
+  - [Changelog](https://github.com/pytest-dev/pytest-cov/blob/master/CHANGELOG.rst)
+  - [Commits](https://github.com/pytest-dev/pytest-cov/compare/v2.11.0...v2.11.1)
+- Merge pull request #592 from cve-search/dependabot/pip/gevent-21.1.1.
+  [PT]
+
+  Bump gevent from 21.1.0 to 21.1.1
+- Bump gevent from 21.1.0 to 21.1.1. [dependabot[bot]]
+
+  Bumps [gevent](https://github.com/gevent/gevent) from 21.1.0 to 21.1.1.
+  - [Release notes](https://github.com/gevent/gevent/releases)
+  - [Changelog](https://github.com/gevent/gevent/blob/master/docs/changelog_pre.rst)
+  - [Commits](https://github.com/gevent/gevent/compare/21.1.0...21.1.1)
+- Merge pull request #591 from P-T-I/cve-search-587. [PT]
+
+  fix #587; allowing local files to be set in the sources.ini file via …
+- Fix #587; allowing local files to be set in the sources.ini file via a
+  file:///PATH/TO/FILE.json; this is applicable for all different
+  sources; which creates the possibility to update cve-search completely
+  offline. [Paul Tikken Laptop]
+- Merge pull request #590 from cve-search/dependabot/pip/gevent-21.1.0.
+  [PT]
+
+  Bump gevent from 20.12.1 to 21.1.0
+- Bump gevent from 20.12.1 to 21.1.0. [dependabot[bot]]
+
+  Bumps [gevent](https://github.com/gevent/gevent) from 20.12.1 to 21.1.0.
+  - [Release notes](https://github.com/gevent/gevent/releases)
+  - [Changelog](https://github.com/gevent/gevent/blob/master/docs/changelog_pre.rst)
+  - [Commits](https://github.com/gevent/gevent/compare/20.12.1...21.1.0)
+- Merge pull request #589 from cve-
+  search/dependabot/pip/jsonpickle-1.5.0. [PT]
+
+  Bump jsonpickle from 1.4.2 to 1.5.0
+- Bump jsonpickle from 1.4.2 to 1.5.0. [dependabot[bot]]
+
+  Bumps [jsonpickle](https://github.com/jsonpickle/jsonpickle) from 1.4.2 to 1.5.0.
+  - [Release notes](https://github.com/jsonpickle/jsonpickle/releases)
+  - [Changelog](https://github.com/jsonpickle/jsonpickle/blob/master/CHANGES.rst)
+  - [Commits](https://github.com/jsonpickle/jsonpickle/compare/v1.4.2...v1.5.0)
+- Merge pull request #588 from cve-search/dependabot/pip/pytest-
+  cov-2.11.0. [PT]
+
+  Bump pytest-cov from 2.10.1 to 2.11.0
+- Bump pytest-cov from 2.10.1 to 2.11.0. [dependabot[bot]]
+
+  Bumps [pytest-cov](https://github.com/pytest-dev/pytest-cov) from 2.10.1 to 2.11.0.
+  - [Release notes](https://github.com/pytest-dev/pytest-cov/releases)
+  - [Changelog](https://github.com/pytest-dev/pytest-cov/blob/master/CHANGELOG.rst)
+  - [Commits](https://github.com/pytest-dev/pytest-cov/compare/v2.10.1...v2.11.0)
+- Merge pull request #584 from cve-search/dependabot/pip/tqdm-4.56.0.
+  [PT]
+
+  Bump tqdm from 4.55.1 to 4.56.0
+- Bump tqdm from 4.55.1 to 4.56.0. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.55.1 to 4.56.0.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.55.1...v4.56.0)
+- Merge pull request #583 from cve-search/dependabot/pip/sphinx-3.4.3.
+  [PT]
+
+  Bump sphinx from 3.4.2 to 3.4.3
+- Bump sphinx from 3.4.2 to 3.4.3. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.4.2 to 3.4.3.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.4.2...v3.4.3)
+- Merge pull request #582 from P-T-I/cve-search-579. [PT]
+
+  added retry policy to request.session() and removed the sys.exit(1) o…
+- Added retry policy to request.session() and removed the sys.exit(1) on
+  error. [Paul Tikken Laptop]
+- Merge pull request #580 from cve-search/dependabot/pip/sphinx-rtd-
+  theme-0.5.1. [PT]
+
+  Bump sphinx-rtd-theme from 0.5.0 to 0.5.1
+- Bump sphinx-rtd-theme from 0.5.0 to 0.5.1. [dependabot[bot]]
+
+  Bumps [sphinx-rtd-theme](https://github.com/readthedocs/sphinx_rtd_theme) from 0.5.0 to 0.5.1.
+  - [Release notes](https://github.com/readthedocs/sphinx_rtd_theme/releases)
+  - [Changelog](https://github.com/readthedocs/sphinx_rtd_theme/blob/master/docs/changelog.rst)
+  - [Commits](https://github.com/readthedocs/sphinx_rtd_theme/compare/0.5.0...0.5.1)
+- Merge pull request #581 from cve-search/dependabot/pip/sphinx-3.4.2.
+  [PT]
+
+  Bump sphinx from 3.4.1 to 3.4.2
+- Bump sphinx from 3.4.1 to 3.4.2. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.4.1 to 3.4.2.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.4.1...v3.4.2)
+- Merge pull request #578 from cve-search/dependabot/pip/tqdm-4.55.1.
+  [PT]
+
+  Bump tqdm from 4.55.0 to 4.55.1
+- Bump tqdm from 4.55.0 to 4.55.1. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.55.0 to 4.55.1.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.55.0...v4.55.1)
+- Merge pull request #577 from cve-search/dependabot/pip/gevent-20.12.1.
+  [PT]
+
+  Bump gevent from 20.12.0 to 20.12.1
+- Bump gevent from 20.12.0 to 20.12.1. [dependabot[bot]]
+
+  Bumps [gevent](https://github.com/gevent/gevent) from 20.12.0 to 20.12.1.
+  - [Release notes](https://github.com/gevent/gevent/releases)
+  - [Changelog](https://github.com/gevent/gevent/blob/master/docs/changelog_pre.rst)
+  - [Commits](https://github.com/gevent/gevent/compare/20.12.0...20.12.1)
+- Merge pull request #576 from cve-search/dependabot/pip/tqdm-4.55.0.
+  [PT]
+
+  Bump tqdm from 4.54.1 to 4.55.0
+- Bump tqdm from 4.54.1 to 4.55.0. [dependabot[bot]]
+
+  Bumps [tqdm](https://github.com/tqdm/tqdm) from 4.54.1 to 4.55.0.
+  - [Release notes](https://github.com/tqdm/tqdm/releases)
+  - [Commits](https://github.com/tqdm/tqdm/compare/v4.54.1...v4.55.0)
+- Merge pull request #575 from cve-search/dependabot/pip/sphinx-3.4.1.
+  [PT]
+
+  Bump sphinx from 3.4.0 to 3.4.1
+- Bump sphinx from 3.4.0 to 3.4.1. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.4.0 to 3.4.1.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.4.0...v3.4.1)
+- Update .schema_version. [PT]
+
+  Update schema for new capec version
+- Merge pull request #574 from P-T-I/new_capec_version. [PT]
+
+  fix #572: parsing new capec version
+- Fix #572: parsing new capec version. [Paul Tikken Laptop]
+- Merge pull request #573 from cve-search/dependabot/pip/gevent-20.12.0.
+  [PT]
+
+  Bump gevent from 20.9.0 to 20.12.0
+- Bump gevent from 20.9.0 to 20.12.0. [dependabot[bot]]
+
+  Bumps [gevent](https://github.com/gevent/gevent) from 20.9.0 to 20.12.0.
+  - [Release notes](https://github.com/gevent/gevent/releases)
+  - [Changelog](https://github.com/gevent/gevent/blob/master/docs/changelog_pre.rst)
+  - [Commits](https://github.com/gevent/gevent/compare/20.9.0...20.12.0)
+- Merge pull request #570 from P-T-I/schema_checker. [PT]
+
+  fix #564; database schema version checker added
+- Fix #564; database schema version checker added. [Paul Tikken Laptop]
+- Merge pull request #569 from P-T-I/cvss_impact_exploit. [PT]
+
+  added exploit and impact scores to api endpoints; cleanup code and re…
+- Added exploit and impact scores to api endpoints; cleanup code and
+  removal of unused functions. [Paul Tikken Laptop]
+- Merge pull request #565 from AZobec/cvssV3. [PT]
+
+  add impactScore and exploitabilityScore for CVSS v3.1
+- Rebase. [AZobec]
+- Add impactScore and exploitabilityScore for CVSS v3.1. [AZobec]
+- Merge pull request #568 from cve-search/dependabot/pip/sphinx-3.4.0.
+  [PT]
+
+  Bump sphinx from 3.3.1 to 3.4.0
+- Bump sphinx from 3.3.1 to 3.4.0. [dependabot[bot]]
+
+  Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 3.3.1 to 3.4.0.
+  - [Release notes](https://github.com/sphinx-doc/sphinx/releases)
+  - [Changelog](https://github.com/sphinx-doc/sphinx/blob/3.x/CHANGES)
+  - [Commits](https://github.com/sphinx-doc/sphinx/compare/v3.3.1...v3.4.0)
+- Merge pull request #567 from cve-search/dependabot/pip/flask-
+  socketio-5.0.1. [PT]
+
+  Bump flask-socketio from 5.0.0 to 5.0.1
+- Bump flask-socketio from 5.0.0 to 5.0.1. [dependabot[bot]]
+
+  Bumps [flask-socketio](https://github.com/miguelgrinberg/Flask-SocketIO) from 5.0.0 to 5.0.1.
+  - [Release notes](https://github.com/miguelgrinberg/Flask-SocketIO/releases)
+  - [Changelog](https://github.com/miguelgrinberg/Flask-SocketIO/blob/master/CHANGES.md)
+  - [Commits](https://github.com/miguelgrinberg/Flask-SocketIO/compare/v5.0.0...v5.0.1)
+- Merge pull request #566 from cve-search/dependabot/pip/codecov-2.1.11.
+  [PT]
+
+  Bump codecov from 2.1.10 to 2.1.11
+- Bump codecov from 2.1.10 to 2.1.11. [dependabot[bot]]
+
+  Bumps [codecov](https://github.com/codecov/codecov-python) from 2.1.10 to 2.1.11.
+  - [Release notes](https://github.com/codecov/codecov-python/releases)
+  - [Changelog](https://github.com/codecov/codecov-python/blob/master/CHANGELOG.md)
+  - [Commits](https://github.com/codecov/codecov-python/compare/v2.1.10...v2.1.11)
+- Merge pull request #563 from cve-
+  search/dependabot/pip/requests-2.25.1. [PT]
+
+  Bump requests from 2.25.0 to 2.25.1
+- Bump requests from 2.25.0 to 2.25.1. [dependabot[bot]]
+
+  Bumps [requests](https://github.com/psf/requests) from 2.25.0 to 2.25.1.
+  - [Release notes](https://github.com/psf/requests/releases)
+  - [Changelog](https://github.com/psf/requests/blob/master/HISTORY.md)
+  - [Commits](https://github.com/psf/requests/compare/v2.25.0...v2.25.1)
+- Update VERSION. [PT]
+
+
 v4.0 (2020-12-17)
 -----------------
 
