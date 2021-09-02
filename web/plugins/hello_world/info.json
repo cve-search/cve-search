@@ -1,0 +1,9 @@
+{
+    "identifier": "hello_world",
+    "name": "Hello World",
+    "author": "Paul Tikken",
+    "license": "GNU PL3",
+    "description": "A Hello World Plugin.",
+    "version": "1.0.0",
+    "type": "test"
+}
