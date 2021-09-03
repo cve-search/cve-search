@@ -1,0 +1,5 @@
+uwsgi
+uwsgi-core
+uwsgi-plugin-python3
+python3-virtualenv
+nginx
