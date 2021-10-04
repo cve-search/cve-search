@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# Plugin Classes
+#  Classes for all plug-ins to be based on
+#
+# Software is free software released under the "GNU Affero General Public License v3.0"
+#
+# Copyright (c) 2016-2018  Pieter-Jan Moreels - pieterjan.moreels@gmail.com
+
+class Plugin():
+  def __init__(self):
+    self.name = None
+    self.uid = None
+    self.requiresAuth = False
+    self.loadstate = "default"
+
+  # Get
+  def getName(self):      return self.name
+  def getUID(self):       return self.uid
+  def getLoadState(self): return self.loadstate
+  # Set
+  def setUID(self, uid):         self.uid = uid
+  def setLoadState(self, state): self.loadstate = state
+  # Don't override
+  def isWebPlugin(self):  return False
+  # To override without returns
+  def loadSettings(self, reader): pass
+  def onDatabaseUpdate(self):     pass
+  # To override with returns
+  def search(self, text, **args): pass
+
+
+class WebPlugin(Plugin):
+  # Don't override
+  def isWebPlugin(self): return True
+  # To override with returns
+  def getPage(self, **args):            return (None, None)
+  def getSubpage(self, page, **args):   return (None, None)
+  def getCVEActions(self, cve, **args): return []
+  def getFilters(self, **args):         return []
+  def doFilter(self, filters, **args):  return []
+  def cvePluginInfo(self, cve, **args): pass
+  def mark(self, cve, **args):          return (None, None)
+  # To override without returns
+  def onCVEAction(self, cve, action, **args): pass
+  def onCVEOpen(self, cve, **args):           pass 

@@ -1,0 +1,35 @@
+{% extends 'layouts/master-page.html' %}
+{% block title %}Error{% endblock %}
+{% block content %}
+  <div class="well">
+    {% if status['except']=='redis-connection' %}
+      <h1>This page can not be displayed due to an error</h1>
+      <p>Unable to connect to Redis. Is it running on {{status['info']['host']}}:{{status['info']['port']}}?</p>
+    {% elif status['except']=='cve-not-found' %}
+      <h1>This CVE does not exist</h1>
+      <p>{{status['info']['cve']}} could not be found in the CVE-Search database.
+         This could mean that this CVE is not in the National Vulnerability Database yet, that your database is outdated or that you entered a wrong CVE.</p>
+    {% elif status['except']=='textsearch-not-enabled' %}
+      <h1>Fulltext search not enabled</h1>
+      <p>The current settings in the database do not allow fulltext search.<br />
+         If you feel like this should be enabled, please contact your administrator.</p>
+    {% elif status['except']=='plugin-not-loaded' %}
+      <h1>Plug-in not loaded</h1>
+      <p>This plug-in is not loaded. You may have spelled the URL wrong, or the plug-in might be missing or not loaded.</p>
+    {% elif status['except'] in ['plugin-page-missing', 'plugin-page-corrupt'] %}
+      <h1>The plug-in threw an error!</h1>
+      <p>Seems like the plug-in was not developed correctly. Please contact the plug-in developer.</p>
+      {%   if status['except']=='plugin-page-missing' %} <p>Error code <code>011</code></p>
+      {% elif status['except']=='plugin-page-corrupt' %} <p>Error code <code>012</code></p>
+      {% endif %}
+    {% elif status['except']=='plugin-page-not-found' %}
+      <h1>The plug-in threw an error!</h1>
+      <p>The plug-in could not find the page it was looking for ({{status['page']}}). </p>
+      <p>Please check if you installed this page correctly. If the error is not at your side, but the developer, please contact them.</p>
+      <p>Error code <code>013</code></p>
+    {% elif status['except']=='plugin-not-webplugin' %}
+      <h1>Plug-in not a webplugin</h1>
+      <p>This plug-in is not a web plug-in, and has no page to display.</p>
+    {% endif %}
+  </div>
+{% endblock %}

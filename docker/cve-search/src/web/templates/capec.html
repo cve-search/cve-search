@@ -1,0 +1,160 @@
+{% extends 'layouts/master-page.html' %}
+{% block title %}CAPEC browsing{% endblock %}
+{% block head %}
+<!-- css -->
+<link href="/static/css/custom/capec.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+{% include 'subpages/breadcrumbs.html' %}
+<table id="capecTable" class="table table-hover table-striped table_outer">
+  <thead class="thead-dark">
+  <th colspan="2">CAPEC Details</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Name</td>
+    <td><b>{{capec.name}}</b></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th>Likelyhood of attack</th>
+          <th>Typical severity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="typical_severity {% if capec.local == "Very High" %}critical{% elif capec.local == "Very Low" %}
+          very_low{% else %} {{capec.loa}} {% endif %}">{{capec.loa}}</td>
+          <td class="capec_table_description typical_severity {% if capec.typical_severity == "Very High" %}critical{% elif capec.typical_severity == "Very Low" %}
+          very_low{% else %} {{capec.typical_severity}} {% endif %}">{{ capec.typical_severity }}</td>
+        </tr>
+        </tbody>
+      </table>
+  </tr>
+  <tr>
+    <td>Summary</td>
+    <td>{{capec.summary}}</td>
+  </tr>
+  <tr>
+    <td>Prerequisites</td>
+    <td>{{capec.prerequisites}}</td>
+  </tr>
+  {% if capec.execution_flow %}
+  <tr>
+    <td>Execution Flow </td>
+    <td>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Step</th>
+            <th>Phase</th>
+            <th>Description</th>
+            <th>Techniques</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for entry in capec.execution_flow %}
+        <tr>
+          <td width="5%">{{ entry }}</td>
+          <td width="5%" class="capec_table_description">{{ capec["execution_flow"][entry]["Phase"] }}</td>
+          <td width="45%" class="capec_table_description">{{ capec["execution_flow"][entry]["Description"] }}</td>
+          <td width="45%" class="capec_table_description">
+            <ul>
+              {% for each in capec["execution_flow"][entry]["Techniques"] %}
+              <li>{{ each }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  {% endif %}
+  <tr> <td>Solutions         </td><td>{{capec.solutions}}    </td> </tr>
+  {% if capec.related_weakness|length != 0 %}
+  <tr> <td>Related Weaknesses</td>
+    <td>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>
+              CWE ID
+            </th>
+            <th>
+              Description
+            </th>
+          </tr>
+        </thead>
+        {% for c in capec.related_weakness|sortIntLikeStr %}
+        <tr>
+          <td width="75px"><a href="/cwe/{{c}}">CWE-{{c}}</a></td>
+          <td class="capec_table_description">{{cwes[c]}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </td>
+  </tr>
+  {% endif %}
+  {% if capec.related_capecs|length != 0 %}
+  <tr> <td>Related CAPECS</td>
+    <td>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>
+              CAPEC ID
+            </th>
+            <th>
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for c in capec.related_capecs|sortIntLikeStr %}
+        <tr>
+          <td width="75px"><a href="/capec/{{c}}">CAPEC-{{c}}</a></td>
+          <td class="capec_table_description capec_discription_tr">{{capecs[c]}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  {% endif %}
+  {% if capec.taxonomy|length != 0 %}
+  {% for each in capec.taxonomy %}
+  <tr> <td>Taxonomy: {{ each }}</td>
+    <td>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th>
+            Entry ID
+          </th>
+          <th>
+            Entry Name
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in capec["taxonomy"][each] %}
+        <tr>
+          <td class="capec_discription_tr" width="75px"><a href="{{ capec["taxonomy"][each][item]["URL"] }}">{{ capec["taxonomy"][each][item]["Entry_ID"] }}</a></td>
+          <td class="capec_table_description capec_discription_tr">{{ capec["taxonomy"][each][item]["Entry_Name"] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  {% endfor %}
+  {% endif %}
+  </tbody>
+</table>
+{% endblock %}

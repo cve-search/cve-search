@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# Importing CPE entries in a Redis database to improve lookup
+#
+# Until now, this part is only used by the web interface to improve response time
+#
+# Software is free software released under the "GNU Affero General Public License v3.0"
+#
+# Copyright (c) 2014-2018  Alexandre Dulaunoy - a@foo.be
+# Copyright (c) 2014-2018  Pieter-Jan Moreels - pieterjan.moreels@gmail.com
+# Imports
+import argparse
+import os
+import sys
+
+runPath = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(runPath, ".."))
+
+from lib.Sources_process import CPERedisBrowser
+from lib.DatabaseLayer import getAlternativeCPEs
+
+argParser = argparse.ArgumentParser(description="CPE entries importer in Redis cache")
+argParser.add_argument("-v", action="store_true", default=False, help="Verbose logging")
+argParser.add_argument(
+    "-o",
+    action="store_true",
+    default=False,
+    help="Import cpeother database in Redis cache",
+)
+args = argParser.parse_args()
+
+
+if __name__ == '__main__':
+
+    if args.o:
+        cpe = getAlternativeCPEs()
+        crb = CPERedisBrowser(cpes=cpe)
+
+    else:
+        crb = CPERedisBrowser()
+
+    if args.v:
+        crb.set_debug_logging = True
+
+    crb.update()

@@ -1,0 +1,44 @@
+[Redis]
+Host: localhost
+Port: 6379
+Password: RedisPassword
+redisQ: 9
+VendorsDB: 10
+NotificationsDB: 11
+RefDB: 12
+
+[Database]
+Host: localhost
+Port: 27017
+DB: cvedb
+PluginName: mongodb
+
+[dbmgt]
+Tmpdir: ./tmp/
+
+[FulltextIndex]
+Indexdir: ./indexdir/
+
+[Webserver]
+Host: 127.0.0.1
+Port: 5000
+Debug: True
+PageLength: 50
+LoginRequired: False
+SSL: True
+Certificate: ssl/cve-search.crt
+Key: ssl/cve-search.key
+WebInterface: Full
+
+[Logging]
+Logfile: log/cve-search.log
+Updatelogfile: log/update_populate.log
+MaxSize: 150MB
+Backlog: 5
+
+[Proxy]
+http: 
+IgnoreCerts: False
+
+[CVE]
+StartYear: 2002

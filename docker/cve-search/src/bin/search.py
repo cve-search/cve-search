@@ -1,0 +1,549 @@
+#!/usr/bin/env python3
+#
+# search is the search component of cve-search querying the MongoDB database.
+#
+# Software is free software released under the "GNU Affero General Public License v3.0"
+#
+# Copyright (c) 2012       Wim Remes
+# Copyright (c) 2012-2018  Alexandre Dulaunoy - a@foo.be
+# Copyright (c) 2015-2018  Pieter-Jan Moreels - pieterjan.moreels@gmail.com
+
+import argparse
+import csv
+import json
+import os
+import re
+import sys
+from datetime import datetime, timedelta
+from urllib.parse import urlparse
+
+import requirements
+from bson import json_util
+from dicttoxml import dicttoxml
+
+runPath = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(runPath, ".."))
+
+from lib.DatabaseLayer import cvesForCPE, getCVEs, getFreeText, getCVEIDs
+from lib.CVEs import CveHandler
+
+
+# list comprehension helper functions
+def replace_special_chars(cpe):
+    cpe = re.sub(r"\(", "%28", cpe)
+    cpe = re.sub(r"\)", "%29", cpe)
+    return cpe
+
+
+# init control variables
+csvOutput = 0
+htmlOutput = 0
+jsonOutput = 0
+xmlOutput = 0
+last_ndays = 0
+nlimit = 0
+
+# init various variables :-)
+vSearch = ""
+vOutput = ""
+vFreeSearch = ""
+summary_text = ""
+
+
+# parse command-line arguments
+argParser = argparse.ArgumentParser(
+    description="Search for vulnerabilities in the National Vulnerability DB. Data from http://nvd.nist.org."
+)
+argParser.add_argument(
+    "-q", type=str, help="Q = search pip requirements file for CVEs, e.g. dep/myreq.txt"
+)
+argParser.add_argument(
+    "-p",
+    type=str,
+    nargs="+",
+    help="S = search one or more products, e.g. o:microsoft:windows_7 or o:cisco:ios:12.1 or o:microsoft:windows_7 "
+    "o:cisco:ios:12.1. Add --only-if-vulnerable if only vulnerabilities that directly affect the product are "
+    "wanted.",
+)
+argParser.add_argument(
+    "--only-if-vulnerable",
+    dest="vulnProdSearch",
+    default=False,
+    action="store_true",
+    help='With this option, "-p" will only return vulnerabilities directly assigned to the product. I.e. it will not '
+    'consider "windows_7" if it is only mentioned as affected OS in an adobe:reader vulnerability. ',
+)
+argParser.add_argument(
+    "--strict_vendor_product",
+    dest="strict_vendor_product",
+    default=False,
+    action="store_true",
+    help='With this option, a strict vendor product search is executed. The values in "-p" should be formatted as '
+         'vendor:product, e.g. microsoft:windows_7',
+)
+argParser.add_argument(
+    "--lax",
+    default=False,
+    action="store_true",
+    help="Strict search for software version is disabled. Note that this option only support product description with "
+    "numerical values only (of the form cisco:ios:1.2.3) ",
+)
+argParser.add_argument(
+    "-f", type=str, help="F = free text search in vulnerability summary"
+)
+argParser.add_argument("-c", action="append", help="search one or more CVE-ID")
+argParser.add_argument(
+    "-o", type=str, help="O = output format [csv|html|json|xml|cveid]"
+)
+argParser.add_argument("-l", action="store_true", help="sort in descending mode")
+argParser.add_argument(
+    "-n",
+    action="store_true",
+    help="lookup complete cpe (Common Platform Enumeration) name for vulnerable configuration",
+)
+argParser.add_argument(
+    "-r", action="store_true", help="lookup ranking of vulnerable configuration"
+)
+argParser.add_argument(
+    "-a",
+    default=False,
+    action="store_true",
+    help="Lookup CAPEC for related CWE weaknesses",
+)
+argParser.add_argument("-v", type=str, help="vendor name to lookup in reference URLs")
+argParser.add_argument("-s", type=str, help="search in summary text")
+argParser.add_argument("-t", type=int, help="search in last n day")
+argParser.add_argument(
+    "-i",
+    default=False,
+    type=int,
+    help="Limit output to n elements (default: unlimited)",
+)
+args = argParser.parse_args()
+
+pyReq = args.q
+vSearch = args.p
+relaxSearch = args.lax
+strict_vendor_product = args.strict_vendor_product
+vulnerableProductSearch = args.vulnProdSearch
+cveSearch = [x.upper() for x in args.c] if args.c else None
+vOutput = args.o
+vFreeSearch = args.f
+sLatest = args.l
+namelookup = args.n
+rankinglookup = args.r
+capeclookup = args.a
+last_ndays = args.t
+summary_text = args.s
+nlimit = args.i
+
+cves = CveHandler(rankinglookup=rankinglookup, namelookup=namelookup, capeclookup=capeclookup)
+
+
+def print_job(item):
+    if csvOutput:
+        printCVE_csv(item)
+    elif htmlOutput:
+        printCVE_html(item)
+    # bson straight from the MongoDB db - converted to JSON default
+    # representation
+    elif jsonOutput:
+        printCVE_json(item)
+    elif xmlOutput:
+        printCVE_xml(item)
+    elif cveidOutput:
+        printCVE_id(item)
+    else:
+        printCVE_human(item)
+
+
+def search_product(prod):
+    if strict_vendor_product:
+        search = prod.split(":")
+        search = (search[0], search[1])
+        ret = cvesForCPE(search, lax=relaxSearch, vulnProdSearch=vulnerableProductSearch, strict_vendor_product=True)
+    else:
+        ret = cvesForCPE(prod, lax=relaxSearch, vulnProdSearch=vulnerableProductSearch)
+    for item in ret["results"]:
+        if not last_ndays:
+            print_job(item)
+        else:
+            date_n_days_ago = datetime.now() - timedelta(days=last_ndays)
+            if item["Published"] > date_n_days_ago:
+                print_job(item)
+
+
+def vuln_config(entry):
+    if not namelookup:
+        return entry
+    else:
+        return cves.getcpe(cpeid=entry)
+
+
+def is_number(s):
+    try:
+        ret = float(s)
+        return ret
+    except ValueError:
+        return False
+
+
+if pyReq:
+    with open(pyReq, "r") as f:
+        for req in requirements.parse(f):
+            lib = req.name
+            specs = req.specs
+            # get vulnerable versions
+            vulns = {}
+            for item in cvesForCPE(lib):
+                if "vulnerable_configuration" in item:
+                    for entry in item["vulnerable_configuration"]:
+                        vulns[vuln_config(entry)] = [
+                            "CVE: " + item["id"],
+                            "DATE: " + str(item["Published"]),
+                            "CVSS: " + str(item["cvss"]),
+                            item["summary"],
+                        ]
+            # check if any of those is allowed according to specs
+            found = False
+            for vuln in vulns.keys():
+                sp = vuln.split(":")
+                ind = -1
+                num = sp[ind]
+                # if the last token is not a number or float then it must be e.g., 'alpha' while the
+                # version number or float must be the second to last, and so on
+                while not is_number(num) and abs(ind) > len(sp):
+                    ind -= 1
+                    num = sp[ind]
+                if is_number(num):
+                    for spec in specs:
+                        if not found:
+                            symbol = spec[0]
+                            curr = spec[1]
+                            if (
+                                (curr == num and "=" in symbol)
+                                or (curr < num and ">" in symbol)
+                                or (curr > num and "<" in symbol)
+                            ):
+                                print(
+                                    "Vulnerability found for "
+                                    + lib
+                                    + ":\n"
+                                    + "version affected: "
+                                    + str(num)
+                                    + "\n"
+                                    + "version in requirements: "
+                                    + symbol
+                                    + str(curr)
+                                    + "\n"
+                                    + str(vulns[vuln])
+                                )
+                                found = True
+    sys.exit(0)
+
+
+# replace special characters in vSearch with encoded version.
+# Basically cuz I'm to lazy to handle conversion on DB creation ...
+if vSearch:
+    vSearch = [replace_special_chars(cpe) for cpe in vSearch]
+
+# define which output to generate.
+if vOutput == "csv":
+    csvOutput = 1
+elif vOutput == "html":
+    htmlOutput = 1
+elif vOutput == "xml":
+    xmlOutput = 1
+    from xml.etree.ElementTree import Element, tostring
+
+    r = Element("cve-search")
+elif vOutput == "json":
+    jsonOutput = 1
+elif vOutput == "cveid":
+    cveidOutput = 1
+else:
+    cveidOutput = False
+
+# Print first line of html output
+if htmlOutput and args.p is not None:
+    print("<html><body><h1>CVE search " + str(args.p) + " </h1>")
+elif htmlOutput and args.c is not None:
+    print("<html><body><h1>CVE-ID " + str(args.c) + " </h1>")
+
+# search default is ascending mode
+sorttype = 1
+if sLatest:
+    sorttype = -1
+
+
+def printCVE_json(item, indent=None):
+    date_fields = ["cvss-time", "Modified", "Published"]
+    for field in date_fields:
+        if field in item:
+            item[field] = str(item[field])
+    if not namelookup and not rankinglookup and not capeclookup:
+        print(
+            json.dumps(item, sort_keys=True, default=json_util.default, indent=indent)
+        )
+    else:
+        if "vulnerable_configuration" in item:
+            vulconf = []
+            ranking = []
+            for conf in item["vulnerable_configuration"]:
+                if namelookup:
+                    vulconf.append(cves.getcpe(cpeid=conf))
+                if rankinglookup:
+                    rank = cves.getranking(cpeid=conf)
+                    if rank and rank not in ranking:
+                        ranking.append(rank)
+            if namelookup:
+                item["vulnerable_configuration"] = vulconf
+            if rankinglookup:
+                item["ranking"] = ranking
+            if "cwe" in item and capeclookup:
+                if item["cwe"].lower() != "unknown":
+                    item["capec"] = cves.getcapec(cweid=(item["cwe"].split("-")[1]))
+            print(
+                json.dumps(
+                    item, sort_keys=True, default=json_util.default, indent=indent
+                )
+            )
+
+
+def printCVE_html(item):
+    print(
+        "<h2>"
+        + item["id"]
+        + "<br></h2>CVSS score: "
+        + (str(item["cvss"]) if "cvss" in item else "None")
+        + "<br>"
+        + "<b>"
+        + str(item["Published"])
+        + "<b><br>"
+        + item["summary"]
+        + "<br>"
+    )
+    print("References:<br>")
+    for entry in item["references"]:
+        print(entry + "<br>")
+
+    ranking = []
+    for entry in item["vulnerable_configuration"]:
+        if rankinglookup:
+            rank = cves.getranking(cpeid=entry)
+            if rank and rank not in ranking:
+                ranking.append(rank)
+    if rankinglookup:
+        print("Ranking:<br>")
+        for ra in ranking:
+            for e in ra:
+                for i in e:
+                    print(i + ": " + str(e[i]) + "<br>")
+    print("<hr><hr>")
+
+
+def printCVE_csv(item):
+    # We assume that the vendor name is usually in the hostame of the
+    # URL to avoid any match on the resource part
+    refs = []
+    for entry in item["references"]:
+        if args.v is not None:
+            url = urlparse(entry)
+            hostname = url.netloc
+            if re.search(args.v, hostname):
+                refs.append(entry)
+    if not refs:
+        refs = "[no vendor link found]"
+    if namelookup:
+        nl = " ".join(item["vulnerable_configuration"])
+    ranking = []
+    ranking_ = []
+    for entry in item["vulnerable_configuration"]:
+        if rankinglookup:
+            rank = cves.getranking(cpeid=entry)
+            if rank and rank not in ranking:
+                ranking.append(rank)
+    if rankinglookup:
+        for r in ranking:
+            for e in r:
+                for i in e:
+                    ranking_.append(i + ":" + str(e[i]))
+        if not ranking_:
+            ranking_ = "[No Ranking Found]"
+        else:
+            ranking_ = " ".join(ranking_)
+
+    csvoutput = csv.writer(
+        sys.stdout, delimiter="|", quotechar="|", quoting=csv.QUOTE_MINIMAL
+    )
+    if not rankinglookup:
+        if not namelookup:
+            csvoutput.writerow(
+                [
+                    item["id"],
+                    str(item["Published"]),
+                    item["cvss"] if ("cvss" in item) else "None",
+                    item["summary"],
+                    refs,
+                ]
+            )
+        else:
+            csvoutput.writerow(
+                [
+                    item["id"],
+                    str(item["Published"]),
+                    item["cvss"] if ("cvss" in item) else "None",
+                    item["summary"],
+                    refs,
+                    nl,
+                ]
+            )
+    else:
+        if not namelookup:
+            csvoutput.writerow(
+                [
+                    item["id"],
+                    str(item["Published"]),
+                    item["cvss"] if ("cvss" in item) else "None",
+                    item["summary"],
+                    refs,
+                    ranking_,
+                ]
+            )
+        else:
+            csvoutput.writerow(
+                [
+                    item["id"],
+                    str(item["Published"]),
+                    item["cvss"] if ("cvss" in item) else "None",
+                    item["summary"],
+                    refs,
+                    nl,
+                    ranking_,
+                ]
+            )
+
+
+def printCVE_xml(item):
+    xml = dicttoxml(item)
+    print(xml.decode("utf-8"))
+
+
+def printCVE_id(item):
+    print(item["id"])
+
+
+def printCVE_human(item):
+    print("CVE\t: {}".format(item["id"]))
+    print("DATE\t: {}".format(str(item["Published"])))
+    print("CVSS\t: {}".format((str(item["cvss"]) if "cvss" in item else "None")))
+    print(item["summary"])
+    print("\nReferences:")
+    print("-----------")
+    for entry in item["references"]:
+        print(entry)
+    print("\nVulnerable Configs:")
+    print("-------------------")
+    ranking = []
+    for entry in item["vulnerable_configuration"]:
+        print(vuln_config(entry))
+        if rankinglookup:
+            rank = cves.getranking(cpeid=entry)
+            if rank and rank not in ranking:
+                ranking.append(rank)
+    if rankinglookup:
+        print("\nRanking: ")
+        print("--------")
+        for ra in ranking:
+            for e in ra:
+                for i in e:
+                    print("{}: {}".format(i, str(e[i])))
+    print("\n\n")
+
+
+# Search in summary text
+def search_in_summary(item):
+    print(item["summary"])
+    # if args.a in str(item['summary']):
+    #  printCVE_json(item)
+
+
+if cveSearch:
+    for item in getCVEs(cves=cveSearch)["results"]:
+        print_job(item)
+    if htmlOutput:
+        print("</body></html>")
+    sys.exit(0)
+
+# Basic freetext search (in vulnerability summary).
+# Full-text indexing is more efficient to search across all CVEs.
+if vFreeSearch:
+    try:
+        for item in getFreeText(vFreeSearch):
+            printCVE_json(item, indent=2)
+    except:
+        sys.exit("Free text search not enabled on the database!")
+    sys.exit(0)
+
+
+# Search Product (best to use CPE notation, e.g. cisco:ios:12.2
+if vSearch:
+    # Search multiple products in one query
+    for cpe in vSearch:
+        search_product(cpe)
+    if htmlOutput:
+        print("</body></html>")
+    sys.exit(0)
+
+# Search text in summary
+if summary_text:
+
+    for cveid in getCVEIDs(limit=nlimit):
+        item = cves.getcve(cveid=cveid)
+        if "cvss" in item:
+            if type(item["cvss"]) == str:
+                item["cvss"] = float(item["cvss"])
+        date_fields = ["cvss-time", "Modified", "Published"]
+        for field in date_fields:
+            if field in item:
+                item[field] = str(item[field])
+        if summary_text.upper() in item["summary"].upper():
+            if not last_ndays:
+                if vOutput:
+                    printCVE_id(item)
+                else:
+                    print(json.dumps(item, sort_keys=True, default=json_util.default))
+            else:
+
+                date_n_days_ago = datetime.now() - timedelta(days=last_ndays)
+                # print(item['Published'])
+                # print(type (item['Published']))
+                # print("Last n day " +str(last_ndays))
+                try:
+                    if (
+                        datetime.strptime(item["Published"], "%Y-%m-%d %H:%M:%S.%f")
+                        > date_n_days_ago
+                    ):
+                        if vOutput:
+                            printCVE_id(item)
+                        else:
+                            print(
+                                json.dumps(
+                                    item, sort_keys=True, default=json_util.default
+                                )
+                            )
+                except:
+                    pass
+    if htmlOutput:
+        print("</body></html>")
+    sys.exit(0)
+
+if xmlOutput:
+    # default encoding is UTF-8. Should this be detected on the terminal?
+    s = tostring(r).decode("utf-8")
+    print(s)
+    sys.exit(0)
+
+else:
+    argParser.print_help()
+    argParser.exit()

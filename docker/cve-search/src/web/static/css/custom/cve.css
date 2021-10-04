@@ -1,0 +1,113 @@
+.cve-info {
+   width: 400px;
+}
+.cve-info td {
+   text-align: center;
+   background-color: white;
+}
+
+.cve-info th {
+    text-align: center;
+}
+
+.table-even {
+   table-layout: fixed
+}
+
+.impact-none {
+   color:green;
+}
+
+.impact-partial {
+   color:orange;
+}
+
+.impact-complete {
+   color:red;
+}
+
+.impact-high {
+    color: red;
+}
+
+.impact-partial {
+    color : orange;
+}
+
+.impact-low {
+    color : green;
+}
+#actions {
+    float:right;
+}
+
+#actions button {
+    width:100%;
+}
+
+td > div {
+    padding-right: 10px;
+}
+
+pre {
+   white-space: pre-wrap;       /* CSS 3 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+th[colspan="2"] {
+    text-align: center;
+}
+
+
+table.table_outer > tbody > tr > td:first-child {
+	background-color: #990808;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	width: 250px;
+}
+
+.partial.collapse:not(.show) {
+  display: block;
+  /* height = lineheight * no of lines to display */
+  height: 3em;
+  overflow: hidden;
+}
+
+.partial.collapsing {
+    height: 3em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.pointer:hover {
+    color: grey;
+}
+
+.capec {
+    color: black;
+}
+
+.capec_list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.capec_sum {
+    font-style: italic;
+    margin: 10px 0px 10px 20px;
+}
+
+.collapse > ul > li {
+    margin-bottom: 5px;
+}
+
+.collapsing > ul > li {
+    margin-bottom: 5px;
+}

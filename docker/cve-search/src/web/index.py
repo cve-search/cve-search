@@ -1,0 +1,71 @@
+from gevent import monkey
+
+monkey.patch_all()
+
+import logging
+import os
+import sys
+
+_runPath = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(_runPath, ".."))
+
+from lib.Config import Configuration
+from lib.LogHandler import AppLogger
+from web.run import create_app
+from web.set_version import _version
+
+config = Configuration()
+
+logging.setLoggerClass(AppLogger)
+
+# Effectively disabling the werkzeug logger
+logging.getLogger("werkzeug").setLevel(logging.ERROR)
+logging.getLogger("geventwebsocket.handler").setLevel(logging.ERROR)
+logging.getLogger("engineio.server").setLevel(logging.ERROR)
+logging.getLogger("socketio.server").setLevel(logging.ERROR)
+
+logger = logging.getLogger(__name__)
+
+__version__ = _version()
+
+
+def start():
+
+    # get properties
+    flaskHost = config.getFlaskHost()
+    flaskPort = config.getFlaskPort()
+    flaskDebug = config.getFlaskDebug()
+    flaskSSL = config.useSSL()
+
+    logger.info("Running version: {}".format(__version__))
+
+    app, socketio = create_app(__version__, _runPath)
+
+    logger.info("Running async mode: {}".format(socketio.async_mode))
+
+    if flaskDebug:
+        # start debug flask server
+        logger.info("Server starting...")
+
+        socketio.run(app, host=flaskHost, port=flaskPort, debug=flaskDebug)
+    elif flaskSSL:
+        # start asynchronous server using tornado wrapper for flask
+        # ssl connection
+        logger.info("Server starting...")
+
+        socketio.run(
+            app,
+            host=flaskHost,
+            port=flaskPort,
+            keyfile=os.path.join(_runPath, "../", config.getSSLKey()),
+            certfile=os.path.join(_runPath, "../", config.getSSLCert()),
+        )
+    else:
+        # start asynchronous server using tornado wrapper for flask
+        # without ssl connection
+        logger.info("Server starting...")
+        
+        socketio.run(app, host=flaskHost, port=flaskPort)
+
+
+start()

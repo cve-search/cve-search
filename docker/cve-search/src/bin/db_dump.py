@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# Tool to dump in JSON the database along with the associated ranking
+#
+# Software is free software released under the "GNU Affero General Public License v3.0"
+#
+# Copyright (c) 2012-2018  Alexandre Dulaunoy - a@foo.be
+# Copyright (c) 2015-2018  Pieter-Jan Moreels - pieterjan.moreels@gmail.com
+import argparse
+import json
+import os
+import sys
+
+from bson import json_util
+
+runPath = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(runPath, ".."))
+
+from lib.CVEs import CveHandler
+from lib.DatabaseLayer import getCVEIDs
+
+
+argParser = argparse.ArgumentParser(description='Dump database in JSON format')
+argParser.add_argument('-r', default=False, action='store_true', help='Include ranking value')
+argParser.add_argument('-v', default=False, action='store_true', help='Include via4 map')
+argParser.add_argument('-c', default=False, action='store_true', help='Include CAPEC information')
+argParser.add_argument('-l', default=False, type=int, help='Limit output to n elements (default: unlimited)')
+args = argParser.parse_args()
+
+rankinglookup = args.r
+via4lookup = args.v
+capeclookup = args.c
+
+cves = CveHandler(rankinglookup=rankinglookup, via4lookup=via4lookup, capeclookup=capeclookup)
+
+for cveid in getCVEIDs(limit=args.l):
+    item = cves.getcve(cveid=cveid)
+    if 'cvss' in item:
+        if type(item['cvss']) == str:
+            item['cvss'] = float(item['cvss'])
+    date_fields = ['cvss-time', 'Modified', 'Published']
+    for field in date_fields:
+        if field in item:
+            item[field] = str(item[field])
+    print(json.dumps(item, sort_keys=True, default=json_util.default))

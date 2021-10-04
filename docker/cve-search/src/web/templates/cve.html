@@ -1,0 +1,238 @@
+{% extends 'layouts/master-page.html' %}
+{% set minimal = get_WebInterface() %}
+{% block title %}{{cve['id']}} - {{cve['summary'][:100]}}{% endblock %}
+{% block head %}
+<!-- css -->
+<link href="/static/css/custom/cve.css" rel="stylesheet" />
+<!-- javascript -->
+{% if not minimal %}
+<script type="text/javascript" src="/static/js/clipboard.min.js"></script>
+<script type="text/javascript" src="/static/js/custom/cve.js"></script>
+{% endif %}
+{% endblock %}
+{% block content %}
+<!-- breadcrumb -->
+{% include 'subpages/breadcrumbs.html' %}
+<input type="hidden" id="_cveID" value="{{cve['id']}}">
+<!-- CVE -->
+<table id="cveInfo" class="table table-hover table-striped table_outer">
+  <thead class="thead-dark">
+  <th colspan="2">CVE Details</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>ID</td>
+    <td>
+      {{ cve['id'] }}
+      {% if not minimal %}
+      <table id="actions">
+        <tr>
+          <td>Actions</td>
+          <td id="cve_actions">&nbsp;loading...</td>
+        </tr>
+      </table>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>Summary</td>
+    <td>{{ cve['summary'] }}</td>
+  </tr>
+  <tr>
+    <td>References</td>
+    <td>
+      <a id="colf_ref" data-toggle="collapse" href="#collapseREF" aria-expanded="false" aria-controls="collapseREF">
+        <i class="fas fa-chevron-circle-down" style="float:right"></i>
+      </a>
+      <div class="collapse partial" id="collapseREF">
+        <ul>
+          {% for ref in cve['references'] %}
+          <li> <a href="{{ ref }}" target="_blank">{{ ref }}</a> </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Vulnerable Configurations</td>
+    <td>
+      <a id="colf_vulnconf" data-toggle="collapse" href="#collapseVULN" aria-expanded="false" aria-controls="collapseVULN">
+        <i class="fas fa-chevron-circle-down" style="float:right"></i>
+      </a>
+      <div class="collapse partial" id="collapseVULN">
+        <ul>
+          {% for vulconf in cve['vulnerable_configuration'] %}
+          <li
+                  {% if vulconf['list'] == 'white' %}
+          class="whitelisted"
+          {% elif vulconf['list'] == 'black' %}
+          class="blacklisted"
+          {% endif %}
+          title="{{ vulconf['id'] }} matches {{ vulconf['match'] }}">
+          <span data-toggle="collapse" data-target="#v{{ loop.index }}" > {{ vulconf['title'] }}</span>
+          <div id="v{{ loop.index }}" class="collapse">{{ vulconf['id'] }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>CVSS</td>
+    <td>
+      <table class="invisiTable">
+        <tr><td><b>Base:          </b></td><td>{{ cve['cvss'] }} {% if 'cvss-time' in cve %}(as of {{ cve['cvss-time'].strftime('%d-%m-%Y - %H:%M') }}){% endif %}</td></tr>
+        <tr><td><b>Impact:        </b></td><td>{{ cve['impactScore'] }}</td></tr>
+        <tr><td><b>Exploitability:</b></td><td>{{ cve['exploitabilityScore'] }}</td></tr>
+      </table>
+    </td>
+  </tr>
+  {% if 'cwe' in cve%}
+  {% if cve['cwe'] != 'Unknown' %}
+  <tr>
+    <td>CWE</td>
+    <td><a href="/cwe/{{ cve['cwe'].split('-')[1] }}" target="_blank">{{ cve['cwe'] }}</a></td>
+  </tr>
+  {% endif %}
+  {% endif %}
+  {% if 'capec' in cve%}
+  {% if cve['cwe']|length != 0 %}
+  <tr>
+    <td>CAPEC</td>
+    <td>
+      <small>Click the CAPEC title to display a description</small>
+      <a id="colf_CAPEC" data-toggle="collapse" href="#collapseCAPEC" aria-expanded="false" aria-controls="collapseCAPEC">
+        <i class="fas fa-chevron-circle-down" style="float:right"></i>
+      </a>
+      <div class="collapse partial" id="collapseCAPEC">
+        <ul>
+          {% for c in cve['capec'] %}
+          <li class="capec_list">
+            <a href="/capec/{{c['id']}}"><i class="fas fa-info-circle"></i></a>
+            <a class="pointer capec" data-toggle="collapse" data-target="#c{{ loop.index }}" aria-expanded="false" aria-controls="c{{ loop.index }}"> {{c['name']}} </a>
+            <div id="c{{ loop.index }}" class="collapse capec_sum"> {{c['summary']}} </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </td>
+  </tr>
+  {% endif %}
+  {% endif %}
+  {% if 'access' in cve %}
+  <tr>
+    <td>Access</td>
+    <td>
+      <table class="table table-hover table-bordered cve-info">
+        <thead><tr class="thead-dark"><th>Vector</th><th>Complexity</th><th>Authentication</th></tr></thead>
+        <tr>
+          <td>{{cve['access']['vector']}}</td>
+          <td>{{cve['access']['complexity']}}</td>
+          <td>{{cve['access']['authentication']}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  {% endif %}
+  {% if 'impact' in cve %}
+  <tr>
+    <td>Impact</td>
+    <td>
+      <table class="table table-hover table-bordered cve-info">
+        <thead><tr class="thead-dark"><th>Confidentiality</th><th>Integrity</th><th>Availability</th></tr></thead>
+        <tr>
+          <td class="impact-{{cve['impact']['confidentiality']|lower}}">{{cve['impact']['confidentiality']}}</td>
+          <td class="impact-{{cve['impact']['integrity']|lower}}">{{cve['impact']['integrity']}}</td>
+          <td class="impact-{{cve['impact']['availability']|lower}}">{{cve['impact']['availability']}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  {% endif %}
+  {% if cve['cvss3'] is not none %}
+  <tr>
+    <td>CVSS v3.1</td>
+    <td class="info">
+      <table class="invisiTable">
+        <tr><td><b>Base:          </b></td><td>{{ cve['cvss3'] }} {% if 'cvss-time' in cve %}(as of {{ cve['cvss-time'].strftime('%d-%m-%Y - %H:%M') }}){% endif %}</td></tr>
+        <tr><td><b>Impact:        </b></td><td>{{ cve['impactScore3'] }}</td></tr>
+        <tr><td><b>Exploitability:</b></td><td>{{ cve['exploitabilityScore3'] }}</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>Exploitability v3.1</td>
+    <td class="info">
+      <table class="table table-hover table-bordered cve-info table-even" style="width:850px">
+        <thead><tr class="thead-dark"><th>Attack Complexity</th><th>Attack vector</th><th>Privileges Required</th><th>Scope</th><th>User Interaction</th></tr></thead>
+        <tr>
+          <td>{{cve['exploitability3']['attackcomplexity']}}</td>
+          <td>{{cve['exploitability3']['attackvector']}}</td>
+          <td>{{cve['exploitability3']['privilegesrequired']}}</td>
+          <td>{{cve['exploitability3']['scope']}}</td>
+          <td>{{cve['exploitability3']['userinteraction']}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>Impact v3.1</td>
+    <td class="info">
+      <table class="table table-hover table-bordered cve-info">
+        <thead><tr class="thead-dark"><th>Confidentiality</th><th>Integrity</th><th>Availability</hd></tr></thead>
+        <tr>
+          <td class="impact-{{cve['impact3']['confidentiality']|lower}}">{{cve['impact3']['confidentiality']}}</td>
+          <td class="impact-{{cve['impact3']['integrity']|lower}}">{{cve['impact3']['integrity']}}</td>
+          <td class="impact-{{cve['impact3']['availability']|lower}}">{{cve['impact3']['availability']}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  {% endif %}
+  {% set keytype = ['exploitability3', 'impact3', 'cvss3', 'vulnerable_configuration_cpe_2_2', 'cvss', 'capec',
+  'access', 'impact', 'cvss-time', 'Modified', 'Published', 'summary', 'vulnerable_configuration', 'references',
+  '_id', 'id', 'last-modified', 'ranking', 'cwe', 'vulnerable_product', 'assigner', 'products', 'vendors',
+  'vulnerable_configuration_stems', 'vulnerable_product_stems', 'impactScore', 'exploitabilityScore',
+  'impactScore3', 'exploitabilityScore3'] %}
+  {% for key, value in cve|dictsort %}
+  {% if not key in keytype %}
+  <tr>
+    <td>{{ key }}
+      <span class="badge badge-info"><a href="https://github.com/CVE-Search/VIA4CVE/" target="_blank">via4</a></span>
+    </td>
+    <td>
+      {{ JSON2HTMLTable(value, key)|safe }}
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+  {% for plugin in plugins %}
+  <tr>
+    <td>{{plugin['title']}} <span class="badge">plugin</span></td>
+    <td>
+      <a id="colf_plugin" data-toggle="collapse" href="#collapsePLUGIN" aria-expanded="false" aria-controls="collapsePLUGIN">
+        <i class="fas fa-chevron-circle-down" style="float:right"></i>
+      </a>
+      <div class="collapse partial" id="collapsePLUGIN">
+        {{plugin['data']|safe}}
+      </div>
+    </td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>Last major update</td>
+    <td>{{ cve['Modified'].strftime('%d-%m-%Y - %H:%M') }}</td>
+  </tr>
+  <tr>
+    <td>Published</td>
+    <td>{{ cve['Published'].strftime('%d-%m-%Y - %H:%M') }}</td>
+  </tr>
+  {% if 'last-modified' in cve%}
+  <tr>
+    <td>Last modified</td>
+    <td>{{ cve['last-modified'].strftime('%d-%m-%Y - %H:%M') }}</td>
+  </tr>
+  {% endif %}
+  </tbody>
+</table>
+{% endblock %}

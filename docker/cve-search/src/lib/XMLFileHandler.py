@@ -1,0 +1,45 @@
+from abc import abstractmethod
+
+from lib.DownloadHandler import DownloadHandler
+from lib.db_action import DatabaseAction
+
+
+class XMLFileHandler(DownloadHandler):
+    def __init__(self, feed_type):
+        super().__init__(feed_type)
+        self.is_update = True
+
+    def __repr__(self):
+        """ return string representation of object """
+        return "<< XMLFileHandler:{} >>".format(self.feed_type)
+
+    def process_item(self, item):
+
+        if self.is_update:
+            self.queue.put(
+                DatabaseAction(
+                    action=DatabaseAction.actions.UpdateOne,
+                    collection=self.feed_type.lower(),
+                    doc=item,
+                )
+            )
+        else:
+            self.queue.put(
+                DatabaseAction(
+                    action=DatabaseAction.actions.InsertOne,
+                    collection=self.feed_type.lower(),
+                    doc=item,
+                )
+            )
+
+    @abstractmethod
+    def file_to_queue(self, *args):
+        raise NotImplementedError
+
+    @abstractmethod
+    def update(self, **kwargs):
+        raise NotImplementedError
+
+    @abstractmethod
+    def populate(self, **kwargs):
+        raise NotImplementedError

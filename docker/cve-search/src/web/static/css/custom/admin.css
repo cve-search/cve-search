@@ -1,0 +1,38 @@
+.card {
+    margin-top: 25px;
+}
+
+.margin-left {
+    margin-left: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.margin-left-null {
+    margin-left: 0px;
+}
+
+.admin_row {
+	background-color: aliceblue;
+	height: 100%;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 25px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+th[colspan="3"] {
+    text-align: center;
+}
+
+.center_header {
+    text-align: center;
+}
+
+.form_header {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
