@@ -1,0 +1,4 @@
+[Unit]
+Conflicts=cvesearch.web.service
+Wants=cvesearch.db_init.service
+Before=cvesearch.db_init.service
