@@ -11,10 +11,10 @@ jobs:
         uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
-      - name: Set up Python 3.6
+      - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
-          python-version: '3.6'
+          python-version: '3.8'
       - name: Cache pip
         id: cache-dev-pip
         uses: actions/cache@v2
@@ -23,7 +23,7 @@ jobs:
           # path: ~/.cache/pip
           path: ${{ env.pythonLocation}}
           # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}_${{ env.pythonLocation}}_pip_dev_v1_3.6_${{ hashFiles('requirements-dev.txt') }}
+          key: ${{ runner.os }}_${{ env.pythonLocation}}_pip_dev_v1_3.8_${{ hashFiles('requirements-dev.txt') }}
       - name: Install dependencies
         if: steps.cache-dev-pip.outputs.cache-hit != 'true'
         run: |
