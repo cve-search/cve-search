@@ -1,0 +1,18 @@
+# USAGE
+
+See http://code.google.com/p/feedformatter/w/list for instructions.
+
+# REQUIREMENTS
+
+Feedformatter requires some version of ElementTree.
+
+There are two versions of ElementTree - the Python version and the C version.  T
+he C version is faster, but feedformatter will happily work with either version.
+  It chooses the fastes version available on your system.
+
+Modern versions of Python have ElementTree in the standard library so feedformat
+ter should "just work".
+
+If you have an older version of Python, you'll need to make sure ElementTree is 
+installed in your site-libs directory.  It's in PyPI so you can just use easy_in
+stall.
