@@ -1,0 +1,14 @@
+# /etc/systemd/system/cvesearch.db_updater.cpe_redis_cache.timer
+# Redis caching is optional — This timer triggers the CPE update with Redis cache
+# enabled by running the updater once per day with the '-c' flag.
+
+[Unit]
+Description=circl dot lu CVE-Search db_updater (cpe with redis) trigger timer
+
+[Timer]
+Unit=cvesearch.db_updater.cpe.redis_cache.service
+OnCalendar=*-*-* 5:15
+RandomizedDelaySec=30min
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,23 @@
+# /etc/systemd/system/cvesearch.db_updater.target
+# This target unit coordinates all db_updater instances for the cve-search system.
+# It ensures that all relevant data sources are updated as a group by pulling in
+# the individual updater service instances as dependencies.
+#
+# Unit ordering constraints are defined separately in a drop-in unit for the 'cve'
+# source (/etc/systemd/system/cvesearch.db_updater@cve.service.d/ordering.conf).
+# This ensures that updates happen in the correct sequence where necessary.
+#
+# 'StopWhenUnneeded=yes' ensures the target stops automatically once its
+# dependencies complete, allowing the associated timer to trigger it repeatedly.
+
+[Unit]
+Description=circl dot lu CVE-Search db_updater for all sources
+Wants=cvesearch.db_updater@cpe.service
+Wants=cvesearch.db_updater@cve.service
+Wants=cvesearch.db_updater@cwe.service
+Wants=cvesearch.db_updater@capec.service
+Wants=cvesearch.db_updater@via4.service
+Wants=cvesearch.db_updater@epss.service
+
+After=network.target cvesearch.db_init.service mongod.service
+StopWhenUnneeded=yes

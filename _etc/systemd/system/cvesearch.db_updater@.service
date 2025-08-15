@@ -1,0 +1,22 @@
+# /etc/systemd/system/cvesearch.db_updater@.service
+# Template unit for running db_updater.py for a specific data source.
+# The source name is passed as a '-s' argument to db_updater.py via the instance
+# placeholder '%i' (e.g., 'epss' in cvesearch.db_updater@epss.service).
+#
+# Redis is optional and not enabled here — to enable Redis caching, you can add
+# a separate unit and timer that triggers CPE updates with the '-c' flag:
+# /etc/systemd/system/cvesearch.db_updater.cpe.redis_cache.service
+# /etc/systemd/system/cvesearch.db_updater.cpe.redis_cache.timer
+
+[Unit]
+Description=circl dot lu CVE-Search db_updater for source %i
+Requires=mongod.service
+After=network.target cvesearch.db_init.service mongod.service
+Documentation=https://cve-search.github.io/cve-search/database/database.html
+
+[Service]
+WorkingDirectory=/opt/cve/cve-search
+ExecStart=python3 ./sbin/db_updater.py -s %i
+User=cve
+Type=oneshot
+SyslogIdentifier=cvesearch.db_updater@%i

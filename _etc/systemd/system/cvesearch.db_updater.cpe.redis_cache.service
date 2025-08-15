@@ -1,0 +1,19 @@
+# /etc/systemd/system/cvesearch.db_updater.cpe_redis_cache.service
+# Redis caching is optional — This service runs the CPE update with Redis cache
+# enabled. To avoid excessive Redis cache updates on every CPE update,
+# this service is intended to be triggered only once a day by the related timer:
+# /etc/systemd/system/cvesearch.db_updater.cpe_redis_cache.timer
+
+[Unit]
+Description=circl dot lu CVE-Search db_updater for source cpe with Redis cache
+Requires=mongod.service redis-server.service
+After=network.target cvesearch.db_init.service mongod.service redis-server.service
+Before=cvesearch.db_updater.target
+Documentation=https://cve-search.github.io/cve-search/database/database.html
+
+[Service]
+WorkingDirectory=/opt/cve/cve-search
+ExecStart=python3 ./sbin/db_updater.py -s cpe -c
+User=cve
+Type=oneshot
+SyslogIdentifier=cvesearch.db_updater.cpe.redis_cache
